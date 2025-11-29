@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>乡村振兴 - 促进农村经济发展与人才振兴</title>
+    <meta name="description" content="乡村振兴战略实施平台，提供农业技术、农村电商、乡村旅游等相关信息，助力农村经济发展与人才培养。">
+    <link rel="stylesheet" href="styles/main.css">
+    <style>
+        /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            scroll-behavior: smooth;
+        }
+        
+        /* 全局动画 */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* 图片优化 */
+        img {
+            max-width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+            loading: lazy;
+        }
+        
+        img:hover {
+            transform: scale(1.02);
+        }
+        
+        /* 回到顶部按钮 */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: #1a5f23;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+            box-shadow: 0 4px 15px rgba(26, 95, 35, 0.3);
+            z-index: 1000;
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            background-color: #2d8e38;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 头部样式 */
+        header {
+            background-color: #1a5f23;
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+        
+        /* 导航菜单 */
+        .main-nav {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-list {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-item {
+            margin-left: 30px;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: #ffd700;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #ffd700;
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* 移动菜单按钮 */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* 英雄区域 */
+        .hero {
+            background: linear-gradient(135deg, #1a5f23, #2d8e38);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            background-image: url('images/rural-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 52px;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 22px;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #ffd700;
+            color: #1a5f23;
+            padding: 15px 35px;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+        }
+        
+        .btn:hover {
+            background-color: #ffed4e;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+            margin-left: 15px;
+        }
+        
+        .btn-secondary:hover {
+            background-color: white;
+            color: #1a5f23;
+        }
+        
+        /* 通用区块样式 */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-alt {
+            background-color: #f0f9f1;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 40px;
+            margin-bottom: 50px;
+            color: #1a5f23;
+            position: relative;
+            padding-bottom: 20px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: #1a5f23;
+            border-radius: 2px;
+        }
+        
+        /* 特色卡片样式 */
+        .features {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .feature-card {
+            width: calc(33.333% - 20px);
+            background-color: white;
+            padding: 40px 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: #1a5f23;
+        }
+        
+        .feature-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #1a5f23;
+        }
+        
+        /* 页脚样式 */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column {
+            width: 23%;
+            min-width: 200px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #ffd700;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+        }
+        
+        /* 新增内容区域样式 */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .project-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .project-content {
+            padding: 20px;
+        }
+        
+        .project-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #1a5f23;
+        }
+        
+        .project-desc {
+            margin-bottom: 15px;
+            color: #666;
+        }
+        
+        .project-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: #888;
+        }
+        
+        .project-link {
+            display: inline-block;
+            color: #1a5f23;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .project-link:hover {
+            color: #2d8e38;
+        }
+        
+        .section-more {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid #1a5f23;
+            color: #1a5f23;
+        }
+        
+        .btn-outline:hover {
+            background-color: #1a5f23;
+            color: white;
+        }
+        
+        .news-container {
+            display: flex;
+            gap: 40px;
+        }
+        
+        .main-news {
+            flex: 1;
+        }
+        
+        .news-list {
+            flex: 1;
+        }
+        
+        .news-title {
+            font-size: 24px;
+            margin: 20px 0 10px;
+            color: #1a5f23;
+        }
+        
+        .news-desc {
+            margin-bottom: 15px;
+            color: #666;
+        }
+        
+        .news-meta {
+            font-size: 14px;
+            color: #888;
+        }
+        
+        .news-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .news-item:last-child {
+            border-bottom: none;
+        }
+        
+        .news-item-content h4 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        
+        .news-item-content p {
+            margin-bottom: 8px;
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .cases-slider {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .case-item {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .case-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .case-content {
+            padding: 20px;
+        }
+        
+        .case-content h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #1a5f23;
+        }
+        
+        .case-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
+            font-size: 14px;
+            color: #888;
+        }
+        
+        .policy-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        
+        .policy-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            border-left: 4px solid #1a5f23;
+        }
+        
+        .policy-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #1a5f23;
+        }
+        
+        .policy-highlights {
+            margin-top: 20px;
+        }
+        
+        .highlight-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            color: #666;
+        }
+        
+        .highlight-icon {
+            margin-right: 10px;
+            color: #1a5f23;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        .contact-info {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+        
+        .contact-info h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #1a5f23;
+        }
+        
+        .contact-details {
+            margin-top: 25px;
+        }
+        
+        .contact-item {
+            display: flex;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+        
+        .contact-label {
+            font-weight: 500;
+            margin-right: 10px;
+            min-width: 60px;
+        }
+        
+        .contact-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .contact-form:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #1a5f23;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .feature-card {
+                width: calc(50% - 20px);
+            }
+            
+            .hero h1 {
+                font-size: 44px;
+            }
+            
+            .project-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .cases-slider {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .policy-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            /* 移动导航菜单 */
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .main-nav {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                background-color: #1a5f23;
+                transition: left 0.3s;
+                z-index: 999;
+            }
+            
+            .main-nav.active {
+                left: 0;
+            }
+            
+            .nav-list {
+                flex-direction: column;
+                padding: 20px 0;
+            }
+            
+            .nav-item {
+                margin: 10px 0;
+                text-align: center;
+            }
+            
+            .nav-item {
+                margin-left: 0;
+            }
+            
+            .hero {
+                padding: 80px 0;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .btn {
+                display: block;
+                width: 200px;
+                margin: 0 auto 15px;
+                text-align: center;
+            }
+            
+            .btn-secondary {
+                margin-left: auto;
+            }
+            
+            .feature-card {
+                width: 100%;
+            }
+            
+            .footer-column {
+                width: 48%;
+            }
+            
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cases-slider {
+                grid-template-columns: 1fr;
+            }
+            
+            .news-container {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .footer-column {
+                width: 100%;
+            }
+            
+            .project-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .case-stats {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部区域 -->
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">乡村振兴</a>
+            
+            <!-- 桌面导航 -->
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="#" class="nav-link">首页</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link">关于我们</a></li>
+                    <li class="nav-item"><a href="#projects" class="nav-link">振兴项目</a></li>
+                    <li class="nav-item"><a href="#news" class="nav-link">新闻资讯</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">联系我们</a></li>
+                </ul>
+            </nav>
+            
+            <!-- 移动导航按钮 -->
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                ☰
+            </button>
+        </div>
+    </header>
+
+    <!-- 主要内容区域 -->
+    <main>
+        <!-- 英雄区域 -->
+        <section class="hero" style="background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100%25" height="100%25" viewBox="0 0 1600 800"%3E%3Cg fill="none" stroke="%2380c973" stroke-width="4"%3E%3Cpath d="M0,500 C150,400 350,400 500,500 C650,600 850,600 1000,500 C1150,400 1350,400 1500,500"/%3E%3Cpath d="M0,400 C150,300 350,300 500,400 C650,500 850,500 1000,400 C1150,300 1350,300 1500,400"/%3E%3Cpath d="M0,600 C150,500 350,500 500,600 C650,700 850,700 1000,600 C1150,500 1350,500 1500,600"/%3E%3C/g%3E%3Cg fill="%2380c973" fill-opacity="0.1"%3E%3Cpolygon points="0,480 150,420 300,540 450,480 600,540 750,420 900,480 1050,540 1200,420 1350,480 1500,540 1500,800 0,800"/%3E%3Ccircle cx="800" cy="400" r="200"/%3E%3C/g%3E%3C/svg%3E')">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>乡村振兴战略</h1>
+                    <p>促进农村经济发展，助力乡村人才振兴，建设美丽宜居乡村</p>
+                    <div class="hero-cta">
+                        <a href="#projects" class="btn">了解更多</a>
+                        <a href="#contact" class="btn btn-secondary">联系我们</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 特色内容区域 -->
+        <section class="section" id="about">
+            <div class="container">
+                <h2 class="section-title">乡村振兴的核心领域</h2>
+                <div class="features">
+                    <div class="feature-card">
+                        <h3>产业振兴</h3>
+                        <p>发展现代农业、乡村旅游、农村电商等特色产业，增加农民收入，推动农村经济可持续发展。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>人才振兴</h3>
+                        <p>培养农村实用人才，吸引外出务工人员返乡创业，为乡村发展提供智力支持和人才保障。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>文化振兴</h3>
+                        <p>传承和弘扬乡村优秀传统文化，加强乡村精神文明建设，提升农民文化素质和乡村文明程度。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 振兴项目区域 -->
+    <section class="section section-alt fade-in" id="projects">
+            <div class="container">
+                <h2 class="section-title">乡村振兴重点项目</h2>
+                
+                <div class="project-grid">
+                    <!-- 项目卡片1 -->
+                    <div class="project-card">
+                        <div class="project-img">
+                            <svg width="100%" height="200" class="project-image" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="100%" height="100%" fill="#81c784" rx="8" ry="8"/>
+                    <text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="white" font-size="24">现代农业</text>
+                </svg>
+                        </div>
+                        <div class="project-content">
+                            <h3>现代农业示范园建设</h3>
+                            <p class="project-desc">建设高标准农田，引进智能灌溉系统，推广绿色种植技术，打造现代农业产业集群。</p>
+                            <div class="project-info">
+                                <span class="project-location">📍 全国30个示范县</span>
+                                <span class="project-investment">💰 总投资10亿元</span>
+                            </div>
+                            <a href="#" class="project-link">查看详情 →</a>
+                        </div>
+                    </div>
+
+                    <!-- 项目卡片2 -->
+                    <div class="project-card">
+                        <div class="project-img">
+                            <svg width="100%" height="200" class="project-image" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="100%" height="100%" fill="#4fc3f7" rx="8" ry="8"/>
+                    <text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="white" font-size="24">乡村旅游</text>
+                </svg>
+                        </div>
+                        <div class="project-content">
+                            <h3>乡村旅游综合体开发</h3>
+                            <p class="project-desc">依托乡村自然风光和文化遗产，打造特色民宿集群、休闲农业体验区和文化旅游路线。</p>
+                            <div class="project-info">
+                                <span class="project-location">📍 50个旅游特色村</span>
+                                <span class="project-investment">💰 总投资15亿元</span>
+                            </div>
+                            <a href="#" class="project-link">查看详情 →</a>
+                        </div>
+                    </div>
+
+                    <!-- 项目卡片3 -->
+                    <div class="project-card">
+                        <div class="project-img">
+                            <svg width="100%" height="200" class="project-image" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="100%" height="100%" fill="#ffb74d" rx="8" ry="8"/>
+                    <text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="white" font-size="24">农村电商</text>
+                </svg>
+                        </div>
+                        <div class="project-content">
+                            <h3>农村电商服务体系</h3>
+                            <p class="project-desc">建设县乡村三级电商服务网络，培训电商人才，打造农产品品牌，拓宽销售渠道。</p>
+                            <div class="project-info">
+                                <span class="project-location">📍 覆盖200个县域</span>
+                                <span class="project-investment">💰 总投资5亿元</span>
+                            </div>
+                            <a href="#" class="project-link">查看详情 →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-more">
+                    <a href="#" class="btn btn-outline">查看更多项目</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 新闻资讯区域 -->
+    <section class="section fade-in" id="news">
+            <div class="container">
+                <h2 class="section-title">乡村振兴新闻资讯</h2>
+                
+                <div class="news-container">
+                    <!-- 主要新闻 -->
+                    <div class="main-news">
+                        <div class="news-img">
+                            <svg width="100%" height="300" class="news-image" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="100%" height="100%" fill="#64b5f6" rx="10" ry="10"/>
+                    <text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="white" font-size="20">政策解读</text>
+                </svg>
+                        </div>
+                        <h3 class="news-title">2024年中央一号文件全面部署乡村振兴重点工作</h3>
+                        <p class="news-desc">文件聚焦粮食安全、乡村产业、农民增收、农村改革等关键领域，为全面推进乡村振兴提供了政策指导。</p>
+                        <div class="news-meta">
+                            <span class="news-date">2024-02-01</span>
+                            <span class="news-source">来源：新华社</span>
+                        </div>
+                    </div>
+
+                    <!-- 新闻列表 -->
+                    <div class="news-list">
+                        <div class="news-item">
+                            <div class="news-item-content">
+                                <h4>数字农业发展行动启动，助力农业现代化转型</h4>
+                                <p>该行动将推动物联网、大数据、人工智能等技术在农业领域的应用...</p>
+                                <span class="news-date">2024-01-20</span>
+                            </div>
+                        </div>
+                        
+                        <div class="news-item">
+                            <div class="news-item-content">
+                                <h4>全国乡村旅游精品线路发布，促进农文旅融合发展</h4>
+                                <p>本次发布的100条精品线路涵盖全国各省市特色乡村旅游资源...</p>
+                                <span class="news-date">2024-01-15</span>
+                            </div>
+                        </div>
+                        
+                        <div class="news-item">
+                            <div class="news-item-content">
+                                <h4>乡村振兴人才培养计划实施，今年将培训10万名农村实用人才</h4>
+                                <p>计划重点培养农业技术人员、乡村企业家、电商运营等各类人才...</p>
+                                <span class="news-date">2024-01-10</span>
+                            </div>
+                        </div>
+                        
+                        <div class="news-item">
+                            <div class="news-item-content">
+                                <h4>农村人居环境整治提升五年行动取得显著成效</h4>
+                                <p>全国90%以上的村庄实现生活垃圾有效处理，农村面貌焕然一新...</p>
+                                <span class="news-date">2024-01-05</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 成功案例区域 -->
+    <section class="section section-alt fade-in">
+            <div class="container">
+                <h2 class="section-title">乡村振兴成功案例</h2>
+                
+                <div class="cases-slider">
+                    <!-- 案例1 -->
+                    <div class="case-item">
+                        <div class="case-img">
+                            <svg width="100%" height="250" class="case-image" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="100%" height="100%" fill="#81c784" rx="10" ry="10"/>
+                    <text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="white" font-size="24">生态农业</text>
+                </svg>
+                        </div>
+                        <div class="case-content">
+                            <h3>浙江余村：绿水青山就是金山银山</h3>
+                            <p>从靠山吃山到养山富山，余村走出了一条生态优先、绿色发展的乡村振兴之路。</p>
+                            <div class="case-stats">
+                                <span>农民人均收入：7.5万元</span>
+                                <span>旅游年收入：3.5亿元</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 案例2 -->
+                    <div class="case-item">
+                        <div class="case-img">
+                            <svg width="100%" height="250" class="case-image" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="100%" height="100%" fill="#ffb74d" rx="10" ry="10"/>
+                    <text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="white" font-size="24">乡村振兴</text>
+                </svg>
+                        </div>
+                        <div class="case-content">
+                            <h3>贵州花茂村：传统手工艺助推乡村振兴</h3>
+                            <p>依托传统陶艺等手工艺，花茂村打造了集文化体验、休闲旅游为一体的特色产业。</p>
+                            <div class="case-stats">
+                                <span>年接待游客：50万人次</span>
+                                <span>直接带动就业：300余人</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 案例3 -->
+                    <div class="case-item">
+                        <div class="case-img">
+                            <svg width="100%" height="250" class="case-image" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="100%" height="100%" fill="#4fc3f7" rx="10" ry="10"/>
+                    <text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="white" font-size="24">数字乡村</text>
+                </svg>
+                        </div>
+                        <div class="case-content">
+                            <h3>江苏三湾村：农村电商引领产业升级</h3>
+                            <p>通过发展农村电商，三湾村实现了农产品规模化种植和品牌化销售，带动村民增收致富。</p>
+                            <div class="case-stats">
+                                <span>电商销售额：2亿元</span>
+                                <span>村级集体经济收入：500万元</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 政策解读区域 -->
+    <section class="section fade-in">
+            <div class="container">
+                <h2 class="section-title">乡村振兴政策解读</h2>
+                
+                <div class="policy-container">
+                    <div class="policy-card">
+                        <h3>《乡村振兴促进法》解读</h3>
+                        <p>该法律为乡村振兴提供了法律保障，明确了各级政府、社会组织和村民的权利义务。</p>
+                        <div class="policy-highlights">
+                            <div class="highlight-item">
+                                <span class="highlight-icon">▶</span>
+                                <span>明确乡村振兴的基本原则和目标任务</span>
+                            </div>
+                            <div class="highlight-item">
+                                <span class="highlight-icon">▶</span>
+                                <span>建立健全乡村振兴的制度体系</span>
+                            </div>
+                            <div class="highlight-item">
+                                <span class="highlight-icon">▶</span>
+                                <span>保障农民合法权益，促进城乡融合发展</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="policy-card">
+                        <h3>乡村振兴重点工作部署</h3>
+                        <p>2024年乡村振兴工作聚焦粮食安全、农民增收、农村改革等关键领域。</p>
+                        <div class="policy-highlights">
+                            <div class="highlight-item">
+                                <span class="highlight-icon">▶</span>
+                                <span>坚决守住18亿亩耕地红线</span>
+                            </div>
+                            <div class="highlight-item">
+                                <span class="highlight-icon">▶</span>
+                                <span>发展壮大乡村特色产业</span>
+                            </div>
+                            <div class="highlight-item">
+                                <span class="highlight-icon">▶</span>
+                                <span>深化农村土地制度改革</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 联系我们区域 -->
+    <section class="section section-alt fade-in" id="contact">
+            <div class="container">
+                <h2 class="section-title">联系我们</h2>
+                
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h3>乡村振兴战略实施平台</h3>
+                        <p>如果您对乡村振兴工作有任何问题或建议，欢迎联系我们。</p>
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <span class="contact-label">电话：</span>
+                                <span>400-123-4567</span>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-label">邮箱：</span>
+                                <span>info@rural-revitalization.gov.cn</span>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-label">地址：</span>
+                                <span>北京市朝阳区农业农村部办公大楼</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <form action="#" method="post">
+                            <div class="form-group">
+                                <label for="name">姓名</label>
+                                <input type="text" id="name" name="name" placeholder="请输入您的姓名" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">电话</label>
+                                <input type="tel" id="phone" name="phone" placeholder="请输入您的联系电话" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">邮箱</label>
+                                <input type="email" id="email" name="email" placeholder="请输入您的邮箱地址" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">留言内容</label>
+                                <textarea id="message" name="message" rows="4" placeholder="请输入您的留言内容" required></textarea>
+                            </div>
+                            <button type="submit" class="btn">提交留言</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 回到顶部按钮 -->
+    <button class="back-to-top" id="backToTop" title="回到顶部">
+        ↑
+    </button>
+    
+    <!-- 页脚区域 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>关于我们</h3>
+                    <ul>
+                        <li><a href="#">平台介绍</a></li>
+                        <li><a href="#">发展历程</a></li>
+                        <li><a href="#">团队介绍</a></li>
+                        <li><a href="#">合作伙伴</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>振兴项目</h3>
+                    <ul>
+                        <li><a href="#">产业发展</a></li>
+                        <li><a href="#">人才培养</a></li>
+                        <li><a href="#">文化建设</a></li>
+                        <li><a href="#">生态保护</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>新闻资讯</h3>
+                    <ul>
+                        <li><a href="#">政策解读</a></li>
+                        <li><a href="#">行业动态</a></li>
+                        <li><a href="#">成功案例</a></li>
+                        <li><a href="#">活动预告</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>联系我们</h3>
+                    <ul>
+                        <li><a href="#">联系方式</a></li>
+                        <li><a href="#">在线留言</a></li>
+                        <li><a href="#">意见反馈</a></li>
+                        <li><a href="#">帮助中心</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 乡村振兴战略实施平台. 版权所有.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // DOM 加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            // 移动菜单切换
+            document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+                document.querySelector('.main-nav').classList.toggle('active');
+                
+                // 切换菜单图标
+                const btn = document.getElementById('mobileMenuBtn');
+                if (document.querySelector('.main-nav').classList.contains('active')) {
+                    btn.textContent = '✕';
+                } else {
+                    btn.textContent = '☰';
+                }
+            });
+            
+            // 平滑滚动
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    // 关闭移动菜单
+                    document.querySelector('.main-nav').classList.remove('active');
+                    document.getElementById('mobileMenuBtn').textContent = '☰';
+                    
+                    // 滚动到目标位置
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 70, // 考虑固定头部的高度
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // 监听滚动，调整导航栏样式和回到顶部按钮
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 50) {
+                    header.style.padding = '10px 0';
+                    header.style.boxShadow = '0 4px 15px rgba(0,0,0,0.1)';
+                } else {
+                    header.style.padding = '15px 0';
+                    header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+                }
+                
+                // 控制回到顶部按钮显示
+                const backToTop = document.getElementById('backToTop');
+                if (window.scrollY > 300) {
+                    backToTop.classList.add('active');
+                } else {
+                    backToTop.classList.remove('active');
+                }
+                
+                // 滚动动画
+                animateOnScroll();
+            });
+            
+            // 回到顶部功能
+            document.getElementById('backToTop').addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // 表单提交优化
+            const contactForm = document.querySelector('.contact-form form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // 模拟表单提交
+                    const submitBtn = this.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.textContent;
+                    
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = '提交中...';
+                    
+                    // 模拟网络请求延迟
+                    setTimeout(() => {
+                        alert('感谢您的留言，我们会尽快回复您！');
+                        this.reset();
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = originalText;
+                    }, 1500);
+                });
+            }
+            
+            // 图片加载错误处理
+            document.querySelectorAll('img').forEach(img => {
+                img.addEventListener('error', function() {
+                    this.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100%25" height="100%25" viewBox="0 0 800 400"%3E%3Crect fill="%23f0f0f0" width="800" height="400"/%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ccc"%3E%3Cpath d="M611.592 36.804L800 225.212V400H0V225.212L188.408 36.804h423.184z"/%3E%3Cpath d="M611.592 36.804L800 225.212V400H0V225.212L188.408 36.804" stroke="%23999" stroke-width="20" stroke-linejoin="round"/%3E%3Cpath d="M375.771 144.436a166.85 166.85 0 0 1-38.063 38.584m-30.988 53.365a166.85 166.85 0 0 1-38.064 38.584M118.408 36.804a20 20 0 0 1 14.142 5.858L350 267.426M55 330h20m0 0h40m-40 0v20m0-20v40M725 330h20m0 0h40m-40 0v20m0-20v40M400 150a90 90 0 1 1 0 180 90 90 0 0 1 0-180z" stroke="%23999" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/%3E%3Cpath d="M521.482 144.436a166.85 166.85 0 0 0-38.584-38.063m-53.365-30.988a166.85 166.85 0 0 0-38.584-38.064M681.592 36.804a20 20 0 0 0-14.142 5.858L450 267.426" stroke="%23999" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/%3E%3Cpath d="M400 180a60 60 0 1 1 0 120 60 60 0 0 1 0-120z" stroke="%23999" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E';
+                        this.alt = '图片加载失败';
+                    });
+                });
+            
+            // 页面加载时执行一次滚动动画
+            animateOnScroll();
+        });
+        
+        // 滚动动画函数
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.fade-in');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
