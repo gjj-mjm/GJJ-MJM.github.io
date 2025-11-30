@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数字技能培训 - 乡村人才振兴平台</title>
+    <style>
+        /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 头部样式 */
+        header {
+            background: linear-gradient(135deg, #FF9800, #F57C00);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        /* 导航栏 */
+        nav {
+            background-color: #fff;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #FF9800;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+        
+        .nav-links li {
+            margin-left: 20px;
+        }
+        
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #FF9800;
+        }
+        
+        .back-btn {
+            background-color: #fff;
+            border: 2px solid #FF9800;
+            color: #FF9800;
+            padding: 8px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .back-btn:hover {
+            background-color: #FF9800;
+            color: #fff;
+        }
+        
+        /* 主内容区域 */
+        main {
+            padding: 40px 0;
+        }
+        
+        .category-overview {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        
+        .category-banner {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #FF9800, #F57C00);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .category-banner svg {
+            width: 120px;
+            height: 120px;
+        }
+        
+        .category-intro {
+            margin-top: 20px;
+        }
+        
+        .category-intro h2 {
+            color: #FF9800;
+            margin-bottom: 15px;
+        }
+        
+        .category-intro p {
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+        
+        /* 课程视频区域 */
+        .course-section {
+            margin-top: 40px;
+        }
+        
+        .course-section h2 {
+            color: #333;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .course-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: #FF9800;
+        }
+        
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .video-card {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+        
+        .video-thumbnail {
+            width: 100%;
+            height: 180px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .video-thumbnail::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,152,0,0.8), rgba(245,124,0,0.6));
+            z-index: 1;
+        }
+        
+        .play-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(255,255,255,0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FF9800;
+            font-size: 24px;
+            position: relative;
+            z-index: 2;
+            transition: transform 0.3s;
+        }
+        
+        .video-card:hover .play-icon {
+            transform: scale(1.1);
+        }
+        
+        .video-info {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .video-info h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .video-description {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            line-height: 1.6;
+            flex: 1;
+        }
+        
+        .video-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #888;
+            font-size: 0.85rem;
+        }
+        
+        .video-duration {
+            display: flex;
+            align-items: center;
+        }
+        
+        .video-btn {
+            background-color: #FF9800;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 15px;
+            text-align: center;
+            text-decoration: none;
+        }
+        
+        .video-btn:hover {
+            background-color: #F57C00;
+        }
+        
+        /* 分类特点 */
+        .category-features {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-top: 30px;
+        }
+        
+        .category-features h2 {
+            color: #FF9800;
+            margin-bottom: 20px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .feature-card {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 4px solid #FF9800;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        
+        .feature-card h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .feature-card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        /* 学习路径 */
+        .learning-path {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        
+        .learning-path h2 {
+            color: #FF9800;
+            margin-bottom: 20px;
+        }
+        
+        .path-steps {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .path-steps::before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            left: 25px;
+            width: 3px;
+            height: calc(100% - 60px);
+            background-color: #FF9800;
+            z-index: 0;
+        }
+        
+        .path-step {
+            position: relative;
+            padding: 20px 0 20px 70px;
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            z-index: 1;
+        }
+        
+        .step-number {
+            position: absolute;
+            left: 12px;
+            top: 25px;
+            width: 26px;
+            height: 26px;
+            background-color: #FF9800;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            z-index: 2;
+        }
+        
+        .step-content h3 {
+            color: #333;
+            margin-bottom: 8px;
+        }
+        
+        .step-content p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        /* 相关资源 */
+        .resources-section {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        
+        .resources-section h2 {
+            color: #FF9800;
+            margin-bottom: 20px;
+        }
+        
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .resource-card {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        
+        .resource-icon {
+            font-size: 3rem;
+            color: #FF9800;
+            margin-bottom: 15px;
+        }
+        
+        .resource-card h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .resource-link {
+            color: #FF9800;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        .resource-link:hover {
+            color: #F57C00;
+        }
+        
+        /* 页脚 */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-links {
+            list-style: none;
+            display: flex;
+            margin: 15px 0;
+        }
+        
+        .footer-links li {
+            margin: 0 15px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #FF9800;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .video-grid,
+            .features-grid,
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .path-steps::before {
+                left: 25px;
+            }
+            
+            .path-step {
+                padding: 20px 15px 20px 70px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .category-overview,
+            .category-features,
+            .learning-path,
+            .resources-section {
+                padding: 20px;
+            }
+            
+            header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .category-banner {
+                height: 200px;
+            }
+            
+            .video-info {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">乡村人才振兴</a>
+            <ul class="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="#courses">课程</a></li>
+                <li><a href="#services">服务</a></li>
+                <li><a href="#about">关于我们</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- 头部 -->
+    <header>
+        <div class="container">
+            <h1>数字技能培训</h1>
+            <p>提升农村人才数字素养，掌握现代信息技术，融入数字经济时代</p>
+        </div>
+    </header>
+    
+    <!-- 主内容 -->
+    <main>
+        <div class="container">
+            <a href="index.html" class="back-btn">返回首页</a>
+            
+            <!-- 分类概览 -->
+            <div class="category-overview">
+                <div class="category-banner">
+                    <svg width="120" height="120" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 17L12 22L22 17" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 12L12 17L22 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                
+                <div class="category-intro">
+                    <h2>数字技能培训介绍</h2>
+                    <p>数字技能培训模块旨在提升农村人才的数字素养和信息技术应用能力，帮助他们更好地适应数字经济时代的发展需求。</p>
+                    <p>本模块包含计算机基础操作、智能手机应用、互联网使用技巧、社交媒体运营、电子商务基础知识等内容，为农村人才提供全方位的数字技能培训。</p>
+                    <p>通过系统学习和实践操作，学员将能够熟练使用数字化工具，拓展信息获取渠道，提升生产效率，增加收入来源，实现个人价值和乡村振兴的双赢。</p>
+                </div>
+            </div>
+            
+            <!-- 分类特点 -->
+            <div class="category-features">
+                <h2>数字技能培训特点</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>零基础入门</h3>
+                        <p>从最基础的知识开始讲解，循序渐进，确保每位学员都能跟上进度，掌握核心技能。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>实用技能导向</h3>
+                        <p>注重实用性和可操作性，培训内容直接对接农村实际需求，学了就能用，用了就见效。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>线上线下结合</h3>
+                        <p>采用线上课程和线下实操相结合的方式，既方便灵活学习，又能保证实操效果。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>持续更新内容</h3>
+                        <p>紧跟数字化发展趋势，不断更新培训内容，确保学员掌握最新的数字技能和应用。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 精选课程视频 -->
+            <div class="course-section">
+                <h2>精选课程视频</h2>
+                <div class="video-grid">
+                    <!-- 视频1 -->
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <div class="play-icon">▶</div>
+                        </div>
+                        <div class="video-info">
+                            <h3>计算机基础操作入门</h3>
+                            <p class="video-description">本视频介绍计算机的基本组成、鼠标键盘操作、文件管理等基础知识，帮助零基础学员快速上手。</p>
+                            <div class="video-meta">
+                                <span>初级</span>
+                                <span class="video-duration">25分钟</span>
+                            </div>
+                            <a href="https://www.bilibili.com/video/BV1fS4y1W7WZ" target="_blank" class="video-btn">观看视频</a>
+                        </div>
+                    </div>
+                    
+                    <!-- 视频2 -->
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <div class="play-icon">▶</div>
+                        </div>
+                        <div class="video-info">
+                            <h3>智能手机高级应用</h3>
+                            <p class="video-description">学习智能手机的高级功能，包括拍照技巧、应用安装、移动支付、在线学习等实用功能。</p>
+                            <div class="video-meta">
+                                <span>中级</span>
+                                <span class="video-duration">35分钟</span>
+                            </div>
+                            <a href="https://www.bilibili.com/video/BV1hF411p7Rb" target="_blank" class="video-btn">观看视频</a>
+                        </div>
+                    </div>
+                    
+                    <!-- 视频3 -->
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <div class="play-icon">▶</div>
+                        </div>
+                        <div class="video-info">
+                            <h3>互联网信息检索技巧</h3>
+                            <p class="video-description">掌握高效的搜索引擎使用方法，学习如何快速准确地获取农业技术、市场信息等实用内容。</p>
+                            <div class="video-meta">
+                                <span>初级</span>
+                                <span class="video-duration">30分钟</span>
+                            </div>
+                            <a href="https://www.bilibili.com/video/BV1zL4y1J7qM" target="_blank" class="video-btn">观看视频</a>
+                        </div>
+                    </div>
+                    
+                    <!-- 视频4 -->
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <div class="play-icon">▶</div>
+                        </div>
+                        <div class="video-info">
+                            <h3>社交媒体运营基础</h3>
+                            <p class="video-description">了解微信、抖音等社交媒体平台的运营技巧，学习如何通过社交媒体宣传农产品和乡村旅游。</p>
+                            <div class="video-meta">
+                                <span>中级</span>
+                                <span class="video-duration">40分钟</span>
+                            </div>
+                            <a href="https://www.bilibili.com/video/BV1e44y1e7sT" target="_blank" class="video-btn">观看视频</a>
+                        </div>
+                    </div>
+                    
+                    <!-- 视频5 -->
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <div class="play-icon">▶</div>
+                        </div>
+                        <div class="video-info">
+                            <h3>移动办公软件使用</h3>
+                            <p class="video-description">学习手机版Word、Excel、PPT等办公软件的使用方法，随时随地处理文档，提高工作效率。</p>
+                            <div class="video-meta">
+                                <span>中级</span>
+                                <span class="video-duration">45分钟</span>
+                            </div>
+                            <a href="https://www.bilibili.com/video/BV13h411o73A" target="_blank" class="video-btn">观看视频</a>
+                        </div>
+                    </div>
+                    
+                    <!-- 视频6 -->
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <div class="play-icon">▶</div>
+                        </div>
+                        <div class="video-info">
+                            <h3>网络安全与隐私保护</h3>
+                            <p class="video-description">学习网络安全基础知识，了解常见的网络诈骗手段，掌握个人信息保护和资金安全的方法。</p>
+                            <div class="video-meta">
+                                <span>初级</span>
+                                <span class="video-duration">35分钟</span>
+                            </div>
+                            <a href="https://www.bilibili.com/video/BV1V34y1s79G" target="_blank" class="video-btn">观看视频</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 学习路径 -->
+            <div class="learning-path">
+                <h2>数字技能学习路径</h2>
+                <div class="path-steps">
+                    <div class="path-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>数字基础</h3>
+                            <p>学习计算机和智能手机的基本操作，掌握互联网使用的基础知识，建立数字思维。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="path-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>信息获取</h3>
+                            <p>掌握高效的信息检索方法，学习如何利用网络获取农业技术、市场信息和政策法规等实用内容。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="path-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>数字工具应用</h3>
+                            <p>学习办公软件、社交媒体、专业应用等数字化工具的使用，提高工作和生产效率。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="path-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>数字营销</h3>
+                            <p>掌握社交媒体运营、内容创作、网络推广等数字营销技能，提升农产品知名度和销售额。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="path-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h3>数字创业</h3>
+                            <p>学习电子商务、网络直播、数字内容创作等新型创业模式，寻找新的收入增长点。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 相关资源 -->
+            <div class="resources-section">
+                <h2>相关资源</h2>
+                <div class="resources-grid">
+                    <div class="resource-card">
+                        <div class="resource-icon">📚</div>
+                        <h3>数字技能培训手册</h3>
+                        <a href="#" class="resource-link">下载资源</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <div class="resource-icon">💻</div>
+                        <h3>计算机基础练习软件</h3>
+                        <a href="#" class="resource-link">下载资源</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <div class="resource-icon">📱</div>
+                        <h3>实用手机应用推荐</h3>
+                        <a href="#" class="resource-link">查看详情</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <div class="resource-icon">🎓</div>
+                        <h3>在线学习平台汇总</h3>
+                        <a href="#" class="resource-link">查看详情</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- 页脚 -->
+    <footer>
+        <div class="container footer-content">
+            <p>© 2024 乡村人才振兴平台. 保留所有权利.</p>
+            <ul class="footer-links">
+                <li><a href="#">隐私政策</a></li>
+                <li><a href="#">使用条款</a></li>
+                <li><a href="#">联系我们</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>

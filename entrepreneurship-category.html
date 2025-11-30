@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创业就业培训 - 乡村人才振兴平台</title>
+    <style>
+        /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 头部样式 */
+        header {
+            background: linear-gradient(135deg, #2196F3, #0D47A1);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        /* 导航栏 */
+        nav {
+            background-color: #fff;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2196F3;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+        
+        .nav-links li {
+            margin-left: 20px;
+        }
+        
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #2196F3;
+        }
+        
+        .back-btn {
+            background-color: #fff;
+            border: 2px solid #2196F3;
+            color: #2196F3;
+            padding: 8px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .back-btn:hover {
+            background-color: #2196F3;
+            color: #fff;
+        }
+        
+        /* 主内容区域 */
+        main {
+            padding: 40px 0;
+        }
+        
+        .category-overview {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        
+        .category-banner {
+            width: 100%;
+            height: 300px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #2196F3, #0D47A1);
+        }
+        
+        .category-banner svg {
+            width: 120px;
+            height: 120px;
+        }
+        
+        .category-intro {
+            margin-top: 20px;
+        }
+        
+        .category-intro h2 {
+            color: #2196F3;
+            margin-bottom: 15px;
+        }
+        
+        .category-intro p {
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+        
+        /* 课程视频区域 */
+        .course-section {
+            margin-top: 40px;
+        }
+        
+        .course-section h2 {
+            color: #333;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .course-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: #2196F3;
+        }
+        
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .video-card {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+        
+        .video-thumbnail {
+            width: 100%;
+            height: 180px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .video-thumbnail::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(33,150,243,0.8), rgba(13,71,161,0.6));
+            z-index: 1;
+        }
+        
+        .play-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(255,255,255,0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2196F3;
+            font-size: 24px;
+            position: relative;
+            z-index: 2;
+            transition: transform 0.3s;
+        }
+        
+        .video-card:hover .play-icon {
+            transform: scale(1.1);
+        }
+        
+        .video-info {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .video-info h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .video-description {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            line-height: 1.6;
+            flex: 1;
+        }
+        
+        .video-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #888;
+            font-size: 0.85rem;
+        }
+        
+        .video-duration {
+            display: flex;
+            align-items: center;
+        }
+        
+        .video-btn {
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 15px;
+            text-align: center;
+            text-decoration: none;
+        }
+        
+        .video-btn:hover {
+            background-color: #1976D2;
+        }
+        
+        /* 分类特点 */
+        .category-features {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-top: 30px;
+        }
+        
+        .category-features h2 {
+            color: #2196F3;
+            margin-bottom: 20px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .feature-card {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 4px solid #2196F3;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        
+        .feature-card h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .feature-card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        /* 创业项目类型 */
+        .business-types {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        
+        .business-types h2 {
+            color: #2196F3;
+            margin-bottom: 20px;
+        }
+        
+        .types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .type-card {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .type-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        
+        .type-card h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .type-card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .type-icon {
+            font-size: 3rem;
+            color: #2196F3;
+            margin-bottom: 15px;
+        }
+        
+        /* 创业支持服务 */
+        .support-services {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        
+        .support-services h2 {
+            color: #2196F3;
+            margin-bottom: 20px;
+        }
+        
+        .services-list {
+            list-style: none;
+        }
+        
+        .service-item {
+            padding: 15px;
+            margin-bottom: 15px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            border-left: 4px solid #2196F3;
+        }
+        
+        .service-item h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .service-item p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        /* 创业案例 */
+        .success-cases {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        
+        .success-cases h2 {
+            color: #2196F3;
+            margin-bottom: 20px;
+        }
+        
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .case-card {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .case-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        
+        .case-card h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .case-card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        
+        .case-author {
+            font-weight: bold;
+            color: #2196F3;
+        }
+        
+        /* 相关资源 */
+        .resources-section {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        
+        .resources-section h2 {
+            color: #2196F3;
+            margin-bottom: 20px;
+        }
+        
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .resource-card {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        
+        .resource-icon {
+            font-size: 3rem;
+            color: #2196F3;
+            margin-bottom: 15px;
+        }
+        
+        .resource-card h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .resource-link {
+            color: #2196F3;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        .resource-link:hover {
+            color: #1976D2;
+        }
+        
+        /* 页脚 */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-links {
+            list-style: none;
+            display: flex;
+            margin: 15px 0;
+        }
+        
+        .footer-links li {
+            margin: 0 15px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #2196F3;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .video-grid,
+            .features-grid,
+            .types-grid,
+            .cases-grid,
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .category-overview,
+            .category-features,
+            .business-types,
+            .support-services,
+            .success-cases,
+            .resources-section {
+                padding: 20px;
+            }
+            
+            header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .category-banner {
+                height: 200px;
+            }
+            
+            .video-info {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">乡村人才振兴</a>
+            <ul class="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="#courses">课程</a></li>
+                <li><a href="#services">服务</a></li>
+                <li><a href="#about">关于我们</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- 头部 -->
+    <header>
+        <div class="container">
+            <h1>创业就业培训</h1>
+            <p>提供创业指导、就业技能培训、商业计划书撰写等服务，帮助农村人才实现创业梦想和高质量就业</p>
+        </div>
+    </header>
+    
+    <!-- 主内容 -->
+    <main>
+        <div class="container">
+            <a href="index.html" class="back-btn">返回首页</a>
+            
+            <!-- 分类概览 -->
+            <div class="category-overview">
+                <div class="category-banner">
+                    <svg width="120" height="120" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM14 17H10V15H14V17ZM14 13H10V7H14V13Z" fill="white"/>
+                    </svg>
+                </div>
+                
+                <div class="category-intro">
+                    <h2>创业就业培训介绍</h2>
+                    <p>创业就业培训模块旨在帮助农村人才掌握创业技能和就业知识，提高就业能力和创业成功率。该模块提供创业指导、商业计划书撰写、市场营销、财务管理、法律知识等多方面的培训内容。</p>
+                    <p>通过系统学习和实践训练，学员将能够识别创业机会，制定创业计划，掌握经营管理技能，提高创业成功率；同时，也能提升就业竞争力，实现高质量就业，促进农村劳动力转移和增收致富。</p>
+                    <p>本模块注重实用性和可操作性，结合真实案例分析和模拟实践，帮助学员在创业和就业过程中少走弯路，提高成功率。</p>
+                </div>
+            </div>
+            
+            <!-- 分类特点 -->
+            <div class="category-features">
+                <h2>创业就业培训特点</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>实用性强</h3>
+                        <p>紧密结合农村创业就业实际需求，提供可直接应用的实用技能和知识，确保培训内容落地见效。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>系统化培训</h3>
+                        <p>从创业想法产生、商业计划制定到企业运营管理，提供全流程、系统化的培训内容，帮助学员全面掌握创业技能。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>案例式教学</h3>
+                        <p>通过真实创业案例分析和讨论，帮助学员理解创业过程中的关键环节和常见问题，从中汲取经验教训。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>个性化指导</h3>
+                        <p>针对不同学员的创业项目和就业目标，提供个性化的指导和建议，帮助学员解决实际问题。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 精选课程视频 -->
+            <div class="course-section">
+                <h2>精选课程视频</h2>
+                <div class="video-grid">
+                    <!-- 视频1 -->
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <div class="play-icon">▶</div>
+                        </div>
+                        <div class="video-info">
+                            <h3>农村创业机会识别与评估</h3>
+                            <p class="video-description">本视频介绍如何在农村环境中识别创业机会，评估创业项目的可行性，以及如何选择适合自己的创业方向。</p>
+                            <div class="video-meta">
+                                <span>初级</span>
+                                <span class="video-duration">45分钟</span>
+                            </div>
+                            <a href="https://www.bilibili.com/video/BV1K3411M7KX" target="_blank" class="video-btn">观看视频</a>
+                        </div>
+                    </div>
+                    
+                    <!-- 视频2 -->
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <div class="play-icon">▶</div>
+                        </div>
+                        <div class="video-info">
+                            <h3>商业计划书撰写实战</h3>
+                            <p class="video-description">学习如何撰写一份完整、专业的商业计划书，包括市场分析、产品服务、运营模式、财务预测等关键内容。</p>
+                            <div class="video-meta">
+                                <span>中级</span>
+                                <span class="video-duration">50分钟</span>
+                            </div>
+                            <a href="https://www.bilibili.com/video/BV1gQ4y1d75F" target="_blank" class="video-btn">观看视频</a>
+                        </div>
+                    </div>
+                    
+                    <!-- 视频3 -->
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <div class="play-icon">▶</div>
+                        </div>
+                        <div class="video-info">
+                            <h3>农村电商创业全攻略</h3>
+                            <p class="video-description">详细讲解农村电商创业的全流程，包括平台选择、产品定位、店铺运营、物流配送等关键环节。</p>
+                            <div class="video-meta">
+                                <span>中级</span>
+                                <span class="video-duration">55分钟</span>
+                            </div>
+                            <a href="https://www.bilibili.com/video/BV13a411N78X" target="_blank" class="video-btn">观看视频</a>
+                        </div>
+                    </div>
+                    
+                    <!-- 视频4 -->
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <div class="play-icon">▶</div>
+                        </div>
+                        <div class="video-info">
+                            <h3>创业财务管理基础</h3>
+                            <p class="video-description">介绍创业过程中的财务管理知识，包括记账方法、成本控制、资金规划、税务筹划等实用内容。</p>
+                            <div class="video-meta">
+                                <span>初级</span>
+                                <span class="video-duration">40分钟</span>
+                            </div>
+                            <a href="https://www.bilibili.com/video/BV1h5411J7K7" target="_blank" class="video-btn">观看视频</a>
+                        </div>
+                    </div>
+                    
+                    <!-- 视频5 -->
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <div class="play-icon">▶</div>
+                        </div>
+                        <div class="video-info">
+                            <h3>创业团队建设与管理</h3>
+                            <p class="video-description">学习如何招募、组建和管理创业团队，制定有效的团队激励机制，提高团队凝聚力和执行力。</p>
+                            <div class="video-meta">
+                                <span>中级</span>
+                                <span class="video-duration">45分钟</span>
+                            </div>
+                            <a href="https://www.bilibili.com/video/BV1wA411K7gQ" target="_blank" class="video-btn">观看视频</a>
+                        </div>
+                    </div>
+                    
+                    <!-- 视频6 -->
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <div class="play-icon">▶</div>
+                        </div>
+                        <div class="video-info">
+                            <h3>农村创业政策解读与申请</h3>
+                            <p class="video-description">详细解读国家和地方对农村创业的扶持政策，包括资金扶持、税收优惠、场地支持等，并介绍政策申请流程。</p>
+                            <div class="video-meta">
+                                <span>初级</span>
+                                <span class="video-duration">40分钟</span>
+                            </div>
+                            <a href="https://www.bilibili.com/video/BV14L411T7Pz" target="_blank" class="video-btn">观看视频</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 创业项目类型 -->
+            <div class="business-types">
+                <h2>适合农村的创业项目类型</h2>
+                <div class="types-grid">
+                    <div class="type-card">
+                        <div class="type-icon">🌾</div>
+                        <h3>特色农产品种植</h3>
+                        <p>种植特色蔬菜、水果、中药材等经济作物，通过规模化、标准化种植提高效益，结合电商平台拓宽销售渠道。</p>
+                    </div>
+                    <div class="type-card">
+                        <div class="type-icon">🏭</div>
+                        <h3>农产品加工业</h3>
+                        <p>利用当地农产品资源，开展农产品深加工，提高附加值，如水果罐头、蔬菜干、坚果炒货等。</p>
+                    </div>
+                    <div class="type-card">
+                        <div class="type-icon">🛒</div>
+                        <h3>农村电商</h3>
+                        <p>开设网店或直播带货，销售当地特色农产品和手工艺品，连接农产品生产和消费市场。</p>
+                    </div>
+                    <div class="type-card">
+                        <div class="type-icon">🏡</div>
+                        <h3>乡村民宿</h3>
+                        <p>利用农村闲置房屋，发展特色民宿和农家乐，结合乡村旅游，提供餐饮、住宿、观光等服务。</p>
+                    </div>
+                    <div class="type-card">
+                        <div class="type-icon">✂️</div>
+                        <h3>传统手工艺</h3>
+                        <p>传承和发展传统手工艺，如编织、陶艺、木雕等，生产具有地方特色的手工艺品，满足市场需求。</p>
+                    </div>
+                    <div class="type-card">
+                        <div class="type-icon">🚛</div>
+                        <h3>农村物流服务</h3>
+                        <p>开展农村物流配送服务，解决农村物流"最后一公里"问题，为电商发展和农产品流通提供支持。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 创业支持服务 -->
+            <div class="support-services">
+                <h2>创业支持服务</h2>
+                <ul class="services-list">
+                    <li class="service-item">
+                        <h3>创业咨询服务</h3>
+                        <p>提供创业政策咨询、创业项目评估、创业计划指导等服务，帮助创业者解决创业过程中的问题。</p>
+                    </li>
+                    <li class="service-item">
+                        <h3>创业培训服务</h3>
+                        <p>开展各类创业培训课程，包括创业基础知识、专业技能培训、经营管理培训等，提升创业者的能力和素质。</p>
+                    </li>
+                    <li class="service-item">
+                        <h3>融资对接服务</h3>
+                        <p>搭建创业项目与投资机构、金融机构的对接平台，帮助创业者获取创业资金支持。</p>
+                    </li>
+                    <li class="service-item">
+                        <h3>创业孵化服务</h3>
+                        <p>提供创业场地、办公设施、法律咨询、财务管理等孵化服务，降低创业成本和风险。</p>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- 创业成功案例 -->
+            <div class="success-cases">
+                <h2>创业成功案例</h2>
+                <div class="cases-grid">
+                    <div class="case-card">
+                        <h3>小王的特色水果种植基地</h3>
+                        <p>小王通过参加创业培训，掌握了特色水果种植技术和市场营销知识，创办了特色水果种植基地，年销售额达到50万元。</p>
+                        <p class="case-author">—— 四川省成都市 王创业</p>
+                    </div>
+                    <div class="case-card">
+                        <h3>小李的农村电商创业</h3>
+                        <p>小李利用电商平台销售家乡的特色农产品，通过直播带货扩大影响力，年销售额超过100万元，带动当地农民增收。</p>
+                        <p class="case-author">—— 浙江省杭州市 李电商</p>
+                    </div>
+                    <div class="case-card">
+                        <h3>小张的乡村民宿</h3>
+                        <p>小张将自家闲置房屋改造成特色民宿，结合当地旅游资源，开展乡村旅游服务，年收入达到30万元。</p>
+                        <p class="case-author">—— 云南省丽江市 张民宿</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 相关资源 -->
+            <div class="resources-section">
+                <h2>相关资源</h2>
+                <div class="resources-grid">
+                    <div class="resource-card">
+                        <div class="resource-icon">📚</div>
+                        <h3>创业计划书模板</h3>
+                        <a href="#" class="resource-link">下载资源</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <div class="resource-icon">💰</div>
+                        <h3>创业扶持政策汇编</h3>
+                        <a href="#" class="resource-link">查看详情</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <div class="resource-icon">👥</div>
+                        <h3>创业导师团队</h3>
+                        <a href="#" class="resource-link">查看详情</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <div class="resource-icon">📱</div>
+                        <h3>创业服务平台</h3>
+                        <a href="#" class="resource-link">立即访问</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- 页脚 -->
+    <footer>
+        <div class="container footer-content">
+            <p>© 2024 乡村人才振兴平台. 保留所有权利.</p>
+            <ul class="footer-links">
+                <li><a href="#">隐私政策</a></li>
+                <li><a href="#">使用条款</a></li>
+                <li><a href="#">联系我们</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>
