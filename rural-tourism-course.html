@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>乡村旅游服务与管理</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .course-card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-header {
+            background-color: #f8f9fa;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        .course-image {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 15px;
+            display: block;
+        }
+        
+        .card-content {
+            padding: 25px;
+        }
+        
+        .course-title {
+            color: #1a202c;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+        
+        .course-description {
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+        
+        .course-info {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 25px;
+            padding-top: 15px;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .info-item {
+            text-align: center;
+            color: #718096;
+            font-size: 13px;
+        }
+        
+        .info-value {
+            color: #2d3748;
+            font-weight: 500;
+            margin-top: 5px;
+            display: block;
+        }
+        
+        .details-button {
+            display: block;
+            width: 100%;
+            background-color: #ffc107;
+            color: #212529;
+            border: none;
+            padding: 12px 0;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        
+        .details-button:hover {
+            background-color: #e0a800;
+        }
+    </style>
+</head>
+<body>
+    <div class="course-card">
+        <div class="card-header">
+            <svg class="course-image" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="30" y="30" width="40" height="35" rx="3" fill="#FF8A65"/>
+                <path d="M35 65V60H65V65" stroke="#43A047" stroke-width="4" stroke-linecap="round"/>
+                <rect x="40" y="35" width="10" height="10" rx="2" fill="#42A5F5"/>
+                <path d="M38 25L50 15L62 25" stroke="#555555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M50 15V30" stroke="#555555" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+        </div>
+        <div class="card-content">
+            <h2 class="course-title">乡村旅游服务与管理</h2>
+            <p class="course-description">掌握乡村旅游接待礼仪、民宿经营管理和旅游产品开发，促进乡村旅游发展</p>
+            
+            <div class="course-info">
+                <div class="info-item">
+                    <span class="info-label">课程时长</span>
+                    <span class="info-value">10周</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">难度等级</span>
+                    <span class="info-value">初级到中级</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">学员数量</span>
+                    <span class="info-value">600+</span>
+                </div>
+            </div>
+            
+            <a href="https://www.bilibili.com/video/BV1po4y1d7W1?buvid=XXCA5B8C0317C620BA7BA8ABB5C5B8B29483B&from_spmid=search.search-result.0.0&is_story_h5=false&mid=qDEzQSJFVsEHSjVGSCDuMH8FTQ%2FSZMtL1rElX6M3iMo%3D&plat_id=114&share_from=ugc&share_medium=android&share_plat=android&share_session_id=97448218-80fa-4d4f-814c-4a5feabeca86&share_source=WEIXIN&share_tag=s_i&spmid=united.player-video-detail.0.0&timestamp=1764486976&unique_k=yYXuOM7&up_id=36042149&share_source=weixin" class="details-button" target="_blank">了解详情</a>
+        </div>
+    </div>
+</body>
+</html>
