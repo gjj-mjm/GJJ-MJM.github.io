@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>数据分析入门 - 乡村人才振兴平台</title>
     <style>
-        /* 基础样式 */
         * {
             margin: 0;
             padding: 0;
@@ -14,22 +13,14 @@
         
         body {
             font-family: 'Microsoft YaHei', Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
             background-color: #f5f5f5;
+            color: #333;
         }
         
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* 头部样式 */
         header {
             background: linear-gradient(135deg, #2196F3, #0D47A1);
             color: white;
-            padding: 20px 0;
+            padding: 30px 0;
             text-align: center;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
@@ -45,50 +36,14 @@
             opacity: 0.9;
         }
         
-        /* 导航栏 */
-        nav {
-            background-color: #fff;
-            padding: 15px 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #2196F3;
-            text-decoration: none;
-        }
-        
-        .nav-links {
-            list-style: none;
-            display: flex;
-        }
-        
-        .nav-links li {
-            margin-left: 20px;
-        }
-        
-        .nav-links a {
-            color: #333;
-            text-decoration: none;
-            font-size: 1rem;
-            transition: color 0.3s;
-        }
-        
-        .nav-links a:hover {
-            color: #2196F3;
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
         }
         
         .back-btn {
+            display: inline-block;
             background-color: #fff;
             border: 2px solid #2196F3;
             color: #2196F3;
@@ -97,7 +52,7 @@
             text-decoration: none;
             font-weight: bold;
             transition: all 0.3s;
-            cursor: pointer;
+            margin: 20px 0;
         }
         
         .back-btn:hover {
@@ -105,25 +60,43 @@
             color: #fff;
         }
         
-        /* 主内容区域 */
-        main {
-            padding: 40px 0;
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 比例 */
+            height: 0;
+            overflow: hidden;
+            background-color: #000;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
         }
         
-        .course-overview {
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        
+        .video-description {
             background-color: #fff;
+            padding: 25px;
+            margin-top: 20px;
             border-radius: 10px;
-            padding: 30px;
-            margin-bottom: 30px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
         }
         
-        .course-banner {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 20px;
+        .video-description h3 {
+            color: #2196F3;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .video-description p {
+            line-height: 1.8;
+            margin-bottom: 15px;
         }
         
         .course-info {
@@ -148,56 +121,74 @@
             color: #2196F3;
         }
         
-        .course-details {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 30px;
-            margin-top: 30px;
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            .info-item {
+                min-width: 100%;
+            }
         }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>数据分析入门</h1>
+            <p>掌握基础数据分析技能，利用Excel和数据分析工具进行市场分析、销售预测和决策支持</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <a href="index.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i> 返回首页
+        </a>
         
-        .content-section {
-            background-color: #fff;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            margin-bottom: 30px;
-        }
+        <div class="video-wrapper">
+            <iframe src="https://www.bilibili.com/video/BV1ZM4y1u7uF/?share_source=copy_web" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        </div>
         
-        .content-section h2 {
-            color: #2196F3;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #f9f9f9;
-        }
+        <div class="course-info">
+            <div class="info-item">
+                <i class="fas fa-clock"></i>
+                <span>课程时长: 4周</span>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-signal"></i>
+                <span>难度: 零基础</span>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-users"></i>
+                <span>学员人数: 1200+</span>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-calendar-alt"></i>
+                <span>下次开课: 每周三</span>
+            </div>
+        </div>
         
-        .content-section p {
-            margin-bottom: 15px;
-            line-height: 1.8;
-        }
-        
-        /* 课程大纲 */
-        .course-outline {
-            list-style: none;
-        }
-        
-        .course-outline li {
-            padding: 15px;
-            margin-bottom: 10px;
-            background-color: #f9f9f9;
-            border-radius: 8px;
-            border-left: 4px solid #2196F3;
-        }
-        
-        .course-outline h4 {
-            color: #333;
-            margin-bottom: 5px;
-        }
-        
-        /* 课程视频 */
-        .video-section {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
+        <div class="video-description">
+            <h3>课程简介</h3>
+            <p>本课程为数据分析零基础入门课程，全面覆盖Excel、SQL、Tableau和Python等数据分析必备工具。</p>
+            <p>通过系统学习，您将掌握：</p>
+            <ul style="line-height: 1.8; margin-left: 20px; margin-bottom: 15px;">
+                <li>数据分析的基本概念和思维框架</li>
+                <li>Excel高级函数、数据透视表和报表制作</li>
+                <li>SQL基础和数据库操作</li>
+                <li>Tableau数据可视化和仪表盘搭建</li>
+                <li>Python数据分析库(Pandas、NumPy)应用</li>
+            </ul>
+            <p>课程内容由浅入深，实战导向，适合零基础学习者和需要提升数据分析技能的职场人士。</p>
+        </div>
+    </div>
+</body>
+</html>
             margin-top: 20px;
         }
         
