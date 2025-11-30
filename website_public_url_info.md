@@ -7,6 +7,7 @@
 
 ## 课程详情页面
 - **电子商务运营实务**: [https://gjj-mjm.github.io/ecommerce-course.html](https://gjj-mjm.github.io/ecommerce-course.html)
+  - *已更新：添加哔哩哔哩视频播放器，可直接在页面中观看电商运营入门视频*
 - **短视频创作与营销**: [https://gjj-mjm.github.io/short-video-course.html](https://gjj-mjm.github.io/short-video-course.html)
 - **数据分析入门**: [https://gjj-mjm.github.io/data-analysis-course.html](https://gjj-mjm.github.io/data-analysis-course.html)
 
@@ -23,3 +24,5 @@
 - 链接基于用户名和仓库名自动生成
 - 页面使用响应式设计，支持在各种设备上正常访问
 - 页面间的导航链接已经正确配置，可以在页面间自由跳转
+- 哔哩哔哩视频已通过iframe嵌入，可直接在页面中播放
+- 最新更新：2024年5月29日添加电子商务课程视频内容
