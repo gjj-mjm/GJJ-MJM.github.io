@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>精准就业指导 - 乡村人才振兴平台</title>
+    <style>
+        /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        /* 容器样式 */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 头部样式 */
+        header {
+            background-color: #2c5aa0;
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+        }
+
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-left: 25px;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #eef5ff;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            font-size: 16px;
+            color: #2c5aa0;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .back-link:hover {
+            transform: translateX(-5px);
+        }
+
+        /* 内容区块样式 */
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-size: 36px;
+            color: #2c5aa0;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .feature-detail {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+
+        .feature-detail h2 {
+            font-size: 28px;
+            color: #2c5aa0;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-detail h2 .icon {
+            margin-right: 15px;
+            font-size: 36px;
+        }
+
+        .feature-detail p {
+            margin-bottom: 20px;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .feature-detail h3 {
+            font-size: 22px;
+            color: #333;
+            margin: 30px 0 15px 0;
+        }
+
+        /* 服务内容样式 */
+        .service-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .service-item {
+            flex: 1;
+            min-width: 300px;
+            background-color: #f5f9ff;
+            border-radius: 10px;
+            padding: 30px;
+            border-top: 4px solid #2c5aa0;
+        }
+
+        .service-item h4 {
+            font-size: 22px;
+            color: #2c5aa0;
+            margin-bottom: 15px;
+        }
+
+        /* 就业流程样式 */
+        .employment-process {
+            position: relative;
+            margin: 50px 0;
+            padding-left: 30px;
+        }
+
+        .employment-process::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #2c5aa0;
+        }
+
+        .process-step {
+            position: relative;
+            margin-bottom: 40px;
+            padding-left: 30px;
+        }
+
+        .process-step::before {
+            content: '';
+            position: absolute;
+            left: -32px;
+            top: 8px;
+            width: 16px;
+            height: 16px;
+            background-color: white;
+            border: 3px solid #2c5aa0;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .process-step h4 {
+            font-size: 20px;
+            color: #2c5aa0;
+            margin-bottom: 10px;
+        }
+
+        /* 成功案例样式 */
+        .success-cases {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .case-card {
+            flex: 1;
+            min-width: 350px;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .case-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .case-header {
+            background-color: #2c5aa0;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .case-body {
+            padding: 25px;
+        }
+
+        .case-body h4 {
+            font-size: 20px;
+            color: #2c5aa0;
+            margin-bottom: 15px;
+        }
+
+        /* 职业规划样式 */
+        .career-planning {
+            background-color: #eef5ff;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 40px 0;
+        }
+
+        .planning-areas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .planning-area {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .planning-area h4 {
+            font-size: 18px;
+            color: #2c5aa0;
+            margin-bottom: 10px;
+        }
+
+        .planning-area .area-icon {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        /* 页脚样式 */
+        footer {
+            background-color: #2c5aa0;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-links {
+            margin: 20px 0;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #eef5ff;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 28px;
+            }
+
+            .feature-detail {
+                padding: 25px;
+            }
+
+            .service-content {
+                flex-direction: column;
+            }
+
+            .success-cases {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部区域 -->
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">乡村振兴</a>
+            <nav class="main-nav">
+                <ul>
+                    <li class="nav-item"><a href="index.html" class="nav-link">首页</a></li>
+                    <li class="nav-item"><a href="index.html#features" class="nav-link">平台特色</a></li>
+                    <li class="nav-item"><a href="index.html#courses" class="nav-link">培训课程</a></li>
+                    <li class="nav-item"><a href="index.html#process" class="nav-link">服务流程</a></li>
+                    <li class="nav-item"><a href="index.html#contact" class="nav-link">联系我们</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 主要内容区域 -->
+    <main>
+        <div class="container">
+            <a href="index.html#features" class="back-link">← 返回平台特色</a>
+        </div>
+
+        <section class="section">
+            <div class="container">
+                <h1 class="section-title">精准就业指导</h1>
+                
+                <div class="feature-detail">
+                    <h2><span class="icon">🎯</span>一对一的职业发展规划服务</h2>
+                    
+                    <p>精准就业指导是我们平台为农村人才提供的个性化职业发展服务。通过专业的职业测评和一对一咨询，我们帮助每位学员明确职业发展方向，制定个性化的就业计划，并提供全程跟踪服务，确保学员顺利实现就业目标。我们的就业指导团队由具有丰富经验的职业规划师、人力资源专家和行业导师组成，能够针对不同学员的特点和需求，提供专业的指导和建议。</p>
+                    
+                    <div class="service-content">
+                        <div class="service-item">
+                            <h4>职业测评</h4>
+                            <p>科学的职业能力和兴趣测评，帮助学员了解自身优势和职业倾向。通过专业的测评工具和方法，我们从性格特点、职业兴趣、能力倾向等多个维度对学员进行全面评估，为职业规划提供科学依据。</p>
+                        </div>
+                        <div class="service-item">
+                            <h4>一对一咨询</h4>
+                            <p>与专业职业规划师进行面对面或在线咨询，制定个性化的职业发展规划。我们的职业规划师会根据学员的测评结果和个人情况，提供针对性的建议和指导，帮助学员解决职业发展中的困惑和问题。</p>
+                        </div>
+                        <div class="service-item">
+                            <h4>就业跟踪</h4>
+                            <p>提供就业后的跟踪服务，及时解决工作中遇到的问题，帮助学员适应职场环境。我们定期与已就业学员保持联系，了解工作情况，提供必要的支持和指导，确保学员在职场中稳定发展。</p>
+                        </div>
+                    </div>
+                    
+                    <h3>就业指导流程</h3>
+                    <p>我们的精准就业指导遵循系统化的流程，确保服务质量和效果：</p>
+                    
+                    <div class="employment-process">
+                        <div class="process-step">
+                            <h4>需求评估</h4>
+                            <p>了解学员的教育背景、工作经验、职业目标和个人期望，明确指导需求和方向。通过初步面谈和问卷，我们收集学员的基本信息，为后续服务奠定基础。</p>
+                        </div>
+                        <div class="process-step">
+                            <h4>职业测评</h4>
+                            <p>使用专业的测评工具，对学员进行职业能力、兴趣、性格等方面的全面评估。测评结果将作为制定职业规划的重要参考依据。</p>
+                        </div>
+                        <div class="process-step">
+                            <h4>方案制定</h4>
+                            <p>根据测评结果和需求评估，制定个性化的职业发展方案，包括短期目标、长期规划、培训建议和求职策略等。</p>
+                        </div>
+                        <div class="process-step">
+                            <h4>技能提升</h4>
+                            <p>推荐适合的培训课程和学习资源，帮助学员提升专业技能和就业竞争力。根据职业规划方案，我们为学员提供针对性的技能提升建议。</p>
+                        </div>
+                        <div class="process-step">
+                            <h4>求职支持</h4>
+                            <p>提供简历优化、面试技巧指导、模拟面试等服务，帮助学员顺利通过求职环节。我们的就业导师会针对不同行业和岗位的特点，提供专业的求职指导。</p>
+                        </div>
+                        <div class="process-step">
+                            <h4>就业跟踪</h4>
+                            <p>定期跟进学员的就业情况，提供必要的支持和指导，帮助学员在职场中持续成长和发展。</p>
+                        </div>
+                    </div>
+                    
+                    <h3>职业规划服务</h3>
+                    <p>我们提供全方位的职业规划服务，帮助学员实现职业目标：</p>
+                    
+                    <div class="career-planning">
+                        <div class="planning-areas">
+                            <div class="planning-area">
+                                <div class="area-icon">🎓</div>
+                                <h4>职业定位</h4>
+                                <p>明确职业方向，确定适合自己的行业和岗位</p>
+                            </div>
+                            <div class="planning-area">
+                                <div class="area-icon">📈</div>
+                                <h4>发展路径</h4>
+                                <p>规划职业发展阶梯，设定短期和长期目标</p>
+                            </div>
+                            <div class="planning-area">
+                                <div class="area-icon">💼</div>
+                                <h4>技能提升</h4>
+                                <p>识别技能缺口，制定学习和培训计划</p>
+                            </div>
+                            <div class="planning-area">
+                                <div class="area-icon">📝</div>
+                                <h4>求职准备</h4>
+                                <p>优化简历、面试准备、职场礼仪培训</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3>成功案例</h3>
+                    <p>以下是我们精准就业指导服务的一些成功案例：</p>
+                    
+                    <div class="success-cases">
+                        <div class="case-card">
+                            <div class="case-header">
+                                <h4>从农民到电商运营师</h4>
+                            </div>
+                            <div class="case-body">
+                                <p>王先生，45岁，传统农民。通过职业测评发现他具有较强的沟通能力和商业意识，我们建议他转向电商领域。经过系统的电商培训和求职指导，王先生成功转型为一家农产品电商公司的运营师，月薪从原来的3000元提高到8000元。</p>
+                            </div>
+                        </div>
+                        <div class="case-card">
+                            <div class="case-header">
+                                <h4>返乡创业成功</h4>
+                            </div>
+                            <div class="case-body">
+                                <p>李女士，30岁，外出务工人员。通过职业咨询，我们发现她有创业意愿和管理能力，建议她利用当地资源优势发展特色种植。在我们的创业指导和政策支持下，李女士成功返乡创业，建立了特色果蔬种植基地，带动周边10余户农民共同致富。</p>
+                            </div>
+                        </div>
+                        <div class="case-card">
+                            <div class="case-header">
+                                <h4>职业转型成功案例</h4>
+                            </div>
+                            <div class="case-body">
+                                <p>张先生，28岁，初中毕业。通过我们的职业测评和咨询，发现他对计算机技术有浓厚兴趣和学习能力。我们为他制定了从基础到专业的学习计划，推荐了适合的培训课程。经过一年的学习和实践，张先生成功成为一名IT技术支持人员，实现了职业转型。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚区域 -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-links">
+                <a href="index.html">首页</a>
+                <a href="index.html#features">平台特色</a>
+                <a href="index.html#courses">培训课程</a>
+                <a href="index.html#process">服务流程</a>
+                <a href="index.html#contact">联系我们</a>
+            </div>
+            <p style="margin-top: 20px;">&copy; 2024 乡村人才振兴平台. 保留所有权利.</p>
+        </div>
+    </footer>
+</body>
+</html>

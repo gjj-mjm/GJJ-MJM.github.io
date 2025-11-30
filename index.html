@@ -260,9 +260,20 @@
             flex-wrap: wrap;
             gap: 30px;
         }
-        
-        .feature-card {
+
+        .feature-card-link {
             width: calc(33.333% - 20px);
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card-link:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-card {
+            width: 100%;
             background-color: white;
             padding: 40px 30px;
             border-radius: 10px;
@@ -270,6 +281,25 @@
             transition: transform 0.3s, box-shadow 0.3s;
             position: relative;
             overflow: hidden;
+            cursor: pointer;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .card-arrow {
+            position: absolute;
+            bottom: 20px;
+            right: 30px;
+            font-size: 24px;
+            color: #2c5aa0;
+            transition: transform 0.3s;
+        }
+
+        .feature-card-link:hover .card-arrow {
+            transform: translateX(5px);
             margin-bottom: 30px;
         }
         
@@ -664,36 +694,54 @@
             <div class="container">
                 <h2 class="section-title">平台特色</h2>
                 <div class="features">
-                    <div class="feature-card fade-in">
-                        <div class="feature-icon">📊</div>
-                        <h3>大数据智能匹配</h3>
-                        <p>基于AI技术的人才需求智能分析，精准匹配企业岗位与人才技能，提高就业率</p>
-                    </div>
-                    <div class="feature-card fade-in">
-                        <div class="feature-icon">🎓</div>
-                        <h3>定制化技能培训</h3>
-                        <p>根据市场需求和个人特点，提供针对性的技能培训方案，提升就业竞争力</p>
-                    </div>
-                    <div class="feature-card fade-in">
-                        <div class="feature-icon">🤝</div>
-                        <h3>政企校合作模式</h3>
-                        <p>联合政府、企业和院校资源，建立多方共赢的人才培养和就业服务体系</p>
-                    </div>
-                    <div class="feature-card fade-in">
-                        <div class="feature-icon">💻</div>
-                        <h3>数字化学习平台</h3>
-                        <p>提供在线学习、实时互动和实践指导，打破地域限制，随时随地学习</p>
-                    </div>
-                    <div class="feature-card fade-in">
-                        <div class="feature-icon">📱</div>
-                        <h3>移动应用服务</h3>
-                        <p>通过手机应用提供便捷的学习、求职和就业跟踪服务，满足农村人才多样化需求</p>
-                    </div>
-                    <div class="feature-card fade-in">
-                        <div class="feature-icon">🎯</div>
-                        <h3>精准就业指导</h3>
-                        <p>一对一就业咨询和职业规划服务，帮助人才明确发展方向，顺利实现就业</p>
-                    </div>
+                    <a href="data-matching.html" class="feature-card-link">
+                        <div class="feature-card fade-in">
+                            <div class="feature-icon">📊</div>
+                            <h3>大数据智能匹配</h3>
+                            <p>基于AI技术的人才需求智能分析，精准匹配企业岗位与人才技能，提高就业率</p>
+                            <div class="card-arrow">→</div>
+                        </div>
+                    </a>
+                    <a href="skill-training.html" class="feature-card-link">
+                        <div class="feature-card fade-in">
+                            <div class="feature-icon">🎓</div>
+                            <h3>定制化技能培训</h3>
+                            <p>根据市场需求和个人特点，提供针对性的技能培训方案，提升就业竞争力</p>
+                            <div class="card-arrow">→</div>
+                        </div>
+                    </a>
+                    <a href="government-cooperation.html" class="feature-card-link">
+                        <div class="feature-card fade-in">
+                            <div class="feature-icon">🤝</div>
+                            <h3>政企校合作模式</h3>
+                            <p>联合政府、企业和院校资源，建立多方共赢的人才培养和就业服务体系</p>
+                            <div class="card-arrow">→</div>
+                        </div>
+                    </a>
+                    <a href="digital-learning.html" class="feature-card-link">
+                        <div class="feature-card fade-in">
+                            <div class="feature-icon">💻</div>
+                            <h3>数字化学习平台</h3>
+                            <p>提供在线学习、实时互动和实践指导，打破地域限制，随时随地学习</p>
+                            <div class="card-arrow">→</div>
+                        </div>
+                    </a>
+                    <a href="mobile-app.html" class="feature-card-link">
+                        <div class="feature-card fade-in">
+                            <div class="feature-icon">📱</div>
+                            <h3>移动应用服务</h3>
+                            <p>通过手机应用提供便捷的学习、求职和就业跟踪服务，满足农村人才多样化需求</p>
+                            <div class="card-arrow">→</div>
+                        </div>
+                    </a>
+                    <a href="precise-employment.html" class="feature-card-link">
+                        <div class="feature-card fade-in">
+                            <div class="feature-icon">🎯</div>
+                            <h3>精准就业指导</h3>
+                            <p>一对一就业咨询和职业规划服务，帮助人才明确发展方向，顺利实现就业</p>
+                            <div class="card-arrow">→</div>
+                        </div>
+                    </a>
                 </div>
             </div>
         </section>
