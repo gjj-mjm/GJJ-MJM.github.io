@@ -1,0 +1,55 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/jobs/jobs",
+    "pages/training/training",
+    "pages/profile/profile",
+    "pages/resume/resume",
+    "pages/job-detail/job-detail",
+    "pages/course-detail/course-detail"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#1a5f23",
+    "navigationBarTitleText": "乡村人才振兴",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#666666",
+    "selectedColor": "#1a5f23",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "assets/images/home.png",
+        "selectedIconPath": "assets/images/home-active.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/jobs/jobs",
+        "iconPath": "assets/images/job.png",
+        "selectedIconPath": "assets/images/job-active.png",
+        "text": "岗位匹配"
+      },
+      {
+        "pagePath": "pages/training/training",
+        "iconPath": "assets/images/training.png",
+        "selectedIconPath": "assets/images/training-active.png",
+        "text": "技能培训"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "iconPath": "assets/images/profile.png",
+        "selectedIconPath": "assets/images/profile-active.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "用于推荐附近的岗位"
+    }
+  }
+}

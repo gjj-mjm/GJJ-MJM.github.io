@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git安装指南 - Windows系统</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        h1 {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .step {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+        .note {
+            background-color: #fff8dc;
+            padding: 10px;
+            border-radius: 4px;
+            border-left: 4px solid #ffd700;
+        }
+        code {
+            font-family: 'Courier New', monospace;
+            background-color: #f0f0f0;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        pre {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 15px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .download-link {
+            display: inline-block;
+            background-color: #27ae60;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .download-link:hover {
+            background-color: #229954;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Git安装指南 - Windows系统</h1>
+    
+    <div class="note">
+        <p><strong>注意：</strong>本指南适用于Windows系统安装Git。安装完成后，您将能够使用Git命令行工具将文件上传到GitHub仓库。</p>
+    </div>
+
+    <h2>第1步：下载Git安装包</h2>
+    <div class="step">
+        <p>访问Git官方网站下载最新版本的Git安装包：</p>
+        <p><a href="https://git-scm.com/download/win" class="download-link" target="_blank">下载Git for Windows</a></p>
+        <p>根据您的Windows系统位数（32位或64位）选择相应的安装包。如果不确定，可以按以下步骤查看：</p>
+        <ul>
+            <li>右键点击"此电脑"或"计算机"</li>
+            <li>选择"属性"</li>
+            <li>查看"系统类型"信息</li>
+        </ul>
+    </div>
+
+    <h2>第2步：安装Git</h2>
+    <div class="step">
+        <ol>
+            <li>双击下载的安装包（通常是一个.exe文件）</li>
+            <li>在安装向导中点击"Next"</li>
+            <li>选择安装位置，建议使用默认位置，然后点击"Next"</li>
+            <li>选择组件，保留默认选项，点击"Next"</li>
+            <li>选择开始菜单文件夹，保留默认选项，点击"Next"</li>
+            <li><strong>选择Git默认编辑器：</strong>
+                <ul>
+                    <li>建议选择您熟悉的编辑器，如Notepad++或Visual Studio Code</li>
+                    <li>如果没有特别偏好，可以选择默认的Vim</li>
+                </ul>
+                选择后点击"Next"
+            </li>
+            <li><strong>调整PATH环境变量：</strong>
+                <ul>
+                    <li>建议选择第二个选项："Git from the command line and also from 3rd-party software"</li>
+                    <li>这将允许在命令提示符和其他软件中使用Git</li>
+                </ul>
+                选择后点击"Next"
+            </li>
+            <li>选择SSH客户端，保留默认选项，点击"Next"</li>
+            <li>选择HTTPS传输后端，保留默认选项，点击"Next"</li>
+            <li><strong>配置行尾符号转换：</strong>
+                <ul>
+                    <li>建议选择第一个选项："Checkout Windows-style, commit Unix-style line endings"</li>
+                </ul>
+                选择后点击"Next"
+            </li>
+            <li>配置终端模拟器，建议选择"Windows Terminal"或默认选项，点击"Next"</li>
+            <li>配置额外选项，保留默认选项，点击"Next"</li>
+            <li>等待安装完成，然后点击"Finish"</li>
+        </ol>
+    </div>
+
+    <h2>第3步：验证Git安装</h2>
+    <div class="step">
+        <ol>
+            <li>打开命令提示符（CMD）或PowerShell</li>
+            <li>输入以下命令检查Git版本：</li>
+            <pre><code>git --version</code></pre>
+            <li>如果安装成功，您将看到Git的版本信息，例如：</li>
+            <pre><code>git version 2.40.1.windows.1</code></pre>
+        </ol>
+    </div>
+
+    <h2>第4步：配置Git用户信息</h2>
+    <div class="step">
+        <p>在使用Git之前，您需要配置您的用户名和邮箱地址。这些信息将用于您的Git提交记录中。</p>
+        <ol>
+            <li>打开命令提示符（CMD）或PowerShell</li>
+            <li>输入以下命令配置用户名（将"Your Name"替换为您的GitHub用户名）：</li>
+            <pre><code>git config --global user.name "Your Name"</code></pre>
+            <li>输入以下命令配置邮箱地址（将"your.email@example.com"替换为您的GitHub注册邮箱）：</li>
+            <pre><code>git config --global user.email "your.email@example.com"</code></pre>
+            <li>验证配置是否成功：</li>
+            <pre><code>git config --list</code></pre>
+            <p>您应该能看到您配置的用户名和邮箱地址。</p>
+        </ol>
+    </div>
+
+    <h2>第5步：配置SSH密钥（可选但推荐）</h2>
+    <div class="step">
+        <p>配置SSH密钥可以让您无需每次推送代码时都输入GitHub的用户名和密码。</p>
+        <ol>
+            <li>打开Git Bash（在开始菜单中搜索Git Bash）</li>
+            <li>输入以下命令生成SSH密钥（将your.email@example.com替换为您的GitHub邮箱）：</li>
+            <pre><code>ssh-keygen -t ed25519 -C "your.email@example.com"</code></pre>
+            <li>按Enter键接受默认的密钥保存位置</li>
+            <li>输入密码（可选）或直接按Enter键不设置密码</li>
+            <li>再次输入密码确认或按Enter键</li>
+            <li>复制SSH公钥到剪贴板：</li>
+            <pre><code>cat ~/.ssh/id_ed25519.pub | clip</code></pre>
+            <li>登录GitHub，点击右上角的头像，选择"Settings"</li>
+            <li>在左侧菜单中选择"SSH and GPG keys"</li>
+            <li>点击"New SSH key"</li>
+            <li>在"Title"字段中输入一个描述性名称</li>
+            <li>在"Key"字段中粘贴您的SSH公钥</li>
+            <li>点击"Add SSH key"</li>
+            <li>验证SSH连接：</li>
+            <pre><code>ssh -T git@github.com</code></pre>
+            <p>如果是首次连接，会提示您确认主机指纹，输入"yes"后按Enter键</p>
+            <p>如果配置成功，您将看到成功的欢迎消息</p>
+        </ol>
+    </div>
+
+    <h2>第6步：使用Git将文件上传到GitHub</h2>
+    <div class="step">
+        <p>安装并配置好Git后，您可以使用以下步骤将您的乡村人才培训平台页面上传到GitHub：</p>
+        <ol>
+            <li>首先，在GitHub上创建一个新的仓库（如果还没有）</li>
+            <li>打开命令提示符（CMD）或PowerShell，导航到您的项目文件夹：</li>
+            <pre><code>cd c:\trae</code></pre>
+            <li>初始化Git仓库：</li>
+            <pre><code>git init</code></pre>
+            <li>添加远程仓库（将URL替换为您的GitHub仓库URL）：</li>
+            <pre><code>git remote add origin https://github.com/yourusername/rural-talent-training.git</code></pre>
+            <li>添加所有文件：</li>
+            <pre><code>git add .</code></pre>
+            <li>提交更改：</li>
+            <pre><code>git commit -m "添加乡村人才培训平台页面"</code></pre>
+            <li>推送更改到GitHub：</li>
+            <pre><code>git push -u origin main</code></pre>
+            <p>如果使用HTTPS方式，系统会提示您输入GitHub的用户名和密码（或个人访问令牌）</p>
+        </ol>
+    </div>
+
+    <h2>常见问题与解决方案</h2>
+    <div class="step">
+        <h3>问题1："git"不是内部或外部命令</h3>
+        <p>解决方案：</p>
+        <ul>
+            <li>确保Git已正确安装</li>
+            <li>检查环境变量PATH是否包含Git安装路径</li>
+            <li>关闭并重新打开命令提示符或PowerShell</li>
+            <li>如果仍然无法解决，可以尝试重启计算机</li>
+        </ul>
+
+        <h3>问题2：无法连接到GitHub</h3>
+        <p>解决方案：</p>
+        <ul>
+            <li>检查网络连接</li>
+            <li>如果使用防火墙或代理，请确保已正确配置</li>
+            <li>尝试使用SSH方式而不是HTTPS</li>
+        </ul>
+
+        <h3>问题3：推送被拒绝</h3>
+        <p>解决方案：</p>
+        <ul>
+            <li>如果远程仓库不是空的，可能需要先拉取最新的更改：<code>git pull origin main</code></li>
+            <li>如果出现合并冲突，需要解决冲突后再提交</li>
+        </ul>
+    </div>
+
+    <div class="note">
+        <p><strong>提示：</strong>安装完成后，您可以使用我们之前创建的上传脚本（如git_upload.py）来简化上传过程。</p>
+    </div>
+
+    <footer style="margin-top: 50px; padding-top: 20px; border-top: 1px solid #ddd; text-align: center; font-size: 0.9em; color: #666;">
+        <p>Git安装指南 - 乡村人才培训平台</p>
+    </footer>
+</body>
+</html>

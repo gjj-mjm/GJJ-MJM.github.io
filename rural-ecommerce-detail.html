@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>乡村电商运营 - 乡村人才培训课程</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: linear-gradient(135deg, #2196F3 0%, #03A9F4 100%);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        .header-description {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        .course-detail {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-top: -40px;
+            position: relative;
+            z-index: 10;
+        }
+        .course-hero {
+            background: linear-gradient(135deg, #FF6F00 0%, #FFA000 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .course-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23ffffff' opacity='0.1'/%3E%3C/svg%3E");
+            background-size: 200px;
+        }
+        .course-hero h2 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        .course-hero p {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            position: relative;
+            z-index: 1;
+        }
+        .course-meta-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 30px;
+            position: relative;
+            z-index: 1;
+        }
+        .meta-info-item {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 20px 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            min-width: 150px;
+        }
+        .meta-value {
+            font-size: 2em;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .meta-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+        .course-content {
+            padding: 60px 40px;
+        }
+        .section-title {
+            font-size: 2em;
+            margin-bottom: 30px;
+            color: #FF6F00;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background-color: #FFA000;
+            border-radius: 2px;
+        }
+        .course-overview {
+            margin-bottom: 60px;
+        }
+        .overview-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
+        .overview-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        .overview-text p {
+            font-size: 1.1em;
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        .overview-highlights {
+            flex: 1;
+            min-width: 300px;
+            background-color: #fff8e1;
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 4px solid #FF6F00;
+        }
+        .highlight-title {
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            color: #FF6F00;
+        }
+        .highlight-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .highlight-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            padding-left: 10px;
+        }
+        .highlight-item::before {
+            content: '✓';
+            color: #FFA000;
+            font-weight: bold;
+            margin-right: 15px;
+            font-size: 1.2em;
+        }
+        .highlight-text {
+            flex: 1;
+            color: #555;
+        }
+        .course-syllabus {
+            margin-bottom: 60px;
+        }
+        .syllabus-timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+        .syllabus-timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 15px;
+            width: 2px;
+            height: 100%;
+            background-color: #ffe0b2;
+        }
+        .syllabus-week {
+            margin-bottom: 40px;
+            position: relative;
+        }
+        .syllabus-week::before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: -42px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: #FF6F00;
+            border: 4px solid #ffe0b2;
+            z-index: 1;
+        }
+        .week-title {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            color: #FF6F00;
+            background-color: #fff8e1;
+            padding: 10px 15px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        .week-content {
+            padding-left: 20px;
+        }
+        .topic-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .topic-item {
+            margin-bottom: 10px;
+            padding: 10px 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            border-left: 3px solid #FFA000;
+        }
+        .instructors {
+            margin-bottom: 60px;
+        }
+        .instructors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .instructor-card {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .instructor-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        .instructor-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: #FFA000;
+            margin: 0 auto 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+        .instructor-name {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: #FF6F00;
+        }
+        .instructor-title {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            color: #666;
+        }
+        .instructor-bio {
+            color: #666;
+            line-height: 1.6;
+        }
+        .student-reviews {
+            margin-bottom: 60px;
+        }
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .review-card {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 30px;
+            position: relative;
+        }
+        .review-card::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            font-size: 4em;
+            color: #ffe0b2;
+            font-family: serif;
+        }
+        .review-content {
+            margin-bottom: 20px;
+            color: #555;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+        .review-author {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #FFA000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+        .author-info {
+            flex: 1;
+        }
+        .author-name {
+            font-weight: 600;
+            color: #333;
+        }
+        .author-role {
+            font-size: 0.9em;
+            color: #666;
+        }
+        .course-materials {
+            margin-bottom: 60px;
+        }
+        .materials-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .material-item {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .material-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .material-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #ffe0b2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #FF6F00;
+            font-size: 1.5em;
+            margin-right: 20px;
+        }
+        .material-info {
+            flex: 1;
+        }
+        .material-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        .material-desc {
+            font-size: 0.9em;
+            color: #666;
+        }
+        .material-download {
+            background-color: #FF6F00;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        .material-download:hover {
+            background-color: #e65100;
+        }
+        .apply-section {
+            background-color: #FF6F00;
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+        .apply-title {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .apply-description {
+            font-size: 1.1em;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            line-height: 1.8;
+        }
+        .apply-button {
+            display: inline-block;
+            background-color: #FFFFFF;
+            color: #FF6F00;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+        }
+        .apply-button:hover {
+            background-color: #f5f5f5;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
+        }
+        .related-courses {
+            margin-bottom: 60px;
+        }
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .related-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .related-icon {
+            padding: 30px;
+            background-color: #fff8e1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .related-icon svg {
+            width: 80px;
+            height: 80px;
+        }
+        .related-content {
+            padding: 25px;
+        }
+        .related-title {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            color: #FF6F00;
+        }
+        .related-description {
+            margin-bottom: 20px;
+            color: #666;
+        }
+        .related-link {
+            display: inline-block;
+            color: #FF6F00;
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .related-link:hover {
+            color: #FFA000;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        .footer-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .footer-links {
+            margin-top: 20px;
+        }
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        .footer-links a:hover {
+            color: white;
+        }
+        .breadcrumb {
+            background-color: #fff8e1;
+            padding: 15px 0;
+            margin-bottom: 30px;
+        }
+        .breadcrumb-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .breadcrumb-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        .breadcrumb-item {
+            margin-right: 10px;
+            color: #666;
+            font-size: 0.9em;
+        }
+        .breadcrumb-item a {
+            color: #FFA000;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .breadcrumb-item a:hover {
+            color: #FF6F00;
+        }
+        .breadcrumb-item::after {
+            content: '/';
+            margin-left: 10px;
+            color: #999;
+        }
+        .breadcrumb-item:last-child::after {
+            display: none;
+        }
+        .breadcrumb-item.active {
+            color: #FF6F00;
+            font-weight: 500;
+        }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            .course-hero h2 {
+                font-size: 2em;
+            }
+            .course-hero {
+                padding: 40px 20px;
+            }
+            .course-meta-info {
+                gap: 20px;
+            }
+            .meta-info-item {
+                min-width: 120px;
+                padding: 15px 20px;
+            }
+            .course-content {
+                padding: 40px 20px;
+            }
+            .section-title {
+                font-size: 1.8em;
+            }
+            .overview-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .syllabus-timeline {
+                padding-left: 30px;
+            }
+            .apply-section {
+                padding: 40px 20px;
+            }
+            .apply-title {
+                font-size: 1.8em;
+            }
+        }
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            .course-hero h2 {
+                font-size: 1.8em;
+            }
+            .course-hero p {
+                font-size: 1em;
+            }
+            .meta-info-item {
+                min-width: 100px;
+                padding: 10px 15px;
+            }
+            .meta-value {
+                font-size: 1.5em;
+            }
+            .section-title {
+                font-size: 1.6em;
+            }
+            .highlight-item {
+                padding-left: 0;
+            }
+            .apply-button {
+                padding: 12px 30px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="breadcrumb">
+        <div class="breadcrumb-container">
+            <ul class="breadcrumb-list">
+                <li class="breadcrumb-item"><a href="index.html">首页</a></li>
+                <li class="breadcrumb-item"><a href="index.html#courses">课程列表</a></li>
+                <li class="breadcrumb-item active">乡村电商运营</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="course-detail">
+        <div class="course-hero">
+            <div class="container">
+                <h2>乡村电商运营</h2>
+                <p>掌握农产品电商平台运营、直播带货、品牌打造和供应链管理技能，助力乡村产业升级</p>
+                <div class="course-meta-info">
+                    <div class="meta-info-item">
+                        <span class="meta-value">8周</span>
+                        <span class="meta-label">课程时长</span>
+                    </div>
+                    <div class="meta-info-item">
+                        <span class="meta-value">入门到精通</span>
+                        <span class="meta-label">难度等级</span>
+                    </div>
+                    <div class="meta-info-item">
+                        <span class="meta-value">1200+</span>
+                        <span class="meta-label">学员人数</span>
+                    </div>
+                    <div class="meta-info-item">
+                        <span class="meta-value">线上实战</span>
+                        <span class="meta-label">学习方式</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="course-content">
+                <section class="course-overview">
+                    <h3 class="section-title">课程概述</h3>
+                    <div class="overview-content">
+                        <div class="overview-text">
+                            <p>乡村电商是推动乡村振兴的重要引擎，也是解决农产品销售难题、增加农民收入的有效途径。本课程针对乡村电商发展需求，系统传授电商平台运营、农产品网络销售、直播带货、品牌建设和供应链管理等核心技能。</p>
+                            <p>课程内容涵盖电商基础知识、主流电商平台操作、农产品包装设计、网络营销策略、短视频制作、直播技巧、客户服务、数据分析、物流配送等多个方面，通过理论学习、案例分析、实操演练和项目实战相结合的方式，全面提升学员的电商运营能力。</p>
+                            <p>完成本课程后，学员将能够独立开设和运营电商店铺，掌握农产品线上销售技巧，有效利用直播等新媒体手段推广农产品，建立农产品品牌形象，优化供应链管理，实现农产品价值提升和农民增收致富。</p>
+                        </div>
+                        <div class="overview-highlights">
+                            <h4 class="highlight-title">课程亮点</h4>
+                            <ul class="highlight-list">
+                                <li class="highlight-item"><span class="highlight-text">由资深电商运营专家和成功新农人授课，分享实战经验</span></li>
+                                <li class="highlight-item"><span class="highlight-text">提供淘宝、京东、拼多多等主流平台开店实操指导</span></li>
+                                <li class="highlight-item"><span class="highlight-text">掌握短视频拍摄与剪辑、直播带货全流程技巧</span></li>
+                                <li class="highlight-item"><span class="highlight-text">学习农产品包装设计与品牌建设方法</span></li>
+                                <li class="highlight-item"><span class="highlight-text">实践项目驱动学习，完成真实电商店铺运营任务</span></li>
+                                <li class="highlight-item"><span class="highlight-text">对接电商平台资源，提供开店支持和货源对接</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="course-syllabus">
+                    <h3 class="section-title">课程大纲</h3>
+                    <div class="syllabus-timeline">
+                        <div class="syllabus-week">
+                            <h4 class="week-title">第1周：乡村电商基础与平台选择</h4>
+                            <div class="week-content">
+                                <ul class="topic-list">
+                                    <li class="topic-item">电商基础知识与发展趋势</li>
+                                    <li class="topic-item">农产品电商特点与挑战</li>
+                                    <li class="topic-item">主流电商平台分析与选择</li>
+                                    <li class="topic-item">农产品电商成功案例解析</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="syllabus-week">
+                            <h4 class="week-title">第2周：电商店铺开设与运营基础</h4>
+                            <div class="week-content">
+                                <ul class="topic-list">
+                                    <li class="topic-item">电商平台注册与店铺开设流程</li>
+                                    <li class="topic-item">店铺装修与页面设计技巧</li>
+                                    <li class="topic-item">产品上架与信息优化</li>
+                                    <li class="topic-item">店铺运营基础规则与注意事项</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="syllabus-week">
+                            <h4 class="week-title">第3周：农产品包装与视觉营销</h4>
+                            <div class="week-content">
+                                <ul class="topic-list">
+                                    <li class="topic-item">农产品包装设计原则与方法</li>
+                                    <li class="topic-item">产品摄影技巧与图片处理</li>
+                                    <li class="topic-item">详情页设计与卖点提炼</li>
+                                    <li class="topic-item">品牌形象塑造与视觉一致性</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="syllabus-week">
+                            <h4 class="week-title">第4周：电商营销策略与推广</h4>
+                            <div class="week-content">
+                                <ul class="topic-list">
+                                    <li class="topic-item">电商平台搜索规则与SEO优化</li>
+                                    <li class="topic-item">付费推广工具使用（直通车、钻展等）</li>
+                                    <li class="topic-item">活动策划与报名技巧</li>
+                                    <li class="topic-item">优惠券、满减等促销工具设计</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="syllabus-week">
+                            <h4 class="week-title">第5周：短视频制作与内容营销</h4>
+                            <div class="week-content">
+                                <ul class="topic-list">
+                                    <li class="topic-item">短视频平台特性与内容策略</li>
+                                    <li class="topic-item">手机拍摄技巧与构图方法</li>
+                                    <li class="topic-item">剪映等剪辑软件使用教程</li>
+                                    <li class="topic-item">短视频内容策划与脚本撰写</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="syllabus-week">
+                            <h4 class="week-title">第6周：直播带货实战技巧</h4>
+                            <div class="week-content">
+                                <ul class="topic-list">
+                                    <li class="topic-item">直播平台选择与账号运营</li>
+                                    <li class="topic-item">直播设备准备与场景布置</li>
+                                    <li class="topic-item">主播话术与互动技巧</li>
+                                    <li class="topic-item">直播带货流程设计与节奏控制</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="syllabus-week">
+                            <h4 class="week-title">第7周：客户服务与售后服务</h4>
+                            <div class="week-content">
+                                <ul class="topic-list">
+                                    <li class="topic-item">客服沟通技巧与话术模板</li>
+                                    <li class="topic-item">常见问题解答与处理方法</li>
+                                    <li class="topic-item">差评处理与客户关系维护</li>
+                                    <li class="topic-item">客户评价管理与数据分析</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="syllabus-week">
+                            <h4 class="week-title">第8周：供应链管理与数据分析</h4>
+                            <div class="week-content">
+                                <ul class="topic-list">
+                                    <li class="topic-item">农产品仓储与物流解决方案</li>
+                                    <li class="topic-item">库存管理与订单处理优化</li>
+                                    <li class="topic-item">店铺数据分析与运营优化</li>
+                                    <li class="topic-item">创业项目规划与资源对接</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="instructors">
+                    <h3 class="section-title">师资团队</h3>
+                    <div class="instructors-grid">
+                        <div class="instructor-card">
+                            <div class="instructor-avatar">刘</div>
+                            <h4 class="instructor-name">刘强</h4>
+                            <p class="instructor-title">电商运营总监</p>
+                            <p class="instructor-bio">刘强先生拥有10年电商运营经验，曾任职于多家知名电商平台，现担任某农业电商公司运营总监。擅长店铺运营、数据分析和营销策略制定，帮助多家农产品企业实现线上销售额倍增。</p>
+                        </div>
+                        <div class="instructor-card">
+                            <div class="instructor-avatar">陈</div>
+                            <h4 class="instructor-name">陈静</h4>
+                            <p class="instructor-title">直播带货达人</p>
+                            <p class="instructor-bio">陈静女士是知名农产品直播带货达人，拥有200万+粉丝，单场直播销售额突破百万元。擅长农产品直播策划、互动引导和销售转化，对农产品直播营销有丰富经验。</p>
+                        </div>
+                        <div class="instructor-card">
+                            <div class="instructor-avatar">王</div>
+                            <h4 class="instructor-name">王建国</h4>
+                            <p class="instructor-title">成功新农人代表</p>
+                            <p class="instructor-bio">王建国先生是返乡创业的成功新农人，通过电商平台将家乡特色农产品销往全国各地，年销售额达500万元。擅长农产品品牌打造、供应链管理和电商团队建设。</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="student-reviews">
+                    <h3 class="section-title">学员评价</h3>
+                    <div class="reviews-grid">
+                        <div class="review-card">
+                            <p class="review-content">通过本课程的学习，我成功在拼多多开设了自己的农产品店铺，现在每月销售额稳定在3万元左右。课程中的店铺运营和推广技巧非常实用，老师的指导让我少走了很多弯路。</p>
+                            <div class="review-author">
+                                <div class="author-avatar">张</div>
+                                <div class="author-info">
+                                    <p class="author-name">张三</p>
+                                    <p class="author-role">水果种植户</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-card">
+                            <p class="review-content">陈老师的直播带货课程非常精彩，从设备准备到话术技巧都讲解得很详细。按照老师教的方法，我现在每周固定直播3次，农产品销量比以前提高了两倍多！</p>
+                            <div class="review-author">
+                                <div class="author-avatar">李</div>
+                                <div class="author-info">
+                                    <p class="author-name">李华</p>
+                                    <p class="author-role">农家乐经营者</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-card">
+                            <p class="review-content">王老师分享的供应链管理经验对我帮助很大，让我意识到了农产品标准化和包装的重要性。我重新设计了产品包装，优化了物流方案，客户满意度明显提高，回购率增加了40%。</p>
+                            <div class="review-author">
+                                <div class="author-avatar">赵</div>
+                                <div class="author-info">
+                                    <p class="author-name">赵婷</p>
+                                    <p class="author-role">特色农产品合作社负责人</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="course-materials">
+                    <h3 class="section-title">课程资料</h3>
+                    <ul class="materials-list">
+                        <li class="material-item">
+                            <div class="material-icon">📚</div>
+                            <div class="material-info">
+                                <h4 class="material-title">乡村电商运营手册2024</h4>
+                                <p class="material-desc">全面的电商运营知识体系与实操指南</p>
+                            </div>
+                            <a href="#" class="material-download">下载</a>
+                        </li>
+                        <li class="material-item">
+                            <div class="material-icon">🎬</div>
+                            <div class="material-info">
+                                <h4 class="material-title">直播带货话术模板集</h4>
+                                <p class="material-desc">各类农产品直播场景的话术参考</p>
+                            </div>
+                            <a href="#" class="material-download">下载</a>
+                        </li>
+                        <li class="material-item">
+                            <div class="material-icon">📊</div>
+                            <div class="material-info">
+                                <h4 class="material-title">店铺数据分析模板</h4>
+                                <p class="material-desc">常用电商数据分析表格与工具</p>
+                            </div>
+                            <a href="#" class="material-download">下载</a>
+                        </li>
+                        <li class="material-item">
+                            <div class="material-icon">📋</div>
+                            <div class="material-info">
+                                <h4 class="material-title">农产品电商创业计划书</h4>
+                                <p class="material-desc">完整的创业规划与实施路径</p>
+                            </div>
+                            <a href="#" class="material-download">下载</a>
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="apply-section">
+                    <h3 class="apply-title">立即报名，开启乡村电商创业之旅！</h3>
+                    <p class="apply-description">本课程将为您提供乡村电商发展所需的专业知识和实用技能，帮助您在电商领域实现职业发展或创业梦想。名额有限，赶紧行动吧！</p>
+                    <a href="#" class="apply-button">立即报名</a>
+                </section>
+
+                <section class="related-courses">
+                    <h3 class="section-title">相关课程</h3>
+                    <div class="related-grid">
+                        <div class="related-card">
+                            <div class="related-icon">
+                                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="50" cy="50" r="40" fill="#4CAF50"/>
+                                    <rect x="35" y="25" width="30" height="40" rx="5" fill="white"/>
+                                    <rect x="45" y="35" width="10" height="25" rx="2" fill="#4CAF50"/>
+                                    <circle cx="50" cy="65" r="5" fill="#4CAF50"/>
+                                </svg>
+                            </div>
+                            <div class="related-content">
+                                <h4 class="related-title">农产品包装设计</h4>
+                                <p class="related-description">学习农产品包装设计的基本原则和方法，提升产品附加值和市场竞争力。</p>
+                                <a href="#" class="related-link">了解详情 →</a>
+                            </div>
+                        </div>
+                        <div class="related-card">
+                            <div class="related-icon">
+                                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="20" y="20" width="60" height="60" rx="10" fill="#2196F3"/>
+                                    <circle cx="35" cy="40" r="5" fill="white"/>
+                                    <circle cx="50" cy="40" r="5" fill="white"/>
+                                    <circle cx="65" cy="40" r="5" fill="white"/>
+                                    <path d="M30 60H70" stroke="white" stroke-width="5" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                            <div class="related-content">
+                                <h4 class="related-title">短视频内容创作</h4>
+                                <p class="related-description">掌握短视频创作技巧，学习如何制作吸引人的农产品宣传视频，提升品牌影响力。</p>
+                                <a href="#" class="related-link">了解详情 →</a>
+                            </div>
+                        </div>
+                        <div class="related-card">
+                            <div class="related-icon">
+                                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 20L80 20L80 80L20 80L20 20Z" fill="#9C27B0" stroke="white" stroke-width="4"/>
+                                    <path d="M30 30L70 30L70 70L30 70L30 30Z" fill="white"/>
+                                    <path d="M40 40L60 40" stroke="#9C27B0" stroke-width="4" stroke-linecap="round"/>
+                                    <path d="M40 50L60 50" stroke="#9C27B0" stroke-width="4" stroke-linecap="round"/>
+                                    <path d="M40 60L55 60" stroke="#9C27B0" stroke-width="4" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                            <div class="related-content">
+                                <h4 class="related-title">农产品品牌建设</h4>
+                                <p class="related-description">学习品牌建设的核心要素，打造具有地域特色和市场竞争力的农产品品牌。</p>
+                                <a href="#" class="related-link">了解详情 →</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h3>乡村人才培训平台</h3>
+                <p>助力乡村振兴，培养新型乡村人才</p>
+                <div class="footer-links">
+                    <a href="#">关于我们</a>
+                    <a href="#">课程体系</a>
+                    <a href="#">师资力量</a>
+                    <a href="#">学员风采</a>
+                    <a href="#">联系我们</a>
+                </div>
+                <p>&copy; 2024 乡村人才培训平台. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

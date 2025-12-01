@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>联系我们 - 乡村人才培训平台</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <!-- 配置Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4CAF50',
+                        secondary: '#2E7D32',
+                        accent: '#8FBC8F',
+                        light: '#F1F8E9',
+                        dark: '#1B5E20'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .form-shadow {
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            }
+            .btn-hover {
+                transition: all 0.3s ease;
+            }
+            .btn-hover:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 10px 20px rgba(76, 175, 80, 0.2);
+            }
+            .input-focus {
+                transition: all 0.3s ease;
+            }
+            .input-focus:focus {
+                border-color: #4CAF50;
+                box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+            }
+            .modal-animation {
+                animation: fadeIn 0.3s ease;
+            }
+            @keyframes fadeIn {
+                from { opacity: 0; transform: scale(0.9); }
+                to { opacity: 1; transform: scale(1); }
+            }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-light to-white min-h-screen">
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fa fa-graduation-cap text-primary text-3xl"></i>
+                <span class="text-xl font-bold text-dark">乡村人才培训平台</span>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="index.html" class="text-gray-700 hover:text-primary transition-colors">首页</a>
+                <a href="index.html#courses" class="text-gray-700 hover:text-primary transition-colors">课程中心</a>
+                <a href="index.html#trainers" class="text-gray-700 hover:text-primary transition-colors">师资力量</a>
+                <a href="index.html#testimonials" class="text-gray-700 hover:text-primary transition-colors">学员评价</a>
+                <a href="contact_us.html" class="text-primary font-medium">联系我们</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-gray-700 hover:text-primary">
+                    <i class="fa fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- 移动端菜单 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+                <a href="index.html" class="text-gray-700 hover:text-primary py-2 transition-colors">首页</a>
+                <a href="index.html#courses" class="text-gray-700 hover:text-primary py-2 transition-colors">课程中心</a>
+                <a href="index.html#trainers" class="text-gray-700 hover:text-primary py-2 transition-colors">师资力量</a>
+                <a href="index.html#testimonials" class="text-gray-700 hover:text-primary py-2 transition-colors">学员评价</a>
+                <a href="contact_us.html" class="text-primary font-medium py-2">联系我们</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 联系我们区域 -->
+    <section class="container mx-auto px-4 py-16">
+        <div class="text-center mb-12">
+            <h2 class="text-[clamp(2rem,5vw,3rem)] font-bold text-dark mb-4">联系我们</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">如果您对我们的课程有任何疑问，或者想了解更多关于乡村人才培训的信息，请填写以下表单与我们联系。</p>
+        </div>
+        
+        <div class="max-w-4xl mx-auto bg-white rounded-xl form-shadow p-8">
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- 联系信息 -->
+                <div class="space-y-6">
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-primary/10 p-3 rounded-full">
+                            <i class="fa fa-map-marker text-primary text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-lg text-dark mb-1">培训地址</h3>
+                            <p class="text-gray-600">中国农村发展研究院培训中心，北京市海淀区中关村南大街5号</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-primary/10 p-3 rounded-full">
+                            <i class="fa fa-phone text-primary text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-lg text-dark mb-1">联系电话</h3>
+                            <p class="text-gray-600">400-888-9999</p>
+                            <p class="text-gray-500 text-sm">周一至周五 9:00-18:00</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-primary/10 p-3 rounded-full">
+                            <i class="fa fa-envelope text-primary text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-lg text-dark mb-1">电子邮箱</h3>
+                            <p class="text-gray-600">contact@rural-training.edu.cn</p>
+                        </div>
+                    </div>
+                    
+                    <div class="pt-4">
+                        <h3 class="font-semibold text-lg text-dark mb-3">关注我们</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="bg-primary/10 w-10 h-10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all">
+                                <i class="fa fa-weixin"></i>
+                            </a>
+                            <a href="#" class="bg-primary/10 w-10 h-10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all">
+                                <i class="fa fa-weibo"></i>
+                            </a>
+                            <a href="#" class="bg-primary/10 w-10 h-10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all">
+                                <i class="fa fa-youtube-play"></i>
+                            </a>
+                            <a href="#" class="bg-primary/10 w-10 h-10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 联系表单 -->
+                <div>
+                    <form id="contact-form" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">姓名</label>
+                            <input type="text" id="name" name="name" 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus" 
+                                   placeholder="请输入您的姓名" required>
+                        </div>
+                        
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">电话</label>
+                            <input type="tel" id="phone" name="phone" 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus" 
+                                   placeholder="请输入您的联系电话" required>
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">邮箱</label>
+                            <input type="email" id="email" name="email" 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus" 
+                                   placeholder="请输入您的邮箱地址" required>
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">留言</label>
+                            <textarea id="message" name="message" rows="5" 
+                                      class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus resize-none" 
+                                      placeholder="请输入您的留言内容，如培训需求、合作意向等" required></textarea>
+                        </div>
+                        
+                        <button type="submit" 
+                                class="w-full bg-primary text-white font-medium py-3 px-6 rounded-lg btn-hover">
+                            提交
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 常见问题 -->
+    <section class="bg-light py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark text-center mb-12">常见问题</h2>
+            
+            <div class="max-w-3xl mx-auto space-y-4">
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <button class="faq-toggle w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none">
+                        <span class="font-medium text-dark">如何报名参加培训课程？</span>
+                        <i class="fa fa-chevron-down text-gray-500 transition-transform"></i>
+                    </button>
+                    <div class="faq-content px-6 py-0 max-h-0 overflow-hidden transition-all">
+                        <p class="text-gray-600 py-4">您可以通过我们的官方网站在线报名，或者拨打客服电话400-888-9999进行咨询和报名。报名成功后，我们会通过短信和邮件的方式通知您具体的培训时间、地点和注意事项。</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <button class="faq-toggle w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none">
+                        <span class="font-medium text-dark">培训课程有哪些优惠政策？</span>
+                        <i class="fa fa-chevron-down text-gray-500 transition-transform"></i>
+                    </button>
+                    <div class="faq-content px-6 py-0 max-h-0 overflow-hidden transition-all">
+                        <p class="text-gray-600 py-4">我们为农村集体经济组织成员、返乡创业青年和建档立卡贫困户提供培训费用减免政策。此外，团体报名（5人以上）可享受9折优惠，提前30天报名可享受85折优惠。具体优惠政策可咨询我们的客服人员。</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <button class="faq-toggle w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none">
+                        <span class="font-medium text-dark">培训结束后是否颁发证书？</span>
+                        <i class="fa fa-chevron-down text-gray-500 transition-transform"></i>
+                    </button>
+                    <div class="faq-content px-6 py-0 max-h-0 overflow-hidden transition-all">
+                        <p class="text-gray-600 py-4">是的，培训结束并通过考核后，我们会颁发由中国农村发展研究院认证的培训结业证书。该证书在农业农村部人才数据库备案，可作为您参加农村创业扶持项目和申请相关补贴的重要依据。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 提交成功弹窗 -->
+    <div id="success-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden modal-animation">
+        <div class="bg-white rounded-xl p-8 max-w-md w-full mx-4 text-center">
+            <div class="bg-green-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                <i class="fa fa-check text-primary text-3xl"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-dark mb-3">提交成功！</h3>
+            <p class="text-gray-600 mb-6">感谢您的留言，我们的客服人员将在1-2个工作日内与您联系。</p>
+            <button id="close-modal" class="bg-primary text-white font-medium py-3 px-8 rounded-lg btn-hover">
+                确定
+            </button>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center space-x-2 mb-6">
+                        <i class="fa fa-graduation-cap text-primary text-3xl"></i>
+                        <span class="text-xl font-bold">乡村人才培训平台</span>
+                    </div>
+                    <p class="text-gray-400 mb-6">助力乡村振兴，培养新型乡村人才</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                            <i class="fa fa-weixin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                            <i class="fa fa-weibo text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                            <i class="fa fa-youtube-play text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                            <i class="fa fa-linkedin text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">快速链接</h3>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-400 hover:text-primary transition-colors">首页</a></li>
+                        <li><a href="index.html#courses" class="text-gray-400 hover:text-primary transition-colors">课程中心</a></li>
+                        <li><a href="index.html#trainers" class="text-gray-400 hover:text-primary transition-colors">师资力量</a></li>
+                        <li><a href="index.html#testimonials" class="text-gray-400 hover:text-primary transition-colors">学员评价</a></li>
+                        <li><a href="contact_us.html" class="text-gray-400 hover:text-primary transition-colors">联系我们</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">热门课程</h3>
+                    <ul class="space-y-3">
+                        <li><a href="rural_tourism.html" class="text-gray-400 hover:text-primary transition-colors">乡村旅游服务与管理</a></li>
+                        <li><a href="modern_agriculture.html" class="text-gray-400 hover:text-primary transition-colors">现代农业技术应用</a></li>
+                        <li><a href="traditional_crafts.html" class="text-gray-400 hover:text-primary transition-colors">传统手工艺创新设计</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">乡村电商运营</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">联系方式</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start space-x-3">
+                            <i class="fa fa-map-marker text-primary mt-1"></i>
+                            <span class="text-gray-400">北京市海淀区中关村南大街5号</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fa fa-phone text-primary"></i>
+                            <span class="text-gray-400">400-888-9999</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fa fa-envelope text-primary"></i>
+                            <span class="text-gray-400">contact@rural-training.edu.cn</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fa fa-clock-o text-primary"></i>
+                            <span class="text-gray-400">周一至周五 9:00-18:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <p class="text-gray-400 text-center">&copy; 2024 乡村人才培训平台. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 移动端菜单切换
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // 表单提交处理
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // 显示成功弹窗
+            const successModal = document.getElementById('success-modal');
+            successModal.classList.remove('hidden');
+            
+            // 重置表单
+            this.reset();
+        });
+
+        // 关闭弹窗
+        document.getElementById('close-modal').addEventListener('click', function() {
+            const successModal = document.getElementById('success-modal');
+            successModal.classList.add('hidden');
+        });
+
+        // 点击弹窗外部关闭弹窗
+        document.getElementById('success-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.add('hidden');
+            }
+        });
+
+        // FAQ折叠功能
+        document.querySelectorAll('.faq-toggle').forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                const icon = this.querySelector('i');
+                
+                // 关闭其他FAQ
+                document.querySelectorAll('.faq-content').forEach(item => {
+                    if (item !== content && item.style.maxHeight) {
+                        item.style.maxHeight = null;
+                        item.style.paddingTop = '0';
+                        item.style.paddingBottom = '0';
+                        item.previousElementSibling.querySelector('i').style.transform = 'rotate(0deg)';
+                    }
+                });
+                
+                // 切换当前FAQ
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                    content.style.paddingTop = '0';
+                    content.style.paddingBottom = '0';
+                    icon.style.transform = 'rotate(0deg)';
+                } else {
+                    content.style.maxHeight = content.scrollHeight + 32 + 'px';
+                    content.style.paddingTop = '16px';
+                    content.style.paddingBottom = '16px';
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // 关闭移动端菜单
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

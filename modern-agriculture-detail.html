@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>现代农业技术应用 - 详细课程信息</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: linear-gradient(135deg, #FF9800 0%, #FF5722 100%);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .header-icon {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        .course-meta {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+            font-size: 1.1em;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .back-button {
+            display: inline-block;
+            background-color: #fff;
+            color: #FF9800;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            border: 2px solid #FF9800;
+        }
+        .back-button:hover {
+            background-color: #FF9800;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .course-content {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin: 40px 0;
+            padding: 30px;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        h2 {
+            color: #FF9800;
+            border-bottom: 2px solid #FF9800;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        h3 {
+            color: #E65100;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .highlight-box {
+            background-color: #FFF8E1;
+            border-left: 4px solid #FF9800;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .skill-item {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .skill-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .course-outline {
+            margin-top: 30px;
+        }
+        .week-item {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border-left: 3px solid #FF5722;
+        }
+        .course-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .instructor-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+        .instructor-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+            color: #FF9800;
+        }
+        .video-link {
+            display: block;
+            background-color: #FF5722;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 30px 0;
+            transition: all 0.3s ease;
+        }
+        .video-link:hover {
+            background-color: #D84315;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(255, 87, 34, 0.3);
+        }
+        .tech-card {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid #FFE0B2;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <svg class="header-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="15" y="60" width="70" height="20" rx="3" fill="white"/>
+                <path d="M20 60L25 40L30 60M40 60L45 30L50 60M60 60L65 45L70 60M80 60L85 35L90 60" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M45 30L50 20L55 30" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="50" cy="15" r="5" fill="white"/>
+            </svg>
+            <h1>现代农业技术应用</h1>
+            <p>学习智慧农业技术、设施农业管理和绿色生产技术，提高农业生产效率和质量</p>
+            <div class="course-meta">
+                <div class="meta-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 6V12L16 14" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="12" cy="12" r="9" stroke="white" stroke-width="2"/>
+                    </svg>
+                    12周课程
+                </div>
+                <div class="meta-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M22 12V20C22 20.5304 21.7893 21.0391 21.4142 21.4142C21.0391 21.7893 20.5304 22 20 22H4C3.46957 22 2.96086 21.7893 2.58579 21.4142C2.21071 21.0391 2 20.5304 2 20V12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <polyline points="22 4 12 14.01 9 11.01" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    中级
+                </div>
+                <div class="meta-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M9 11C11.2091 11 13 9.20914 13 7C13 4.79086 11.2091 3 9 3C6.79086 3 5 4.79086 5 7C5 9.20914 6.79086 11 9 11Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M23 21V19C23 17.9391 22.5786 16.9217 21.8284 16.1716C21.0783 15.4214 20.0609 15 19 15C17.9391 15 16.9217 15.4214 16.1716 16.1716C15.4214 16.9217 15 17.9391 15 19V21" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M21 11C21 13.2091 19.2091 15 17 15C14.7909 15 13 13.2091 13 11" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    400+学员
+                </div>
+            </div>
+            <a href="#" class="back-button">返回课程列表</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="course-content">
+            <div class="section">
+                <h2>课程简介</h2>
+                <p>本课程致力于教授现代农业技术的应用知识，重点介绍智慧农业技术、设施农业管理和绿色生产技术等方面的内容。通过系统学习和实践操作，学员将掌握现代农业生产的先进技术和管理方法，提高农业生产效率和产品质量，促进农业可持续发展。</p>
+                <div class="highlight-box">
+                    <p><strong>适合人群：</strong>农业从业者、种植大户、农业技术员、农业专业学生、农业创业者</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>学习目标</h2>
+                <ul>
+                    <li>了解智慧农业的概念、特点和发展趋势</li>
+                    <li>掌握设施农业的规划、建设和管理技术</li>
+                    <li>学习绿色农业生产技术和环境保护措施</li>
+                    <li>熟悉农业物联网、大数据等信息技术在农业中的应用</li>
+                    <li>能够制定现代农业生产方案和技术应用计划</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>核心技能</h2>
+                <div class="skill-grid">
+                    <div class="skill-item">
+                        <h3>智慧农业</h3>
+                        <p>物联网技术应用、精准农业、智能灌溉、无人机植保</p>
+                    </div>
+                    <div class="skill-item">
+                        <h3>设施农业</h3>
+                        <p>温室设计、环境调控、无土栽培、立体种植</p>
+                    </div>
+                    <div class="skill-item">
+                        <h3>绿色生产</h3>
+                        <p>有机种植、生物防治、节水技术、土壤改良</p>
+                    </div>
+                    <div class="skill-item">
+                        <h3>数据分析</h3>
+                        <p>农业大数据应用、生产决策支持、质量追溯系统</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>现代技术展示</h2>
+                
+                <div class="tech-card">
+                    <h3>智能灌溉系统</h3>
+                    <p>利用传感器技术和自动控制设备，根据土壤湿度、天气状况等因素，精准控制灌溉水量和时间，实现节水灌溉和高效用水。</p>
+                </div>
+                
+                <div class="tech-card">
+                    <h3>温室环境智能调控</h3>
+                    <p>通过监控温室内温度、湿度、光照、CO2浓度等环境参数，自动调节通风、遮阳、补光、加湿等设备，创造最优生长环境。</p>
+                </div>
+                
+                <div class="tech-card">
+                    <h3>无人机农业应用</h3>
+                    <p>利用无人机进行农田巡查、病虫害监测、精准施肥和农药喷洒，提高作业效率，减少资源浪费和环境污染。</p>
+                </div>
+                
+                <div class="tech-card">
+                    <h3>农产品质量追溯系统</h3>
+                    <p>通过区块链、二维码等技术，记录农产品从种植、收获、加工到销售的全过程信息，实现产品质量可追溯，保障食品安全。</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>课程大纲</h2>
+                <div class="course-outline">
+                    <div class="week-item">
+                        <h3>第1-2周：现代农业概述</h3>
+                        <ul>
+                            <li>现代农业的概念与特征</li>
+                            <li>国内外现代农业发展现状与趋势</li>
+                            <li>农业科技创新与应用案例</li>
+                        </ul>
+                    </div>
+                    <div class="week-item">
+                        <h3>第3-4周：智慧农业技术基础</h3>
+                        <ul>
+                            <li>农业物联网技术原理与应用</li>
+                            <li>传感器技术在农业中的应用</li>
+                            <li>农业大数据采集与分析方法</li>
+                            <li>智能控制系统与自动化设备</li>
+                        </ul>
+                    </div>
+                    <div class="week-item">
+                        <h3>第5-6周：精准农业技术</h3>
+                        <ul>
+                            <li>精准农业的概念与内涵</li>
+                            <li>GPS与GIS技术在农业中的应用</li>
+                            <li>变量施肥与精准灌溉技术</li>
+                            <li>精准农业装备与应用案例</li>
+                        </ul>
+                    </div>
+                    <div class="week-item">
+                        <h3>第7-8周：设施农业技术</h3>
+                        <ul>
+                            <li>设施农业类型与特点</li>
+                            <li>温室设计与建造技术</li>
+                            <li>温室环境调控技术</li>
+                            <li>无土栽培与工厂化育苗技术</li>
+                        </ul>
+                    </div>
+                    <div class="week-item">
+                        <h3>第9-10周：绿色农业生产技术</h3>
+                        <ul>
+                            <li>绿色农业的理念与原则</li>
+                            <li>有机农业生产技术</li>
+                            <li>生物防治与生态调控技术</li>
+                            <li>农业废弃物资源化利用技术</li>
+                        </ul>
+                    </div>
+                    <div class="week-item">
+                        <h3>第11-12周：现代农业经营与管理</h3>
+                        <ul>
+                            <li>现代农业企业经营管理</li>
+                            <li>农产品质量安全管理</li>
+                            <li>农业品牌建设与市场营销</li>
+                            <li>现代农业项目规划与实施</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>教学特色</h2>
+                <ul>
+                    <li><strong>理论与实践结合：</strong>课程内容既有理论知识讲解，又有实验操作和实地考察</li>
+                    <li><strong>专家指导：</strong>由农业技术专家和成功实践者担任讲师，分享实战经验</li>
+                    <li><strong>实践教学：</strong>安排参观现代化农场、设施农业基地和农业科技园区</li>
+                    <li><strong>案例分析：</strong>通过典型案例分析，学习成功经验和失败教训</li>
+                    <li><strong>技术支持：</strong>提供课后技术咨询和指导服务</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>讲师介绍</h2>
+                <div class="instructor-info">
+                    <div class="instructor-avatar">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21" stroke="#FF9800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="#FF9800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3>李教授</h3>
+                        <p>农业工程专家，长期从事现代农业技术研究和推广工作，主持多项国家级和省部级农业科技项目。在智慧农业、设施农业等领域有丰富的研究和实践经验，发表学术论文80余篇，获得多项科技奖励。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>学员成果</h2>
+                <p>完成本课程后，学员将能够：</p>
+                <ul>
+                    <li>应用智慧农业技术进行农业生产管理</li>
+                    <li>规划和建设小型设施农业生产基地</li>
+                    <li>实施绿色农业生产技术和环境保护措施</li>
+                    <li>利用农业信息技术提高生产效率和决策水平</li>
+                    <li>获得现代农业技术应用专业能力证书</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>相关资源</h2>
+                <ul>
+                    <li>现代农业技术手册</li>
+                    <li>设施农业建设与管理指南</li>
+                    <li>绿色农业生产技术规程</li>
+                    <li>农业物联网应用案例集</li>
+                    <li>农业机械与设备操作手册</li>
+                </ul>
+            </div>
+
+            <a href="https://www.bilibili.com/video/BV1po4y1d7W1" class="video-link" target="_blank">
+                观看课程介绍视频
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 乡村人才培训平台. 保留所有权利.</p>
+        </div>
+    </footer>
+</body>
+</html>

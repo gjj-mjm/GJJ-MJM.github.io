@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>乡村旅游服务与管理 - 乡村人才培训课程</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #4CAF50 0%, #8BC34A 100%);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .header-description {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        
+        .course-detail {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-top: -40px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .course-hero {
+            background: linear-gradient(135deg, #1976D2 0%, #42A5F5 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .course-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23ffffff' opacity='0.1'/%3E%3C/svg%3E");
+            background-size: 200px;
+        }
+        
+        .course-hero h2 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .course-hero p {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .course-meta-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 30px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .meta-info-item {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 20px 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            min-width: 150px;
+        }
+        
+        .meta-value {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .meta-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+        
+        .course-content {
+            padding: 60px 40px;
+        }
+        
+        .section-title {
+            font-size: 2em;
+            margin-bottom: 30px;
+            color: #1976D2;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background-color: #1976D2;
+            border-radius: 2px;
+        }
+        
+        .content-text {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .highlight-box {
+            background-color: #E3F2FD;
+            border-left: 4px solid #1976D2;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .highlight-box h4 {
+            color: #1976D2;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .highlight-box ul {
+            list-style-type: none;
+        }
+        
+        .highlight-box li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+        }
+        
+        .highlight-box li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        
+        .course-outline {
+            margin: 40px 0;
+        }
+        
+        .module {
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .module:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .module-title {
+            color: #1976D2;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .module-content {
+            margin-left: 20px;
+        }
+        
+        .module-content li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .module-content li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #4CAF50;
+            font-size: 1.2em;
+        }
+        
+        .instructor-section {
+            margin: 60px 0;
+        }
+        
+        .instructor-card {
+            display: flex;
+            align-items: center;
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .instructor-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: #E0E0E0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 30px;
+            font-size: 2em;
+            color: #757575;
+        }
+        
+        .instructor-info h3 {
+            font-size: 1.6em;
+            margin-bottom: 10px;
+            color: #1976D2;
+        }
+        
+        .instructor-title {
+            color: #FF9800;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .instructor-bio {
+            line-height: 1.7;
+        }
+        
+        .testimonials {
+            margin: 60px 0;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 5em;
+            color: rgba(0, 0, 0, 0.05);
+            font-family: serif;
+        }
+        
+        .testimonial-text {
+            margin-bottom: 20px;
+            font-style: italic;
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #E0E0E0;
+            margin-right: 15px;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 5px;
+        }
+        
+        .author-title {
+            color: #757575;
+            font-size: 0.9em;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #4CAF50 0%, #8BC34A 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            border-radius: 10px;
+            margin-top: 60px;
+        }
+        
+        .cta-title {
+            font-size: 2.2em;
+            margin-bottom: 20px;
+        }
+        
+        .cta-text {
+            font-size: 1.2em;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn-primary {
+            display: inline-block;
+            background-color: white;
+            color: #4CAF50;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 30px;
+            padding: 0 20px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 1.3em;
+            border-bottom: 2px solid #555;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column ul {
+            list-style-type: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid #555;
+            font-size: 0.9em;
+            color: #aaa;
+        }
+        
+        @media (max-width: 768px) {
+            .course-hero {
+                padding: 40px 20px;
+            }
+            
+            .course-content {
+                padding: 40px 20px;
+            }
+            
+            .course-meta-info {
+                gap: 20px;
+            }
+            
+            .meta-info-item {
+                min-width: 120px;
+                padding: 15px 20px;
+            }
+            
+            .instructor-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .instructor-avatar {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+            
+            .footer-column {
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <h1>乡村人才培训课程</h1>
+            <p class="header-description">提升乡村人才技能，助力乡村振兴发展</p>
+        </div>
+    </header>
+
+    <div class="course-detail">
+        <div class="course-hero">
+            <div class="container">
+                <h2>乡村旅游服务与管理</h2>
+                <p>打造专业的乡村旅游服务团队，推动乡村旅游高质量发展</p>
+                
+                <div class="course-meta-info">
+                    <div class="meta-info-item">
+                        <div class="meta-value">10</div>
+                        <div class="meta-label">课程时长（周）</div>
+                    </div>
+                    <div class="meta-info-item">
+                        <div class="meta-value">初级到中级</div>
+                        <div class="meta-label">难度等级</div>
+                    </div>
+                    <div class="meta-info-item">
+                        <div class="meta-value">600+</div>
+                        <div class="meta-label">学员人数</div>
+                    </div>
+                    <div class="meta-info-item">
+                        <div class="meta-value">100%</div>
+                        <div class="meta-label">就业率</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="course-content">
+            <div class="container">
+                <section class="course-overview">
+                    <h3 class="section-title">课程概述</h3>
+                    <p class="content-text">本课程旨在培养乡村旅游服务与管理的专业人才，满足日益增长的乡村旅游市场需求。通过系统化的理论学习和实践操作，帮助学员掌握乡村旅游接待礼仪、民宿经营管理、旅游产品开发设计以及市场营销等核心技能。</p>
+                    <p class="content-text">随着乡村振兴战略的深入推进，乡村旅游已成为带动农村经济发展、促进农民增收的重要途径。本课程结合当前乡村旅游发展趋势，注重实用性和操作性，为乡村旅游产业输送高素质服务与管理人才。</p>
+                    
+                    <div class="highlight-box">
+                        <h4>为什么选择本课程？</h4>
+                        <ul>
+                            <li>由业内资深专家和一线从业者联合授课，理论结合实践</li>
+                            <li>采用案例教学和实地考察相结合的教学方式</li>
+                            <li>提供就业指导和创业支持，帮助学员实现价值</li>
+                            <li>与多家乡村旅游企业建立合作关系，推荐就业机会</li>
+                            <li>掌握当前乡村旅游发展的最新理念和技术</li>
+                        </ul>
+                    </div>
+                </section>
+                
+                <section class="course-outline">
+                    <h3 class="section-title">课程大纲</h3>
+                    
+                    <div class="module">
+                        <h4 class="module-title">模块一：乡村旅游概述（第1-2周）</h4>
+                        <ul class="module-content">
+                            <li>乡村旅游的概念、特点和发展历程</li>
+                            <li>国内外乡村旅游发展模式与案例分析</li>
+                            <li>乡村旅游与乡村振兴的关系</li>
+                            <li>乡村旅游资源的类型与评价方法</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="module">
+                        <h4 class="module-title">模块二：乡村旅游服务礼仪（第3周）</h4>
+                        <ul class="module-content">
+                            <li>服务人员的形象与仪表要求</li>
+                            <li>接待礼仪与沟通技巧</li>
+                            <li>投诉处理与客户关系维护</li>
+                            <li>跨文化交流与服务</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="module">
+                        <h4 class="module-title">模块三：民宿经营与管理（第4-5周）</h4>
+                        <ul class="module-content">
+                            <li>民宿设计与装修要点</li>
+                            <li>客房管理与服务标准</li>
+                            <li>餐饮服务与地方特色美食开发</li>
+                            <li>民宿定价策略与收益管理</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="module">
+                        <h4 class="module-title">模块四：乡村旅游产品开发（第6-7周）</h4>
+                        <ul class="module-content">
+                            <li>乡村旅游线路设计</li>
+                            <li>文化体验活动策划</li>
+                            <li>特色旅游商品开发</li>
+                            <li>乡村研学旅行产品设计</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="module">
+                        <h4 class="module-title">模块五：乡村旅游市场营销（第8周）</h4>
+                        <ul class="module-content">
+                            <li>目标市场分析与定位</li>
+                            <li>乡村旅游品牌建设</li>
+                            <li>新媒体营销与推广策略</li>
+                            <li>旅游活动策划与执行</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="module">
+                        <h4 class="module-title">模块六：乡村旅游创业与实务（第9-10周）</h4>
+                        <ul class="module-content">
+                            <li>乡村旅游项目可行性分析</li>
+                            <li>创业计划书编写</li>
+                            <li>乡村旅游政策法规解读</li>
+                            <li>融资渠道与财务管理</li>
+                            <li>毕业项目设计与答辩</li>
+                        </ul>
+                    </div>
+                </section>
+                
+                <section class="instructor-section">
+                    <h3 class="section-title">课程讲师</h3>
+                    
+                    <div class="instructor-card">
+                        <div class="instructor-avatar">
+                            <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="50" cy="35" r="20" fill="#BBDEFB"/>
+                                <path d="M50 55C65 55 75 65 75 80H25C25 65 35 55 50 55Z" fill="#90CAF9"/>
+                            </svg>
+                        </div>
+                        <div class="instructor-info">
+                            <h3>张明教授</h3>
+                            <p class="instructor-title">旅游管理学院 院长 / 乡村旅游研究中心 主任</p>
+                            <p class="instructor-bio">张明教授拥有20年旅游管理教学与研究经验，专注于乡村旅游发展研究，主持多项国家级和省部级科研项目。曾担任多家乡村旅游企业顾问，具有丰富的行业实践经验。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="instructor-card" style="margin-top: 30px;">
+                        <div class="instructor-avatar">
+                            <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="50" cy="35" r="20" fill="#FFCDD2"/>
+                                <path d="M50 55C65 55 75 65 75 80H25C25 65 35 55 50 55Z" fill="#EF9A9A"/>
+                            </svg>
+                        </div>
+                        <div class="instructor-info">
+                            <h3>李婷女士</h3>
+                            <p class="instructor-title">知名民宿品牌创始人 / 乡村旅游创业导师</p>
+                            <p class="instructor-bio">李婷女士是国内知名民宿品牌「田园居」的创始人，拥有10年乡村民宿经营管理经验。她成功将一家普通农家院发展成为年营收超百万的精品民宿，在乡村旅游创业方面有着丰富的实战经验。</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="testimonials">
+                    <h3 class="section-title">学员评价</h3>
+                    
+                    <div class="testimonial-grid">
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">通过本课程的学习，我对乡村旅游有了全新的认识。课程内容丰富实用，讲师经验丰富，尤其是实地考察环节让我收获良多。现在我已经成功运营了自己的民宿，月收入稳定在2万元以上。</p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar"></div>
+                                <div class="author-info">
+                                    <h4>王小明</h4>
+                                    <p class="author-title">民宿经营者</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">作为一名乡村旅游从业者，我一直希望提升自己的专业水平。这个课程正好满足了我的需求，从服务礼仪到经营管理，全方位提升了我的能力。感谢学校提供这么好的学习机会！</p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar"></div>
+                                <div class="author-info">
+                                    <h4>李小华</h4>
+                                    <p class="author-title">乡村旅游景区管理人员</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">课程不仅教授专业知识，还提供了很多实用的工具和方法。老师的案例分析很精彩，让我对乡村旅游的运营模式有了更深入的理解。最重要的是，通过课程我结识了很多业内朋友，现在我们经常交流经验。</p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar"></div>
+                                <div class="author-info">
+                                    <h4>张大壮</h4>
+                                    <p class="author-title">乡村旅游创业者</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="career-development">
+                    <h3 class="section-title">就业与发展前景</h3>
+                    <p class="content-text">乡村旅游作为朝阳产业，未来发展前景广阔。随着乡村振兴战略的深入实施和人们消费观念的转变，乡村旅游市场需求将持续增长，对专业人才的需求也将不断增加。</p>
+                    
+                    <div class="highlight-box">
+                        <h4>就业方向</h4>
+                        <ul>
+                            <li>乡村旅游景区/景点管理与服务</li>
+                            <li>乡村民宿经营与管理</li>
+                            <li>乡村旅游产品策划与开发</li>
+                            <li>乡村旅游市场营销</li>
+                            <li>乡村旅游项目规划与设计</li>
+                            <li>乡村旅游创业</li>
+                        </ul>
+                    </div>
+                </section>
+                
+                <section class="application-process">
+                    <h3 class="section-title">报名与咨询</h3>
+                    <p class="content-text">欢迎对乡村旅游感兴趣的各界人士报名参加！课程常年招生，滚动开班，具体信息如下：</p>
+                    
+                    <div class="highlight-box">
+                        <h4>报名信息</h4>
+                        <ul>
+                            <li>培训费用：3800元/人（含教材费、实地考察费等）</li>
+                            <li>优惠政策：团体报名（3人以上）可享受9折优惠</li>
+                            <li>报名材料：身份证复印件、学历证明、2寸免冠照片2张</li>
+                            <li>咨询电话：400-123-4567</li>
+                            <li>电子邮箱：info@rural-tourism.cn</li>
+                        </ul>
+                    </div>
+                </section>
+                
+                <section class="cta-section">
+                    <h3 class="cta-title">开启您的乡村旅游事业之旅！</h3>
+                    <p class="cta-text">立即报名参加我们的乡村旅游服务与管理课程，掌握专业技能，实现人生价值，助力乡村振兴！</p>
+                    <a href="#" class="btn-primary">立即报名</a>
+                </section>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>关于我们</h3>
+                    <ul>
+                        <li><a href="#">机构简介</a></li>
+                        <li><a href="#">师资团队</a></li>
+                        <li><a href="#">发展历程</a></li>
+                        <li><a href="#">合作伙伴</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>课程中心</h3>
+                    <ul>
+                        <li><a href="#">乡村旅游</a></li>
+                        <li><a href="#">现代农业</a></li>
+                        <li><a href="#">传统手工艺</a></li>
+                        <li><a href="#">乡村电商</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>学员服务</h3>
+                    <ul>
+                        <li><a href="#">报名指南</a></li>
+                        <li><a href="#">学习支持</a></li>
+                        <li><a href="#">就业服务</a></li>
+                        <li><a href="#">常见问题</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>联系我们</h3>
+                    <ul>
+                        <li><a href="#">联系方式</a></li>
+                        <li><a href="#">在线咨询</a></li>
+                        <li><a href="#">意见反馈</a></li>
+                        <li><a href="#">关注我们</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 乡村人才培训平台. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

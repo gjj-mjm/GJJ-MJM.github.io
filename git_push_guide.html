@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git Push 命令使用指南</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        code {
+            background: #f5f5f5;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: Consolas, Monaco, 'Andale Mono', monospace;
+        }
+        pre {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .example {
+            background-color: #e8f4f8;
+            border-left: 4px solid #3498db;
+            padding: 10px;
+            margin: 15px 0;
+        }
+        .note {
+            background-color: #fff9e6;
+            border-left: 4px solid #f39c12;
+            padding: 10px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Git Push 命令使用指南</h1>
+    
+    <h2>1. 基本语法</h2>
+    <p>git push 命令用于将本地仓库的提交推送到远程仓库。基本语法如下：</p>
+    <pre><code>git push [远程仓库名] [本地分支名]:[远程分支名]</code></pre>
+    
+    <h3>常用简化形式</h3>
+    <pre><code>git push            # 推送当前分支到默认远程仓库的对应分支
+git push origin     # 推送当前分支到名为origin的远程仓库
+git push origin master  # 推送本地master分支到origin仓库的master分支</code></pre>
+    
+    <h2>2. 常用参数</h2>
+    <table>
+        <tr>
+            <th>参数</th>
+            <th>说明</th>
+        </tr>
+        <tr>
+            <td><code>-u</code> 或 <code>--set-upstream</code></td>
+            <td>设置上游分支，后续可以直接使用 <code>git push</code> 而无需指定分支</td>
+        </tr>
+        <tr>
+            <td><code>-f</code> 或 <code>--force</code></td>
+            <td>强制推送，覆盖远程分支上的更改（谨慎使用）</td>
+        </tr>
+        <tr>
+            <td><code>--all</code></td>
+            <td>推送所有分支到远程仓库</td>
+        </tr>
+        <tr>
+            <td><code>--tags</code></td>
+            <td>推送所有标签到远程仓库</td>
+        </tr>
+    </table>
+    
+    <h2>3. 示例用法</h2>
+    
+    <div class="example">
+        <h3>示例1：推送当前分支到默认远程仓库</h3>
+        <pre><code>git push</code></pre>
+        <p>这会将当前分支推送到默认远程仓库的同名分支。</p>
+    </div>
+    
+    <div class="example">
+        <h3>示例2：推送指定分支并设置上游</h3>
+        <pre><code>git push -u origin feature-branch</code></pre>
+        <p>这会将feature-branch分支推送到origin仓库，并设置为跟踪分支，之后可以直接使用<code>git push</code>。</p>
+    </div>
+    
+    <div class="example">
+        <h3>示例3：推送所有分支和标签</h3>
+        <pre><code>git push --all && git push --tags</code></pre>
+        <p>这会推送所有分支和所有标签到远程仓库。</p>
+    </div>
+    
+    <h2>4. 远程仓库配置</h2>
+    <p>在使用git push之前，需要先配置远程仓库。常用的远程仓库配置命令如下：</p>
+    
+    <h3>添加远程仓库</h3>
+    <pre><code>git remote add origin https://github.com/username/repository.git</code></pre>
+    
+    <h3>查看远程仓库</h3>
+    <pre><code>git remote -v</code></pre>
+    
+    <h3>移除远程仓库</h3>
+    <pre><code>git remote remove origin</code></pre>
+    
+    <h3>更改远程仓库URL</h3>
+    <pre><code>git remote set-url origin https://github.com/username/new-repository.git</code></pre>
+    
+    <div class="note">
+        <h3>注意事项</h3>
+        <ul>
+            <li>在推送之前，建议先使用 <code>git pull</code> 拉取远程仓库的最新更改，避免冲突。</li>
+            <li>使用 <code>--force</code> 参数时要特别小心，因为它会覆盖远程仓库中的更改。</li>
+            <li>首次推送分支时，需要使用 <code>-u</code> 参数设置上游分支，这样后续可以简化推送命令。</li>
+        </ul>
+    </div>
+    
+    <h2>5. 常见错误和解决方案</h2>
+    
+    <h3>错误：permission denied (publickey)</h3>
+    <p>这通常是因为没有正确配置SSH密钥。解决方案：</p>
+    <pre><code># 生成SSH密钥
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+
+# 将公钥添加到GitHub/GitLab等平台</code></pre>
+    
+    <h3>错误：Updates were rejected because the remote contains work that you do not have locally</h3>
+    <p>这表示远程仓库有本地没有的更改。解决方案：</p>
+    <pre><code># 先拉取远程更改并合并
+git pull --rebase origin branch-name
+
+# 然后再推送
+git push origin branch-name</code></pre>
+    
+    <h3>错误：fatal: The current branch has no upstream branch</h3>
+    <p>这表示当前分支没有设置上游分支。解决方案：</p>
+    <pre><code>git push -u origin current-branch-name</code></pre>
+    
+    <h2>6. 使用Git完整路径的命令</h2>
+    <p>如果系统中git命令无法直接识别，可以使用完整路径：</p>
+    <pre><code>cmd /c "C:\Program Files\Git\bin\git.exe" push origin master</code></pre>
+</body>
+</html>

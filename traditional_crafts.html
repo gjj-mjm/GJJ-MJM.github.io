@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>传统手工艺创新设计 - 乡村人才培训项目</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/computer-modern@0.1.2/cmu-serif.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#8b5a2b',  // 棕色作为主色调，代表传统、自然和手工艺质感
+                        secondary: '#6b4423',
+                        accent: '#d2691e',
+                        neutral: '#f5f5dc',
+                        base: '#ffffff',
+                        info: '#0ea5e9',
+                        success: '#10b981',
+                        warning: '#f59e0b',
+                        error: '#ef4444',
+                    },
+                    fontFamily: {
+                        'serif': ['"Computer Modern"', '"Times New Roman"', 'serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+                        'hover': '0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025)',
+                    },
+                },
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+            .transition-transform {
+                transition-property: transform;
+                transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+                transition-duration: 300ms;
+            }
+            .hover-scale {
+                @apply hover:scale-105;
+            }
+            .craft-shadow {
+                box-shadow: 0 10px 15px -3px rgba(139, 90, 43, 0.1), 0 4px 6px -2px rgba(139, 90, 43, 0.05);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-serif text-gray-800">
+    <!-- 顶部导航栏 -->
+    <header class="sticky top-0 z-50 bg-white shadow-md transition-all duration-300">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2">
+                <div class="h-10 w-10 rounded-full bg-primary flex items-center justify-center">
+                    <i class="fa fa-scissors text-white text-xl"></i>
+                </div>
+                <span class="text-xl font-bold text-primary">乡村人才培训项目</span>
+            </a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html" class="text-gray-600 hover:text-primary transition-colors">首页</a>
+                <a href="index.html#courses" class="text-gray-600 hover:text-primary transition-colors">课程列表</a>
+                <a href="index.html#about" class="text-gray-600 hover:text-primary transition-colors">关于我们</a>
+                <a href="index.html#contact" class="text-gray-600 hover:text-primary transition-colors">联系方式</a>
+            </nav>
+            <button class="md:hidden text-gray-600 hover:text-primary">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- 英雄区域 -->
+    <section class="relative h-[50vh] bg-gradient-to-r from-primary to-secondary text-white overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://picsum.photos/id/129/1600/900')] bg-cover bg-center opacity-30"></div>
+        <div class="container mx-auto px-4 h-full flex flex-col justify-center relative z-10">
+            <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold mb-4 text-shadow">传统手工艺创新设计</h1>
+            <p class="text-[clamp(1rem,2vw,1.25rem)] max-w-2xl mb-8">传承和创新传统手工艺，学习产品设计和市场营销，打造特色文化创意产品</p>
+            <div class="flex flex-wrap gap-4">
+                <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm">
+                    <i class="fa fa-clock-o mr-1"></i> 8周课程
+                </span>
+                <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm">
+                    <i class="fa fa-signal mr-1"></i> 不限水平
+                </span>
+                <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm">
+                    <i class="fa fa-users mr-1"></i> 500+学员已参加
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 课程概述 -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row gap-12 items-center">
+                <div class="w-full md:w-1/2">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-primary/20 rounded-lg transform rotate-3 scale-95"></div>
+                        <img src="https://picsum.photos/id/122/800/600" alt="传统手工艺展示" class="relative z-10 w-full h-auto rounded-lg craft-shadow hover-scale transition-transform duration-300">
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-6 text-secondary">课程概述</h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        本课程旨在传承和创新中华优秀传统手工艺，培养兼具传统工艺技能与现代设计思维的复合型人才。通过系统学习传统手工艺技艺、现代设计理念和市场营销策略，学员将能够将传统手工艺与现代生活需求相结合，开发具有文化内涵和市场竞争力的创意产品。
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                        <div class="flex items-start space-x-3">
+                            <div class="mt-1 text-primary text-xl"><i class="fa fa-check-circle"></i></div>
+                            <div>
+                                <h3 class="font-semibold text-gray-800">传统技艺传承</h3>
+                                <p class="text-sm text-gray-500">学习各类传统手工艺的制作技艺</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="mt-1 text-primary text-xl"><i class="fa fa-check-circle"></i></div>
+                            <div>
+                                <h3 class="font-semibold text-gray-800">现代设计创新</h3>
+                                <p class="text-sm text-gray-500">产品设计、包装设计和品牌塑造</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="mt-1 text-primary text-xl"><i class="fa fa-check-circle"></i></div>
+                            <div>
+                                <h3 class="font-semibold text-gray-800">市场营销策略</h3>
+                                <p class="text-sm text-gray-500">文化创意产品的营销与推广</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="mt-1 text-primary text-xl"><i class="fa fa-check-circle"></i></div>
+                            <div>
+                                <h3 class="font-semibold text-gray-800">数字化应用</h3>
+                                <p class="text-sm text-gray-500">传统工艺的数字化展示与传播</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-4">
+                        <button class="bg-primary hover:bg-secondary text-white px-6 py-3 rounded-lg craft-shadow hover:shadow-hover transition-all duration-300 flex items-center">
+                            <i class="fa fa-calendar mr-2"></i> 查看课程安排
+                        </button>
+                        <button class="bg-white border border-primary text-primary hover:bg-primary/5 px-6 py-3 rounded-lg craft-shadow hover:shadow-hover transition-all duration-300 flex items-center">
+                            <i class="fa fa-user-plus mr-2"></i> 立即报名
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 手工艺种类 -->
+    <section class="py-16 bg-neutral">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4 text-secondary">传统手工艺种类</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    课程涵盖多种具有代表性的中国传统手工艺，学员将有机会学习和实践这些技艺，并将其与现代设计相结合。
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- 手工艺1 -->
+                <div class="bg-white rounded-xl craft-shadow p-6 hover:shadow-hover transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="relative h-48 overflow-hidden rounded-lg mb-4">
+                        <img src="https://picsum.photos/id/133/400/300" alt="木雕艺术" class="w-full h-full object-cover object-center hover-scale transition-transform duration-500">
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-secondary">木雕艺术</h3>
+                    <p class="text-gray-600 mb-4">学习木雕的基本技法、刀具使用和创作过程，掌握不同木材的特性和处理方法。</p>
+                    <div class="border-t border-gray-100 pt-4">
+                        <span class="text-sm text-gray-500">
+                            <i class="fa fa-star text-yellow-400"></i> 4.8 (120+评价)
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- 手工艺2 -->
+                <div class="bg-white rounded-xl craft-shadow p-6 hover:shadow-hover transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="relative h-48 overflow-hidden rounded-lg mb-4">
+                        <img src="https://picsum.photos/id/131/400/300" alt="陶艺制作" class="w-full h-full object-cover object-center hover-scale transition-transform duration-500">
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-secondary">陶艺制作</h3>
+                    <p class="text-gray-600 mb-4">掌握陶艺基础、拉坯成型、釉料调配和烧制技术，创作具有实用价值和艺术价值的陶瓷作品。</p>
+                    <div class="border-t border-gray-100 pt-4">
+                        <span class="text-sm text-gray-500">
+                            <i class="fa fa-star text-yellow-400"></i> 4.9 (150+评价)
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- 手工艺3 -->
+                <div class="bg-white rounded-xl craft-shadow p-6 hover:shadow-hover transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="relative h-48 overflow-hidden rounded-lg mb-4">
+                        <img src="https://picsum.photos/id/135/400/300" alt="编织工艺" class="w-full h-full object-cover object-center hover-scale transition-transform duration-500">
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-secondary">编织工艺</h3>
+                    <p class="text-gray-600 mb-4">学习竹编、草编、藤编等传统编织技艺，创作实用装饰品、家居用品和文创产品。</p>
+                    <div class="border-t border-gray-100 pt-4">
+                        <span class="text-sm text-gray-500">
+                            <i class="fa fa-star text-yellow-400"></i> 4.7 (110+评价)
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- 手工艺4 -->
+                <div class="bg-white rounded-xl craft-shadow p-6 hover:shadow-hover transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="relative h-48 overflow-hidden rounded-lg mb-4">
+                        <img src="https://picsum.photos/id/127/400/300" alt="传统印染" class="w-full h-full object-cover object-center hover-scale transition-transform duration-500">
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-secondary">传统印染</h3>
+                    <p class="text-gray-600 mb-4">掌握扎染、蜡染、蓝印花布等传统印染技艺，了解天然染料的提取和应用。</p>
+                    <div class="border-t border-gray-100 pt-4">
+                        <span class="text-sm text-gray-500">
+                            <i class="fa fa-star text-yellow-400"></i> 4.8 (95+评价)
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 创新设计方法 -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4 text-secondary">创新设计方法</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    课程将传统手工艺与现代设计理念相结合，教授创新设计思维和方法，帮助学员开发具有市场潜力的创意产品。
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- 方法1 -->
+                <div class="bg-neutral rounded-xl p-6 craft-shadow hover:shadow-hover transition-all duration-300">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fa fa-lightbulb-o text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-center text-secondary">设计思维训练</h3>
+                    <p class="text-gray-600 text-center">
+                        学习设计思维的五个阶段：同理心、定义、构思、原型和测试，培养创新问题解决能力。
+                    </p>
+                </div>
+                
+                <!-- 方法2 -->
+                <div class="bg-neutral rounded-xl p-6 craft-shadow hover:shadow-hover transition-all duration-300">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fa fa-object-group text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-center text-secondary">产品原型制作</h3>
+                    <p class="text-gray-600 text-center">
+                        掌握快速原型制作方法，从概念到实物，通过反复迭代优化产品设计。
+                    </p>
+                </div>
+                
+                <!-- 方法3 -->
+                <div class="bg-neutral rounded-xl p-6 craft-shadow hover:shadow-hover transition-all duration-300">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fa fa-bullhorn text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-center text-secondary">品牌与营销</h3>
+                    <p class="text-gray-600 text-center">
+                        学习文创产品的品牌建设、包装设计和营销策略，提高产品的市场竞争力。
+                    </p>
+                </div>
+            </div>
+            
+            <div class="mt-16 bg-white rounded-xl craft-shadow p-8">
+                <div class="flex flex-col md:flex-row gap-8 items-center">
+                    <div class="w-full md:w-1/2">
+                        <h3 class="text-2xl font-bold mb-6 text-secondary">设计流程案例展示</h3>
+                        <div class="space-y-6">
+                            <!-- 步骤1 -->
+                            <div class="flex items-start space-x-4">
+                                <div class="flex-shrink-0 w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold">1</div>
+                                <div>
+                                    <h4 class="font-semibold text-lg mb-2 text-gray-800">市场调研与需求分析</h4>
+                                    <p class="text-gray-600">
+                                        通过问卷调查、访谈和竞品分析，了解目标用户的需求和市场趋势，为产品设计提供依据。
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- 步骤2 -->
+                            <div class="flex items-start space-x-4">
+                                <div class="flex-shrink-0 w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold">2</div>
+                                <div>
+                                    <h4 class="font-semibold text-lg mb-2 text-gray-800">创意构思与草图绘制</h4>
+                                    <p class="text-gray-600">
+                                        基于调研结果，进行头脑风暴，产生创意想法，并通过草图快速表达设计概念。
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- 步骤3 -->
+                            <div class="flex items-start space-x-4">
+                                <div class="flex-shrink-0 w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold">3</div>
+                                <div>
+                                    <h4 class="font-semibold text-lg mb-2 text-gray-800">手工艺制作与原型优化</h4>
+                                    <p class="text-gray-600">
+                                        运用传统手工艺技术制作产品原型，根据测试反馈进行调整和优化。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="w-full md:w-1/2">
+                        <div class="relative">
+                            <img src="https://picsum.photos/id/163/600/400" alt="设计流程展示" class="w-full h-auto rounded-lg craft-shadow">
+                            <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-lg craft-shadow max-w-xs">
+                                <p class="text-gray-600 text-sm italic">
+                                    "将传统手工艺与现代设计相结合，不仅是技艺的传承，更是文化的创新与发展。"
+                                </p>
+                                <p class="text-primary font-semibold mt-2 text-sm">— 张教授，课程首席导师</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 学员作品展示 -->
+    <section class="py-16 bg-neutral">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4 text-secondary">学员作品展示</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    欣赏我们学员在课程中创作的优秀作品，这些作品融合了传统手工艺技艺与现代设计理念。
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- 作品1 -->
+                <div class="bg-white rounded-xl overflow-hidden craft-shadow hover:shadow-hover transition-all duration-300">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://picsum.photos/id/160/600/400" alt="木雕创意产品" class="w-full h-full object-cover object-center hover-scale transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-secondary">自然系列木雕灯具</h3>
+                        <p class="text-gray-600 mb-3">
+                            结合传统木雕技艺与现代照明设计，创作兼具实用性和艺术性的家居装饰品。
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">
+                                <i class="fa fa-user-circle mr-1"></i> 李小明
+                            </span>
+                            <span class="text-sm text-gray-500">
+                                <i class="fa fa-calendar mr-1"></i> 2023年春季班
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 作品2 -->
+                <div class="bg-white rounded-xl overflow-hidden craft-shadow hover:shadow-hover transition-all duration-300">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://picsum.photos/id/161/600/400" alt="陶艺创意产品" class="w-full h-full object-cover object-center hover-scale transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-secondary">禅意陶瓷茶具套装</h3>
+                        <p class="text-gray-600 mb-3">
+                            运用传统陶瓷工艺制作，结合简约现代设计风格，打造具有东方美学的茶具系列。
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">
+                                <i class="fa fa-user-circle mr-1"></i> 王雅琪
+                            </span>
+                            <span class="text-sm text-gray-500">
+                                <i class="fa fa-calendar mr-1"></i> 2023年夏季班
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 作品3 -->
+                <div class="bg-white rounded-xl overflow-hidden craft-shadow hover:shadow-hover transition-all duration-300">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://picsum.photos/id/164/600/400" alt="编织创意产品" class="w-full h-full object-cover object-center hover-scale transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-secondary">环保编织家居系列</h3>
+                        <p class="text-gray-600 mb-3">
+                            使用天然材料，采用传统编织技艺，创作环保、时尚的家居装饰品和实用物品。
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">
+                                <i class="fa fa-user-circle mr-1"></i> 张伟
+                            </span>
+                            <span class="text-sm text-gray-500">
+                                <i class="fa fa-calendar mr-1"></i> 2023年秋季班
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-10">
+                <button class="bg-primary hover:bg-secondary text-white px-6 py-3 rounded-lg craft-shadow hover:shadow-hover transition-all duration-300 flex items-center justify-center mx-auto">
+                    <i class="fa fa-th-large mr-2"></i> 查看更多作品
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 市场前景 -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4 text-secondary">市场前景</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    随着文化自信的增强和消费升级，传统手工艺文创产品市场需求持续增长，具有广阔的发展前景。
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <div class="relative h-64 w-full mb-8">
+                        <canvas id="marketChart"></canvas>
+                    </div>
+                    <div class="bg-neutral p-6 rounded-xl craft-shadow">
+                        <h3 class="text-xl font-bold mb-4 text-secondary">市场规模预测</h3>
+                        <p class="text-gray-600 mb-4">
+                            根据行业数据显示，中国传统手工艺文创产品市场规模近年来保持年均15%以上的增长率，预计到2025年将达到5000亿元。
+                        </p>
+                        <p class="text-gray-600">
+                            消费者对具有文化内涵、个性化和高品质的手工艺产品需求日益增长，特别是年轻一代对传统文化的认同感不断提升。
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="space-y-6">
+                    <!-- 前景1 -->
+                    <div class="bg-neutral p-6 rounded-xl craft-shadow hover:shadow-hover transition-all duration-300">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary text-xl">
+                                <i class="fa fa-shopping-bag"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2 text-secondary">电商平台机遇</h3>
+                                <p class="text-gray-600">
+                                    各大电商平台纷纷设立传统文化专区，为手工艺产品提供了广阔的线上销售渠道。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 前景2 -->
+                    <div class="bg-neutral p-6 rounded-xl craft-shadow hover:shadow-hover transition-all duration-300">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary text-xl">
+                                <i class="fa fa-building"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2 text-secondary">文旅融合发展</h3>
+                                <p class="text-gray-600">
+                                    文化旅游产业的发展为手工艺产品提供了新的市场机会，特色手工艺成为旅游纪念品的重要组成部分。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 前景3 -->
+                    <div class="bg-neutral p-6 rounded-xl craft-shadow hover:shadow-hover transition-all duration-300">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary text-xl">
+                                <i class="fa fa-globe"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2 text-secondary">国际市场潜力</h3>
+                                <p class="text-gray-600">
+                                    中国传统手工艺产品在国际市场上备受欢迎，通过跨境电商和文化交流活动，可进一步拓展海外市场。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 师资力量 -->
+    <section class="py-16 bg-neutral">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4 text-secondary">师资力量</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    我们的教师团队由国家级非物质文化遗产传承人、知名设计师、工艺美术大师和营销专家组成，拥有丰富的教学和实践经验。
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- 教师1 -->
+                <div class="bg-white rounded-xl overflow-hidden craft-shadow hover:shadow-hover transition-all duration-300">
+                    <img src="https://picsum.photos/id/1001/400/400" alt="陈大师" class="w-full h-64 object-cover object-center">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-1 text-secondary">陈明远大师</h3>
+                        <p class="text-primary mb-3">国家级非物质文化遗产传承人</p>
+                        <p class="text-gray-600 mb-4">
+                            从事传统木雕艺术创作50余年，作品曾多次在国内外展览中获奖，具有深厚的传统技艺功底和丰富的教学经验。
+                        </p>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                                <i class="fa fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 教师2 -->
+                <div class="bg-white rounded-xl overflow-hidden craft-shadow hover:shadow-hover transition-all duration-300">
+                    <img src="https://picsum.photos/id/1002/400/400" alt="林设计师" class="w-full h-64 object-cover object-center">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-1 text-secondary">林小雨设计师</h3>
+                        <p class="text-primary mb-3">知名文创设计师</p>
+                        <p class="text-gray-600 mb-4">
+                            毕业于中央美术学院，专注于传统工艺与现代设计融合的研究与实践，作品曾获国际设计大奖。
+                        </p>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                                <i class="fa fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 教师3 -->
+                <div class="bg-white rounded-xl overflow-hidden craft-shadow hover:shadow-hover transition-all duration-300">
+                    <img src="https://picsum.photos/id/1003/400/400" alt="王教授" class="w-full h-64 object-cover object-center">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-1 text-secondary">王建国教授</h3>
+                        <p class="text-primary mb-3">文化产业专家</p>
+                        <p class="text-gray-600 mb-4">
+                            大学文化产业研究院教授，长期从事文化创意产业研究和实践，主持多项文创产业发展规划项目。
+                        </p>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                                <i class="fa fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 学员评价 -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4 text-secondary">学员评价</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    听听我们的学员怎么说，了解他们在课程中的收获和成长。
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 评价1 -->
+                <div class="bg-neutral rounded-xl p-6 craft-shadow hover:shadow-hover transition-all duration-300">
+                    <div class="text-primary text-2xl mb-4">
+                        <i class="fa fa-quote-left"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6">
+                        通过这个课程，我不仅学会了传统木雕技艺，更重要的是掌握了如何将传统工艺与现代设计相结合的方法。现在我已经成功创立了自己的文创品牌，产品受到市场欢迎。
+                    </p>
+                    <div class="flex items-center space-x-4">
+                        <img src="https://picsum.photos/id/1012/100/100" alt="学员照片" class="w-12 h-12 rounded-full object-cover">
+                        <div>
+                            <h4 class="font-semibold text-secondary">刘俊杰</h4>
+                            <p class="text-sm text-gray-500">"木语"品牌创始人</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 text-yellow-400">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- 评价2 -->
+                <div class="bg-neutral rounded-xl p-6 craft-shadow hover:shadow-hover transition-all duration-300">
+                    <div class="text-primary text-2xl mb-4">
+                        <i class="fa fa-quote-left"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6">
+                        作为一名设计专业的学生，这个课程让我对传统手工艺有了全新的认识。老师们不仅教授技艺，更注重培养我们的创意思维和市场意识。课程结束后，我的毕业设计获得了学院金奖。
+                    </p>
+                    <div class="flex items-center space-x-4">
+                        <img src="https://picsum.photos/id/1014/100/100" alt="学员照片" class="w-12 h-12 rounded-full object-cover">
+                        <div>
+                            <h4 class="font-semibold text-secondary">周雨彤</h4>
+                            <p class="text-sm text-gray-500">设计专业学生</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 text-yellow-400">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-o"></i>
+                    </div>
+                </div>
+                
+                <!-- 评价3 -->
+                <div class="bg-neutral rounded-xl p-6 craft-shadow hover:shadow-hover transition-all duration-300">
+                    <div class="text-primary text-2xl mb-4">
+                        <i class="fa fa-quote-left"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6">
+                        我是一名乡村文化站工作人员，参加这个课程后，不仅提升了自己的手工艺技能，还学到了如何组织和开展社区手工艺传承活动。现在我们村里的传统编织工艺已经成为特色文化产业。
+                    </p>
+                    <div class="flex items-center space-x-4">
+                        <img src="https://picsum.photos/id/1006/100/100" alt="学员照片" class="w-12 h-12 rounded-full object-cover">
+                        <div>
+                            <h4 class="font-semibold text-secondary">张桂花</h4>
+                            <p class="text-sm text-gray-500">乡村文化站站长</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 text-yellow-400">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 报名信息 -->
+    <section class="py-16 bg-gradient-to-r from-secondary to-primary text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-6">准备好开启您的手工艺创新之旅了吗？</h2>
+                <p class="text-white/90 mb-8 max-w-2xl mx-auto">
+                    加入我们的传统手工艺创新设计课程，学习传统技艺，拥抱现代设计，开启您的文创事业之路。
+                </p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <button class="bg-white text-primary hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold craft-shadow hover:shadow-hover transition-all duration-300 flex items-center">
+                        <i class="fa fa-calendar-check-o mr-2"></i> 立即报名
+                    </button>
+                    <button class="bg-transparent border-2 border-white text-white hover:bg-white/10 px-8 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center">
+                        <i class="fa fa-info-circle mr-2"></i> 了解更多
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-900 text-white pt-12 pb-6">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="h-8 w-8 rounded-full bg-primary flex items-center justify-center">
+                            <i class="fa fa-scissors text-white"></i>
+                        </div>
+                        <span class="text-lg font-bold">乡村人才培训项目</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        致力于传承和创新中华优秀传统文化，培养新时代乡村文化人才，推动乡村文化振兴。
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                            <i class="fa fa-weixin"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                            <i class="fa fa-youtube-play"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">快速链接</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-primary transition-colors">首页</a></li>
+                        <li><a href="index.html#courses" class="text-gray-400 hover:text-primary transition-colors">课程列表</a></li>
+                        <li><a href="index.html#about" class="text-gray-400 hover:text-primary transition-colors">关于我们</a></li>
+                        <li><a href="index.html#contact" class="text-gray-400 hover:text-primary transition-colors">联系方式</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">常见问题</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">联系方式</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start space-x-3">
+                            <i class="fa fa-map-marker mt-1 text-primary"></i>
+                            <span class="text-gray-400">中国艺术研究院文化遗产研究所，北京市东城区东直门外小街甲2号</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fa fa-phone text-primary"></i>
+                            <span class="text-gray-400">010-87654321</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fa fa-envelope text-primary"></i>
+                            <span class="text-gray-400">crafts@ruraltalent.edu.cn</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">订阅我们</h3>
+                    <p class="text-gray-400 mb-4">
+                        订阅我们的通讯，获取最新的课程信息和手工艺文化资讯。
+                    </p>
+                    <form class="space-y-3">
+                        <input type="email" placeholder="您的邮箱地址" class="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-primary">
+                        <button type="submit" class="w-full bg-primary hover:bg-secondary text-white px-4 py-2 rounded-lg transition-colors">
+                            订阅
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-6 text-center text-gray-500 text-sm">
+                <p>&copy; 2023 乡村人才培训项目. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button id="back-to-top" class="fixed bottom-6 right-6 w-12 h-12 bg-primary rounded-full text-white craft-shadow flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:bg-secondary">
+        <i class="fa fa-chevron-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // 市场图表
+        const marketCtx = document.getElementById('marketChart').getContext('2d');
+        const marketChart = new Chart(marketCtx, {
+            type: 'line',
+            data: {
+                labels: ['2020', '2021', '2022', '2023', '2024', '2025(预测)'],
+                datasets: [{
+                    label: '市场规模（亿元）',
+                    data: [2500, 2875, 3306, 3802, 4372, 5028],
+                    backgroundColor: 'rgba(139, 90, 43, 0.1)',
+                    borderColor: 'rgba(139, 90, 43, 1)',
+                    borderWidth: 2,
+                    tension: 0.3,
+                    fill: true
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        min: 2000
+                    }
+                }
+            }
+        });
+
+        // 返回顶部按钮
+        const backToTopButton = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // 导航栏滚动效果
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                header.classList.add('py-2');
+                header.classList.remove('py-4');
+            } else {
+                header.classList.add('py-4');
+                header.classList.remove('py-2');
+            }
+        });
+
+        // 添加页面加载动画
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.add('loaded');
+        });
+    </script>
+</body>
+</html>

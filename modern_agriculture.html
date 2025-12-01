@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>现代农业技术应用 - 乡村人才培训项目</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/computer-modern@0.1.2/cmu-serif.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#22c55e',  // 绿色作为主色调，代表农业、自然和可持续发展
+                        secondary: '#166534',
+                        accent: '#84cc16',
+                        neutral: '#f1f5f9',
+                        base: '#ffffff',
+                        info: '#0ea5e9',
+                        success: '#22c55e',
+                        warning: '#f59e0b',
+                        error: '#ef4444',
+                    },
+                    fontFamily: {
+                        'serif': ['"Computer Modern"', '"Times New Roman"', 'serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+                        'hover': '0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025)',
+                    },
+                },
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+            .transition-transform {
+                transition-property: transform;
+                transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+                transition-duration: 300ms;
+            }
+            .hover-scale {
+                @apply hover:scale-105;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-serif text-gray-800">
+    <!-- 顶部导航栏 -->
+    <header class="sticky top-0 z-50 bg-white shadow-md transition-all duration-300">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2">
+                <div class="h-10 w-10 rounded-full bg-primary flex items-center justify-center">
+                    <i class="fa fa-tractor text-white text-xl"></i>
+                </div>
+                <span class="text-xl font-bold text-primary">乡村振兴人才培养</span>
+            </a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html" class="text-gray-600 hover:text-primary transition-colors">首页</a>
+                <a href="index.html#courses" class="text-gray-600 hover:text-primary transition-colors">课程列表</a>
+                <a href="index.html#about" class="text-gray-600 hover:text-primary transition-colors">关于我们</a>
+                <a href="index.html#contact" class="text-gray-600 hover:text-primary transition-colors">联系方式</a>
+            </nav>
+            <button class="md:hidden text-gray-600 hover:text-primary">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- 英雄区域 -->
+    <section class="relative h-[50vh] bg-gradient-to-r from-primary to-secondary text-white overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://picsum.photos/id/21/1600/900')] bg-cover bg-center opacity-30"></div>
+        <div class="container mx-auto px-4 h-full flex flex-col justify-center relative z-10">
+            <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold mb-4 text-shadow">现代农业技术应用</h1>
+            <p class="text-[clamp(1rem,2vw,1.25rem)] max-w-2xl mb-8">学习智慧农业技术、设施农业管理和绿色生产技术，提高农业生产效率和质量</p>
+            <div class="flex flex-wrap gap-4">
+                <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm">
+                    <i class="fa fa-clock-o mr-1"></i> 12周课程
+                </span>
+                <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm">
+                    <i class="fa fa-signal mr-1"></i> 中级水平
+                </span>
+                <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm">
+                    <i class="fa fa-users mr-1"></i> 400+学员已参加
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 课程概述 -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row gap-12 items-center">
+                <div class="w-full md:w-1/2">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-primary/20 rounded-lg transform rotate-3 scale-95"></div>
+                        <img src="https://picsum.photos/id/119/800/600" alt="智能农业技术展示" class="relative z-10 w-full h-auto rounded-lg shadow-soft hover-scale transition-transform duration-300">
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-6 text-secondary">课程概述</h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        本课程旨在培养具备现代农业技术应用能力的新型职业农民和农业技术人员，重点学习智慧农业、设施农业、绿色生产等领域的核心技术与管理方法。
+                        通过系统学习和实践操作，学员将掌握现代农业生产的关键技术，提高农业生产效率和经济效益，助力乡村振兴战略实施。
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                        <div class="flex items-start space-x-3">
+                            <div class="mt-1 text-primary text-xl"><i class="fa fa-check-circle"></i></div>
+                            <div>
+                                <h3 class="font-semibold text-gray-800">智慧农业技术</h3>
+                                <p class="text-sm text-gray-500">物联网、大数据在农业中的应用</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="mt-1 text-primary text-xl"><i class="fa fa-check-circle"></i></div>
+                            <div>
+                                <h3 class="font-semibold text-gray-800">设施农业管理</h3>
+                                <p class="text-sm text-gray-500">温室大棚设计与环境调控</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="mt-1 text-primary text-xl"><i class="fa fa-check-circle"></i></div>
+                            <div>
+                                <h3 class="font-semibold text-gray-800">绿色生产技术</h3>
+                                <p class="text-sm text-gray-500">有机种植、病虫害绿色防控</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="mt-1 text-primary text-xl"><i class="fa fa-check-circle"></i></div>
+                            <div>
+                                <h3 class="font-semibold text-gray-800">农产品质量安全</h3>
+                                <p class="text-sm text-gray-500">质量检测与标准化生产</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-4">
+                        <button class="bg-primary hover:bg-secondary text-white px-6 py-3 rounded-lg shadow-soft hover:shadow-hover transition-all duration-300 flex items-center">
+                            <i class="fa fa-calendar mr-2"></i> 查看课程安排
+                        </button>
+                        <button class="bg-white border border-primary text-primary hover:bg-primary/5 px-6 py-3 rounded-lg shadow-soft hover:shadow-hover transition-all duration-300 flex items-center">
+                            <i class="fa fa-user-plus mr-2"></i> 立即报名
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 课程结构 -->
+    <section class="py-16 bg-neutral">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4 text-secondary">课程结构</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    课程分为四个模块，每个模块聚焦不同的农业技术领域，循序渐进地帮助学员掌握现代农业生产的关键技能。
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- 模块1 -->
+                <div class="bg-white rounded-xl shadow-soft p-6 hover:shadow-hover transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fa fa-wifi text-primary text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-secondary">智慧农业基础</h3>
+                    <p class="text-gray-600 mb-4">学习物联网、大数据、人工智能等技术在农业生产中的应用原理与案例。</p>
+                    <div class="border-t border-gray-100 pt-4">
+                        <span class="text-sm text-gray-500">
+                            <i class="fa fa-clock-o mr-1"></i> 3周课程
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- 模块2 -->
+                <div class="bg-white rounded-xl shadow-soft p-6 hover:shadow-hover transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fa fa-home text-primary text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-secondary">设施农业技术</h3>
+                    <p class="text-gray-600 mb-4">掌握温室大棚设计、环境调控、智能化管理等设施农业关键技术。</p>
+                    <div class="border-t border-gray-100 pt-4">
+                        <span class="text-sm text-gray-500">
+                            <i class="fa fa-clock-o mr-1"></i> 4周课程
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- 模块3 -->
+                <div class="bg-white rounded-xl shadow-soft p-6 hover:shadow-hover transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fa fa-leaf text-primary text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-secondary">绿色生产技术</h3>
+                    <p class="text-gray-600 mb-4">学习有机种植、无土栽培、病虫害绿色防控等可持续农业生产技术。</p>
+                    <div class="border-t border-gray-100 pt-4">
+                        <span class="text-sm text-gray-500">
+                            <i class="fa fa-clock-o mr-1"></i> 3周课程
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- 模块4 -->
+                <div class="bg-white rounded-xl shadow-soft p-6 hover:shadow-hover transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fa fa-certificate text-primary text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-secondary">质量安全与认证</h3>
+                    <p class="text-gray-600 mb-4">掌握农产品质量检测、安全标准与认证、品牌打造与市场营销技巧。</p>
+                    <div class="border-t border-gray-100 pt-4">
+                        <span class="text-sm text-gray-500">
+                            <i class="fa fa-clock-o mr-1"></i> 2周课程
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心技能 -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4 text-secondary">核心技能</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    通过本课程学习，学员将掌握以下核心技能，提升在现代农业领域的竞争力。
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <div class="relative h-64 w-full mb-8">
+                        <canvas id="skillsChart"></canvas>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="space-y-6">
+                        <!-- 技能1 -->
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <h3 class="font-semibold text-gray-800">智能灌溉系统操作</h3>
+                                <span class="text-sm font-medium text-primary">95%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="bg-primary h-2.5 rounded-full" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- 技能2 -->
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <h3 class="font-semibold text-gray-800">温室环境调控</h3>
+                                <span class="text-sm font-medium text-primary">90%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="bg-primary h-2.5 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- 技能3 -->
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <h3 class="font-semibold text-gray-800">病虫害绿色防控</h3>
+                                <span class="text-sm font-medium text-primary">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="bg-primary h-2.5 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- 技能4 -->
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <h3 class="font-semibold text-gray-800">农业数据分析</h3>
+                                <span class="text-sm font-medium text-primary">80%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="bg-primary h-2.5 rounded-full" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- 技能5 -->
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <h3 class="font-semibold text-gray-800">农产品质量检测</h3>
+                                <span class="text-sm font-medium text-primary">75%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="bg-primary h-2.5 rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 师资力量 -->
+    <section class="py-16 bg-neutral">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4 text-secondary">师资力量</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    我们的教师团队由农业院校教授、科研院所专家、农业技术推广人员和行业企业技术骨干组成，拥有丰富的教学和实践经验。
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- 教师1 -->
+                <div class="bg-white rounded-xl shadow-soft overflow-hidden hover:shadow-hover transition-all duration-300">
+                    <img src="https://picsum.photos/id/1005/400/400" alt="李教授" class="w-full h-64 object-cover object-center">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-1 text-secondary">李明教授</h3>
+                        <p class="text-primary mb-3">智慧农业专家</p>
+                        <p class="text-gray-600 mb-4">
+                            农业大学教授，长期从事智慧农业技术研究与推广工作，主持多项国家级农业信息化项目。
+                        </p>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                                <i class="fa fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 教师2 -->
+                <div class="bg-white rounded-xl shadow-soft overflow-hidden hover:shadow-hover transition-all duration-300">
+                    <img src="https://picsum.photos/id/1000/400/400" alt="王工程师" class="w-full h-64 object-cover object-center">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-1 text-secondary">王建国工程师</h3>
+                        <p class="text-primary mb-3">设施农业专家</p>
+                        <p class="text-gray-600 mb-4">
+                            高级农业工程师，拥有20年设施农业设计与管理经验，参与设计建设多个现代化农业示范基地。
+                        </p>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                                <i class="fa fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 教师3 -->
+                <div class="bg-white rounded-xl shadow-soft overflow-hidden hover:shadow-hover transition-all duration-300">
+                    <img src="https://picsum.photos/id/1011/400/400" alt="张研究员" class="w-full h-64 object-cover object-center">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-1 text-secondary">张海燕研究员</h3>
+                        <p class="text-primary mb-3">绿色农业专家</p>
+                        <p class="text-gray-600 mb-4">
+                            农业科学院研究员，专注于有机农业和绿色生产技术研究，发表多篇学术论文并拥有多项专利。
+                        </p>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                                <i class="fa fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 学员成果 -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4 text-secondary">学员成果</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    自课程开设以来，已有众多学员通过学习，在现代农业领域取得了显著的成果。
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 成果1 -->
+                <div class="bg-neutral rounded-xl p-6 hover-scale transition-transform duration-300">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white">
+                            <i class="fa fa-line-chart"></i>
+                        </div>
+                        <div class="text-3xl font-bold text-primary">+45%</div>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-secondary">生产效率提升</h3>
+                    <p class="text-gray-600">
+                        学员通过应用智能灌溉和精准施肥技术，平均提高作物产量30-50%，水资源使用效率提升45%。
+                    </p>
+                </div>
+                
+                <!-- 成果2 -->
+                <div class="bg-neutral rounded-xl p-6 hover-scale transition-transform duration-300">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white">
+                            <i class="fa fa-trophy"></i>
+                        </div>
+                        <div class="text-3xl font-bold text-primary">120+</div>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-secondary">成功创业案例</h3>
+                    <p class="text-gray-600">
+                        已有120多名学员在课程学习后成功创建或扩大了自己的农业企业，带动周边农户共同致富。
+                    </p>
+                </div>
+                
+                <!-- 成果3 -->
+                <div class="bg-neutral rounded-xl p-6 hover-scale transition-transform duration-300">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white">
+                            <i class="fa fa-certificate"></i>
+                        </div>
+                        <div class="text-3xl font-bold text-primary">98%</div>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-secondary">就业率</h3>
+                    <p class="text-gray-600">
+                        课程学员毕业后，98%的人能够在农业企业、合作社或相关机构找到工作，薪资水平显著提升。
+                    </p>
+                </div>
+            </div>
+            
+            <div class="mt-16">
+                <div class="bg-neutral rounded-xl p-8">
+                    <div class="text-center mb-10">
+                        <h3 class="text-2xl font-bold text-secondary mb-2">学员满意度</h3>
+                        <p class="text-gray-600">过去两年课程满意度数据</p>
+                    </div>
+                    <div class="h-64">
+                        <canvas id="satisfactionChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 学员评价 -->
+    <section class="py-16 bg-neutral">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4 text-secondary">学员评价</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    听听我们的学员怎么说，了解他们在课程中的收获和成长。
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 评价1 -->
+                <div class="bg-white rounded-xl shadow-soft p-6 relative">
+                    <div class="text-primary text-2xl mb-4">
+                        <i class="fa fa-quote-left"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6">
+                        参加这个课程让我对现代农业有了全新的认识。通过学习智能灌溉技术，我家的草莓产量提高了40%，同时还节约了大量的水资源。非常感谢老师的指导！
+                    </p>
+                    <div class="flex items-center space-x-4">
+                        <img src="https://picsum.photos/id/1027/100/100" alt="学员照片" class="w-12 h-12 rounded-full object-cover">
+                        <div>
+                            <h4 class="font-semibold text-secondary">刘芳</h4>
+                            <p class="text-sm text-gray-500">草莓种植户</p>
+                        </div>
+                    </div>
+                    <div class="absolute top-4 right-4 text-yellow-400">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- 评价2 -->
+                <div class="bg-white rounded-xl shadow-soft p-6 relative">
+                    <div class="text-primary text-2xl mb-4">
+                        <i class="fa fa-quote-left"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6">
+                        王工程师的设施农业课程非常实用，从温室设计到环境调控，每个知识点都与实际生产紧密结合。现在我管理的大棚蔬菜产量稳定，品质优良，效益大幅提升。
+                    </p>
+                    <div class="flex items-center space-x-4">
+                        <img src="https://picsum.photos/id/1012/100/100" alt="学员照片" class="w-12 h-12 rounded-full object-cover">
+                        <div>
+                            <h4 class="font-semibold text-secondary">张强</h4>
+                            <p class="text-sm text-gray-500">温室大棚管理者</p>
+                        </div>
+                    </div>
+                    <div class="absolute top-4 right-4 text-yellow-400">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-o"></i>
+                    </div>
+                </div>
+                
+                <!-- 评价3 -->
+                <div class="bg-white rounded-xl shadow-soft p-6 relative">
+                    <div class="text-primary text-2xl mb-4">
+                        <i class="fa fa-quote-left"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6">
+                        课程不仅教授技术知识，还包含了农产品营销和品牌建设的内容。通过学习，我成功将自己的有机蔬菜注册了商标，价格提高了一倍多，供不应求。
+                    </p>
+                    <div class="flex items-center space-x-4">
+                        <img src="https://picsum.photos/id/1003/100/100" alt="学员照片" class="w-12 h-12 rounded-full object-cover">
+                        <div>
+                            <h4 class="font-semibold text-secondary">赵伟</h4>
+                            <p class="text-sm text-gray-500">有机农场主</p>
+                        </div>
+                    </div>
+                    <div class="absolute top-4 right-4 text-yellow-400">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 常见问题 -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4 text-secondary">常见问题</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    我们整理了学员常见的问题，希望能帮助您更好地了解课程内容和学习安排。
+                </p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="space-y-4" id="faq-container">
+                    <!-- FAQ 1 -->
+                    <div class="border border-gray-200 rounded-lg overflow-hidden">
+                        <button class="faq-button w-full flex justify-between items-center p-4 text-left bg-neutral hover:bg-gray-100 transition-colors">
+                            <span class="font-semibold text-secondary">课程适合哪些人群参加？</span>
+                            <i class="fa fa-chevron-down text-primary transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-content hidden px-4 pb-4 text-gray-600">
+                            本课程适合：
+                            <ul class="list-disc pl-5 mt-2 space-y-1">
+                                <li>想提升农业生产技术的农户和农场主</li>
+                                <li>农业企业技术和管理人员</li>
+                                <li>农村基层技术推广人员</li>
+                                <li>对现代农业技术感兴趣的返乡创业人员</li>
+                                <li>农业相关专业的学生和毕业生</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ 2 -->
+                    <div class="border border-gray-200 rounded-lg overflow-hidden">
+                        <button class="faq-button w-full flex justify-between items-center p-4 text-left bg-neutral hover:bg-gray-100 transition-colors">
+                            <span class="font-semibold text-secondary">学习本课程需要什么基础？</span>
+                            <i class="fa fa-chevron-down text-primary transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-content hidden px-4 pb-4 text-gray-600">
+                            课程设计考虑了不同基础的学员需求：
+                            <ul class="list-disc pl-5 mt-2 space-y-1">
+                                <li>农业基础知识：课程会涵盖必要的农业基础理论</li>
+                                <li>计算机基础：需要基本的计算机操作能力，如使用智能手机和简单的电脑应用</li>
+                                <li>不需要编程经验：课程注重实际操作，不会涉及复杂的编程内容</li>
+                                <li>我们提供预习材料，帮助学员提前了解相关基础知识</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ 3 -->
+                    <div class="border border-gray-200 rounded-lg overflow-hidden">
+                        <button class="faq-button w-full flex justify-between items-center p-4 text-left bg-neutral hover:bg-gray-100 transition-colors">
+                            <span class="font-semibold text-secondary">课程是否包含实践环节？</span>
+                            <i class="fa fa-chevron-down text-primary transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-content hidden px-4 pb-4 text-gray-600">
+                            是的，实践是本课程的重要组成部分：
+                            <ul class="list-disc pl-5 mt-2 space-y-1">
+                                <li>课程包含30%的理论教学和70%的实践操作</li>
+                                <li>学员将在现代化农业示范基地进行实地操作训练</li>
+                                <li>我们提供智能农业设备和设施农业环境供学员练习</li>
+                                <li>课程结束后还提供技术支持和跟踪服务</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ 4 -->
+                    <div class="border border-gray-200 rounded-lg overflow-hidden">
+                        <button class="faq-button w-full flex justify-between items-center p-4 text-left bg-neutral hover:bg-gray-100 transition-colors">
+                            <span class="font-semibold text-secondary">完成课程后有什么证书？</span>
+                            <i class="fa fa-chevron-down text-primary transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-content hidden px-4 pb-4 text-gray-600">
+                            学员完成课程并通过考核后，将获得：
+                            <ul class="list-disc pl-5 mt-2 space-y-1">
+                                <li>《现代农业技术应用培训证书》</li>
+                                <li>农业职业技能鉴定证书（如符合条件）</li>
+                                <li>优秀学员还将获得推荐就业或创业扶持的机会</li>
+                                <li>证书可在农业农村部门官方网站查询验证</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 报名信息 -->
+    <section class="py-16 bg-gradient-to-r from-secondary to-primary text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-6">准备好提升您的农业技术了吗？</h2>
+                <p class="text-white/90 mb-8 max-w-2xl mx-auto">
+                    加入我们的现代农业技术应用课程，学习最前沿的农业技术，提高生产效率，增加经济效益，为乡村振兴贡献力量。
+                </p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <button class="bg-white text-primary hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold shadow-soft hover:shadow-hover transition-all duration-300 flex items-center">
+                        <i class="fa fa-calendar-check-o mr-2"></i> 立即报名
+                    </button>
+                    <button class="bg-transparent border-2 border-white text-white hover:bg-white/10 px-8 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center">
+                        <i class="fa fa-info-circle mr-2"></i> 了解更多
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-900 text-white pt-12 pb-6">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="h-8 w-8 rounded-full bg-primary flex items-center justify-center">
+                            <i class="fa fa-tractor text-white"></i>
+                        </div>
+                        <span class="text-lg font-bold">乡村人才培训项目</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        致力于培养新时代乡村振兴所需的技术人才和管理人才，推动农业现代化发展。
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                            <i class="fa fa-weixin"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                            <i class="fa fa-youtube-play"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">快速链接</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-primary transition-colors">首页</a></li>
+                        <li><a href="index.html#courses" class="text-gray-400 hover:text-primary transition-colors">课程列表</a></li>
+                        <li><a href="index.html#about" class="text-gray-400 hover:text-primary transition-colors">关于我们</a></li>
+                        <li><a href="index.html#contact" class="text-gray-400 hover:text-primary transition-colors">联系方式</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">常见问题</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">联系方式</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start space-x-3">
+                            <i class="fa fa-map-marker mt-1 text-primary"></i>
+                            <span class="text-gray-400">中国农业大学继续教育学院，北京市海淀区清华东路17号</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fa fa-phone text-primary"></i>
+                            <span class="text-gray-400">010-12345678</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fa fa-envelope text-primary"></i>
+                            <span class="text-gray-400">contact@ruraltalent.edu.cn</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">订阅我们</h3>
+                    <p class="text-gray-400 mb-4">
+                        订阅我们的通讯，获取最新的课程信息和农业技术资讯。
+                    </p>
+                    <form class="space-y-3">
+                        <input type="email" placeholder="您的邮箱地址" class="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-primary">
+                        <button type="submit" class="w-full bg-primary hover:bg-secondary text-white px-4 py-2 rounded-lg transition-colors">
+                            订阅
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-6 text-center text-gray-500 text-sm">
+                <p>&copy; 2023 乡村人才培训项目. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button id="back-to-top" class="fixed bottom-6 right-6 w-12 h-12 bg-primary rounded-full text-white shadow-soft flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:bg-secondary">
+        <i class="fa fa-chevron-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // 技能图表
+        const skillsCtx = document.getElementById('skillsChart').getContext('2d');
+        const skillsChart = new Chart(skillsCtx, {
+            type: 'radar',
+            data: {
+                labels: ['智能灌溉', '温室调控', '病虫害防控', '数据分析', '质量检测', '市场营销'],
+                datasets: [{
+                    label: '学员技能掌握程度',
+                    data: [95, 90, 85, 80, 75, 70],
+                    backgroundColor: 'rgba(34, 197, 94, 0.2)',
+                    borderColor: 'rgba(34, 197, 94, 1)',
+                    borderWidth: 2,
+                    pointBackgroundColor: 'rgba(34, 197, 94, 1)',
+                }]
+            },
+            options: {
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            stepSize: 20
+                        }
+                    }
+                }
+            }
+        });
+
+        // 满意度图表
+        const satisfactionCtx = document.getElementById('satisfactionChart').getContext('2d');
+        const satisfactionChart = new Chart(satisfactionCtx, {
+            type: 'line',
+            data: {
+                labels: ['2022 Q1', '2022 Q2', '2022 Q3', '2022 Q4', '2023 Q1', '2023 Q2'],
+                datasets: [{
+                    label: '学员满意度 (%)',
+                    data: [92, 93, 94, 95, 96, 97],
+                    backgroundColor: 'rgba(34, 197, 94, 0.1)',
+                    borderColor: 'rgba(34, 197, 94, 1)',
+                    borderWidth: 2,
+                    tension: 0.3,
+                    fill: true
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        min: 90,
+                        max: 100
+                    }
+                }
+            }
+        });
+
+        // FAQ 折叠功能
+        const faqButtons = document.querySelectorAll('.faq-button');
+        faqButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                const icon = button.querySelector('i');
+                
+                content.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+
+        // 返回顶部按钮
+        const backToTopButton = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // 导航栏滚动效果
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                header.classList.add('py-2');
+                header.classList.remove('py-4');
+            } else {
+                header.classList.add('py-4');
+                header.classList.remove('py-2');
+            }
+        });
+
+        // 添加页面加载动画
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.add('loaded');
+        });
+    </script>
+</body>
+</html>

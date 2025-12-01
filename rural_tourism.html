@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>乡村旅游服务与管理 - 乡村人才培训项目</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/computer-modern@0.1.2/cmu-serif.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#10b981',  // 青绿色作为主色调，代表自然和乡村
+                        secondary: '#059669',
+                        accent: '#14b8a6',
+                        neutral: '#f1f5f9',
+                        base: '#ffffff',
+                        info: '#0ea5e9',
+                        success: '#22c55e',
+                        warning: '#f59e0b',
+                        error: '#ef4444',
+                    },
+                    fontFamily: {
+                        'serif': ['"Computer Modern"', '"Times New Roman"', 'serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+                        'hover': '0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025)',
+                    },
+                },
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+            .transition-transform {
+                transition-property: transform;
+                transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+                transition-duration: 300ms;
+            }
+            .hover-scale {
+                @apply hover:scale-105;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-serif text-gray-800">
+    <!-- 顶部导航栏 -->
+    <header class="sticky top-0 z-50 bg-white shadow-md transition-all duration-300">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2">
+                <div class="h-10 w-10 rounded-full bg-primary flex items-center justify-center">
+                    <i class="fa fa-tree text-white text-xl"></i>
+                </div>
+                <span class="text-xl font-bold text-primary">乡村振兴人才培养</span>
+            </a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html" class="text-gray-600 hover:text-primary transition-colors">首页</a>
+                <a href="index.html#courses" class="text-gray-600 hover:text-primary transition-colors">课程列表</a>
+                <a href="index.html#about" class="text-gray-600 hover:text-primary transition-colors">关于我们</a>
+                <a href="index.html#contact" class="text-gray-600 hover:text-primary transition-colors">联系方式</a>
+            </nav>
+            <button id="menu-toggle" class="md:hidden text-gray-600 hover:text-primary">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+        <!-- 移动端菜单 -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t">
+            <div class="container mx-auto px-4 py-3 space-y-3">
+                <a href="index.html" class="block py-2 text-gray-600 hover:text-primary transition-colors">首页</a>
+                <a href="index.html#courses" class="block py-2 text-gray-600 hover:text-primary transition-colors">课程列表</a>
+                <a href="index.html#about" class="block py-2 text-gray-600 hover:text-primary transition-colors">关于我们</a>
+                <a href="index.html#contact" class="block py-2 text-gray-600 hover:text-primary transition-colors">联系方式</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 英雄区域 -->
+    <section class="relative h-[50vh] bg-gradient-to-r from-primary to-secondary text-white overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://picsum.photos/id/1036/1600/900')] bg-cover bg-center opacity-30"></div>
+        <div class="container mx-auto px-4 h-full flex flex-col justify-center relative z-10">
+            <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold mb-4 text-shadow">乡村旅游服务与管理</h1>
+            <p class="text-[clamp(1rem,2vw,1.25rem)] max-w-2xl mb-8">学习乡村旅游规划、特色民宿经营、旅游营销和服务质量管理，打造富有特色的乡村旅游产品</p>
+            <div class="flex flex-wrap gap-4">
+                <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm">
+                    <i class="fa fa-clock-o mr-1"></i> 10周课程
+                </span>
+                <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm">
+                    <i class="fa fa-signal mr-1"></i> 初级到中级
+                </span>
+                <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm">
+                    <i class="fa fa-users mr-1"></i> 350+学员已参加
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 课程概述 -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row gap-12 items-center">
+                <div class="md:w-1/2">
+                    <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-6 text-gray-800">课程概述</h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        本课程旨在培养乡村旅游行业的专业人才，涵盖乡村旅游规划、民宿经营、特色活动策划、旅游营销和服务质量管理等核心内容。课程结合理论与实践，通过案例分析、实地调研和模拟运营，帮助学员掌握乡村旅游开发与管理的关键技能。
+                    </p>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        随着乡村振兴战略的深入实施，乡村旅游已成为农村经济发展的重要增长点。本课程将帮助学员抓住这一机遇，将乡村资源转化为旅游产品，促进当地经济发展和农民增收。
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div class="bg-green-50 p-4 rounded-lg">
+                            <div class="flex items-center mb-2">
+                                <i class="fa fa-map-marker text-primary mr-2"></i>
+                                <h3 class="font-semibold text-gray-800">全国招生</h3>
+                            </div>
+                            <p class="text-sm text-gray-600">面向全国农村地区招生，提供线上学习</p>
+                        </div>
+                        <div class="bg-green-50 p-4 rounded-lg">
+                            <div class="flex items-center mb-2">
+                                <i class="fa fa-certificate text-primary mr-2"></i>
+                                <h3 class="font-semibold text-gray-800">颁发证书</h3>
+                            </div>
+                            <p class="text-sm text-gray-600">完成课程后颁发结业证书，可用于求职</p>
+                        </div>
+                        <div class="bg-green-50 p-4 rounded-lg">
+                            <div class="flex items-center mb-2">
+                                <i class="fa fa-handshake-o text-primary mr-2"></i>
+                                <h3 class="font-semibold text-gray-800">就业推荐</h3>
+                            </div>
+                            <p class="text-sm text-gray-600">优秀学员可获得就业推荐和创业指导</p>
+                        </div>
+                        <div class="bg-green-50 p-4 rounded-lg">
+                            <div class="flex items-center mb-2">
+                                <i class="fa fa-comments text-primary mr-2"></i>
+                                <h3 class="font-semibold text-gray-800">专家指导</h3>
+                            </div>
+                            <p class="text-sm text-gray-600">行业专家一对一辅导，解决实际问题</p>
+                        </div>
+                    </div>
+                    <a href="contact_us.html" class="inline-block bg-primary hover:bg-secondary text-white font-medium py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105">
+                        立即咨询 <i class="fa fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="relative">
+                        <div class="absolute -top-4 -left-4 w-24 h-24 bg-primary/10 rounded-lg -z-10"></div>
+                        <div class="absolute -bottom-4 -right-4 w-32 h-32 bg-primary/10 rounded-lg -z-10"></div>
+                        <img src="https://picsum.photos/id/1039/800/600" alt="乡村旅游培训" class="w-full h-auto rounded-lg shadow-lg hover-scale transition-transform duration-500">
+                        <div class="absolute -bottom-6 left-6 bg-white rounded-lg shadow-md p-4">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star-half-o text-warning"></i>
+                                <span class="text-gray-600 font-medium ml-1">4.8/5</span>
+                            </div>
+                            <p class="text-sm text-gray-600">基于350+学员评价</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 课程内容 -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4 text-gray-800">课程内容</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">本课程分为四大模块，涵盖乡村旅游开发与管理的各个方面，帮助学员全面掌握行业知识和技能</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- 模块一 -->
+                <div class="bg-white rounded-xl shadow-soft overflow-hidden hover:shadow-hover transition-shadow duration-300">
+                    <div class="bg-primary/10 p-4 text-center">
+                        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary text-white mb-4">
+                            <i class="fa fa-book text-2xl"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-gray-800 mb-2">乡村旅游基础理论</h3>
+                        <div class="flex items-center justify-center">
+                            <span class="bg-primary/20 text-primary text-xs font-medium px-2.5 py-0.5 rounded">模块一</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-primary mt-1 mr-2"></i>
+                                <span class="text-gray-600 text-sm">乡村旅游发展历程与现状</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-primary mt-1 mr-2"></i>
+                                <span class="text-gray-600 text-sm">乡村旅游资源分类与评价</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-primary mt-1 mr-2"></i>
+                                <span class="text-gray-600 text-sm">乡村旅游市场分析与定位</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-primary mt-1 mr-2"></i>
+                                <span class="text-gray-600 text-sm">乡村旅游政策法规解读</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-primary mt-1 mr-2"></i>
+                                <span class="text-gray-600 text-sm">乡村旅游与乡村振兴的关系</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- 模块二 -->
+                <div class="bg-white rounded-xl shadow-soft overflow-hidden hover:shadow-hover transition-shadow duration-300">
+                    <div class="bg-primary/10 p-4 text-center">
+                        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary text-white mb-4">
+                            <i class="fa fa-map text-2xl"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-gray-800 mb-2">乡村旅游规划与开发</h3>
+                        <div class="flex items-center justify-center">
+                            <span class="bg-primary/20 text-primary text-xs font-medium px-2.5 py-0.5 rounded">模块二</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-primary mt-1 mr-2"></i>
+                                <span class="text-gray-600 text-sm">乡村旅游总体规划编制</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-primary mt-1 mr-2"></i>
+                                <span class="text-gray-600 text-sm">乡村旅游产品设计与创新</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-primary mt-1 mr-2"></i>
+                                <span class="text-gray-600 text-sm">特色民宿规划与设计</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-primary mt-1 mr-2"></i>
+                                <span class="text-gray-600 text-sm">乡村旅游基础设施建设</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-primary mt-1 mr-2"></i>
+                                <span class="text-gray-600 text-sm">乡村旅游环境承载力评估</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- 模块三 -->
+                <div class="bg-white rounded-xl shadow-soft overflow-hidden hover:shadow-hover transition-shadow duration-300">
+                    <div class="bg-primary/10 p-4 text-center">
+                        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary text-white mb-4">
+                            <i class="fa fa-cogs text-2xl"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-gray-800 mb-2">乡村旅游运营管理</h3>
+                        <div class="flex items-center justify-center">
+                            <span class="bg-primary/20 text-primary text-xs font-medium px-2.5 py-0.5 rounded">模块三</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-primary mt-1 mr-2"></i>
+                                <span class="text-gray-600 text-sm">乡村旅游企业运营管理</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-primary mt-1 mr-2"></i>
+                                <span class="text-gray-600 text-sm">民宿经营与服务标准</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-primary mt-1 mr-2"></i>
+                                <span class="text-gray-600 text-sm">乡村旅游安全与应急管理</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-primary mt-1 mr-2"></i>
+                                <span class="text-gray-600 text-sm">乡村旅游财务管理</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-primary mt-1 mr-2"></i>
+                                <span class="text-gray-600 text-sm">乡村旅游人力资源管理</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- 模块四 -->
+                <div class="bg-white rounded-xl shadow-soft overflow-hidden hover:shadow-hover transition-shadow duration-300">
+                    <div class="bg-primary/10 p-4 text-center">
+                        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary text-white mb-4">
+                            <i class="fa fa-bullhorn text-2xl"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-gray-800 mb-2">乡村旅游营销推广</h3>
+                        <div class="flex items-center justify-center">
+                            <span class="bg-primary/20 text-primary text-xs font-medium px-2.5 py-0.5 rounded">模块四</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-primary mt-1 mr-2"></i>
+                                <span class="text-gray-600 text-sm">乡村旅游品牌建设</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-primary mt-1 mr-2"></i>
+                                <span class="text-gray-600 text-sm">乡村旅游市场营销策略</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-primary mt-1 mr-2"></i>
+                                <span class="text-gray-600 text-sm">乡村旅游新媒体营销</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-primary mt-1 mr-2"></i>
+                                <span class="text-gray-600 text-sm">乡村旅游电子商务</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-primary mt-1 mr-2"></i>
+                                <span class="text-gray-600 text-sm">乡村旅游节事活动策划</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 学习成果 -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4 text-gray-800">学习成果</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">完成本课程后，您将具备以下能力和知识</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-8 rounded-xl shadow-soft hover:shadow-hover transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-lightbulb-o text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">乡村旅游规划能力</h3>
+                    <p class="text-gray-600">能够独立进行乡村旅游资源调查与评价，编制乡村旅游规划方案，设计特色旅游产品。</p>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-xl shadow-soft hover:shadow-hover transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-handshake-o text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">旅游服务管理能力</h3>
+                    <p class="text-gray-600">掌握乡村旅游服务标准和流程，能够提供高质量的旅游服务，提升游客满意度。</p>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-xl shadow-soft hover:shadow-hover transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-line-chart text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">市场营销能力</h3>
+                    <p class="text-gray-600">能够制定乡村旅游营销策略，利用新媒体进行宣传推广，提高乡村旅游产品的知名度和美誉度。</p>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-xl shadow-soft hover:shadow-hover transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-money text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">创业经营能力</h3>
+                    <p class="text-gray-600">具备乡村旅游创业的基本知识和技能，能够规划和运营乡村旅游项目，实现可持续发展。</p>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-xl shadow-soft hover:shadow-hover transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-users text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">合作与沟通能力</h3>
+                    <p class="text-gray-600">能够与当地政府、村民和企业进行有效沟通与合作，协调各方利益，共同推动乡村旅游发展。</p>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-xl shadow-soft hover:shadow-hover transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-file-text-o text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">政策应用能力</h3>
+                    <p class="text-gray-600">熟悉乡村旅游相关政策法规，能够利用政策支持，申请项目资金，促进乡村旅游发展。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 行业数据 -->
+    <section class="py-16 bg-primary/5">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4 text-gray-800">乡村旅游行业数据</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">了解乡村旅游行业的发展趋势和市场前景，把握投资和创业机会</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="bg-white p-6 rounded-xl shadow-soft">
+                    <h3 class="text-xl font-bold mb-6 text-gray-800">全国乡村旅游接待人次增长趋势</h3>
+                    <div class="h-80">
+                        <canvas id="tourismChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-soft">
+                    <h3 class="text-xl font-bold mb-6 text-gray-800">乡村旅游收入分布</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="h-64">
+                            <canvas id="revenueChart"></canvas>
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <div class="mb-6">
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-sm font-medium text-gray-600">民宿住宿</span>
+                                    <span class="text-sm font-medium text-primary">38%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-primary h-2 rounded-full" style="width: 38%"></div>
+                                </div>
+                            </div>
+                            <div class="mb-6">
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-sm font-medium text-gray-600">餐饮服务</span>
+                                    <span class="text-sm font-medium text-primary">32%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-primary h-2 rounded-full" style="width: 32%"></div>
+                                </div>
+                            </div>
+                            <div class="mb-6">
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-sm font-medium text-gray-600">旅游体验</span>
+                                    <span class="text-sm font-medium text-primary">20%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-primary h-2 rounded-full" style="width: 20%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-sm font-medium text-gray-600">特色产品</span>
+                                    <span class="text-sm font-medium text-primary">10%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-primary h-2 rounded-full" style="width: 10%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 学员评价 -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4 text-gray-800">学员评价</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">听听我们的学员怎么说</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 评价1 -->
+                <div class="bg-gray-50 p-8 rounded-xl shadow-soft hover:shadow-hover transition-all duration-300">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fa fa-star text-warning"></i>
+                        <i class="fa fa-star text-warning"></i>
+                        <i class="fa fa-star text-warning"></i>
+                        <i class="fa fa-star text-warning"></i>
+                        <i class="fa fa-star text-warning"></i>
+                    </div>
+                    <p class="text-gray-600 italic mb-6">"通过本课程的学习，我对乡村旅游有了全新的认识。课程内容丰富实用，老师讲解深入浅出，案例分析很有启发性。现在我已经成功运营了自己的民宿，月收入稳定增长。感谢这个课程！"</p>
+                    <div class="flex items-center">
+                        <img src="https://picsum.photos/id/64/200/200" alt="学员头像" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-semibold text-gray-800">张小明</h4>
+                            <p class="text-sm text-gray-600">浙江·莫干山民宿主</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 评价2 -->
+                <div class="bg-gray-50 p-8 rounded-xl shadow-soft hover:shadow-hover transition-all duration-300">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fa fa-star text-warning"></i>
+                        <i class="fa fa-star text-warning"></i>
+                        <i class="fa fa-star text-warning"></i>
+                        <i class="fa fa-star text-warning"></i>
+                        <i class="fa fa-star-half-o text-warning"></i>
+                    </div>
+                    <p class="text-gray-600 italic mb-6">"作为一名乡村干部，我参加这个课程是为了更好地推动我们村的旅游发展。课程中的规划方法和营销策略非常实用，我已经将所学应用到实际工作中，我们村的游客量比去年增长了50%。"</p>
+                    <div class="flex items-center">
+                        <img src="https://picsum.photos/id/65/200/200" alt="学员头像" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-semibold text-gray-800">李强</h4>
+                            <p class="text-sm text-gray-600">云南·大理某村党支部书记</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 评价3 -->
+                <div class="bg-gray-50 p-8 rounded-xl shadow-soft hover:shadow-hover transition-all duration-300">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fa fa-star text-warning"></i>
+                        <i class="fa fa-star text-warning"></i>
+                        <i class="fa fa-star text-warning"></i>
+                        <i class="fa fa-star text-warning"></i>
+                        <i class="fa fa-star text-warning"></i>
+                    </div>
+                    <p class="text-gray-600 italic mb-6">"我是一名返乡创业青年，对乡村旅游很感兴趣但缺乏专业知识。这个课程给了我系统的指导，从规划到运营，从营销到服务，都讲得很详细。现在我的农家乐已经成为当地的网红打卡地，感谢老师们的指导！"</p>
+                    <div class="flex items-center">
+                        <img src="https://picsum.photos/id/66/200/200" alt="学员头像" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-semibold text-gray-800">王芳</h4>
+                            <p class="text-sm text-gray-600">四川·成都农家乐老板</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 常见问题 -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4 text-gray-800">常见问题</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">关于课程的一些常见问题解答</p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto space-y-4">
+                <div class="bg-white rounded-lg shadow-soft overflow-hidden">
+                    <button class="faq-toggle w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none">
+                        <span class="font-medium text-gray-800">课程的学习方式是什么？</span>
+                        <i class="fa fa-chevron-down text-gray-500 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content px-6 py-0 max-h-0 overflow-hidden transition-all duration-300">
+                        <p class="text-gray-600 py-4">本课程采用线上线下相结合的学习方式。线上部分包括视频课程、直播答疑和在线讨论；线下部分包括实地考察、案例分析和实践操作。学员可以根据自己的时间和需求灵活安排学习进度。</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-soft overflow-hidden">
+                    <button class="faq-toggle w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none">
+                        <span class="font-medium text-gray-800">参加课程需要什么条件？</span>
+                        <i class="fa fa-chevron-down text-gray-500 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content px-6 py-0 max-h-0 overflow-hidden transition-all duration-300">
+                        <p class="text-gray-600 py-4">本课程面向全国招生，主要面向以下人群：1. 乡村旅游从业者或创业者；2. 乡村干部和农村集体经济组织负责人；3. 返乡创业青年；4. 对乡村旅游感兴趣的各界人士。课程对学历没有严格要求，只要具备基本的学习能力即可参加。</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-soft overflow-hidden">
+                    <button class="faq-toggle w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none">
+                        <span class="font-medium text-gray-800">课程费用是多少？有优惠政策吗？</span>
+                        <i class="fa fa-chevron-down text-gray-500 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content px-6 py-0 max-h-0 overflow-hidden transition-all duration-300">
+                        <p class="text-gray-600 py-4">课程费用为3980元/人，包含课程教材、线上学习平台使用费、案例资料费和结业证书费。我们为以下人群提供优惠政策：1. 农村建档立卡贫困户免费；2. 乡村干部和农村集体经济组织负责人享受50%优惠；3. 团体报名（5人以上）享受8折优惠；4. 提前30天报名享受9折优惠。</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-soft overflow-hidden">
+                    <button class="faq-toggle w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none">
+                        <span class="font-medium text-gray-800">完成课程后能获得什么证书？</span>
+                        <i class="fa fa-chevron-down text-gray-500 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content px-6 py-0 max-h-0 overflow-hidden transition-all duration-300">
+                        <p class="text-gray-600 py-4">学员完成所有课程内容并通过考核后，将获得由中国乡村旅游协会颁发的《乡村旅游服务与管理专业培训证书》。该证书在行业内具有较高的认可度，可以作为求职、创业和项目申报的重要依据。优秀学员还将获得推荐就业的机会。</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-soft overflow-hidden">
+                    <button class="faq-toggle w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none">
+                        <span class="font-medium text-gray-800">课程有后续服务吗？</span>
+                        <i class="fa fa-chevron-down text-gray-500 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content px-6 py-0 max-h-0 overflow-hidden transition-all duration-300">
+                        <p class="text-gray-600 py-4">是的，我们为学员提供丰富的后续服务：1. 一年内免费参加线上更新课程；2. 加入学员交流群，与行业专家和同行保持联系；3. 优先参加我们组织的行业论坛和研讨会；4. 提供项目咨询和指导服务；5. 对接投资机构，帮助优秀项目获得资金支持。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我们 -->
+    <section class="py-16 bg-primary/10">
+        <div class="container mx-auto px-4">
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-2">
+                    <div class="p-8 lg:p-12">
+                        <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-6 text-gray-800">联系我们</h2>
+                        <p class="text-gray-600 mb-8">如果您对课程有任何疑问或想了解更多信息，请通过以下方式与我们联系</p>
+                        
+                        <div class="space-y-6 mb-8">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fa fa-map-marker text-primary"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-800 mb-1">培训地址</h3>
+                                    <p class="text-gray-600">北京市海淀区中关村南大街5号</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fa fa-phone text-primary"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-800 mb-1">联系电话</h3>
+                                    <p class="text-gray-600">400-888-9999</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fa fa-envelope text-primary"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-800 mb-1">电子邮箱</h3>
+                                    <p class="text-gray-600">info@rural-tourism.edu.cn</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fa fa-clock-o text-primary"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-800 mb-1">工作时间</h3>
+                                    <p class="text-gray-600">周一至周五 9:00-18:00</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h3 class="font-semibold text-gray-800 mb-4">关注我们</h3>
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-10 h-10 bg-primary/10 hover:bg-primary/20 rounded-full flex items-center justify-center transition-colors duration-300">
+                                    <i class="fa fa-weixin text-primary text-xl"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-primary/10 hover:bg-primary/20 rounded-full flex items-center justify-center transition-colors duration-300">
+                                    <i class="fa fa-weibo text-primary text-xl"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-primary/10 hover:bg-primary/20 rounded-full flex items-center justify-center transition-colors duration-300">
+                                    <i class="fa fa-youtube-play text-primary text-xl"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-primary/10 hover:bg-primary/20 rounded-full flex items-center justify-center transition-colors duration-300">
+                                    <i class="fa fa-linkedin text-primary text-xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-primary/5 p-8 lg:p-12">
+                        <h2 class="text-xl font-bold mb-6 text-gray-800">立即咨询</h2>
+                        <form id="contact-form" class="space-y-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">姓名</label>
+                                <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors" placeholder="请输入您的姓名">
+                            </div>
+                            
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">电话</label>
+                                <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors" placeholder="请输入您的联系电话">
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">邮箱</label>
+                                <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors" placeholder="请输入您的电子邮箱">
+                            </div>
+                            
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">留言</label>
+                                <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors" placeholder="请输入您的留言内容"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-primary hover:bg-secondary text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105">
+                                提交咨询
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center space-x-2 mb-6">
+                        <i class="fa fa-tree text-primary text-3xl"></i>
+                        <span class="text-xl font-bold">乡村人才培训平台</span>
+                    </div>
+                    <p class="text-gray-400 mb-6">助力乡村振兴，培养新型乡村人才</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors duration-300">
+                            <i class="fa fa-weixin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors duration-300">
+                            <i class="fa fa-weibo text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors duration-300">
+                            <i class="fa fa-youtube-play text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors duration-300">
+                            <i class="fa fa-linkedin text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">快速链接</h3>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-400 hover:text-primary transition-colors duration-300">首页</a></li>
+                        <li><a href="index.html#courses" class="text-gray-400 hover:text-primary transition-colors duration-300">课程中心</a></li>
+                        <li><a href="index.html#trainers" class="text-gray-400 hover:text-primary transition-colors duration-300">师资力量</a></li>
+                        <li><a href="index.html#testimonials" class="text-gray-400 hover:text-primary transition-colors duration-300">学员评价</a></li>
+                        <li><a href="contact_us.html" class="text-gray-400 hover:text-primary transition-colors duration-300">联系我们</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">热门课程</h3>
+                    <ul class="space-y-3">
+                        <li><a href="rural_tourism.html" class="text-gray-400 hover:text-primary transition-colors duration-300">乡村旅游服务与管理</a></li>
+                        <li><a href="modern_agriculture.html" class="text-gray-400 hover:text-primary transition-colors duration-300">现代农业技术应用</a></li>
+                        <li><a href="traditional_crafts.html" class="text-gray-400 hover:text-primary transition-colors duration-300">传统手工艺创新设计</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors duration-300">乡村电商运营</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">联系方式</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start space-x-3">
+                            <i class="fa fa-map-marker text-primary mt-1"></i>
+                            <span class="text-gray-400">北京市海淀区中关村南大街5号</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fa fa-phone text-primary"></i>
+                            <span class="text-gray-400">400-888-9999</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fa fa-envelope text-primary"></i>
+                            <span class="text-gray-400">contact@rural-training.edu.cn</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fa fa-clock-o text-primary"></i>
+                            <span class="text-gray-400">周一至周五 9:00-18:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 mb-4 md:mb-0">© 2024 乡村人才培训平台. 保留所有权利.</p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors duration-300">隐私政策</a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors duration-300">服务条款</a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors duration-300">网站地图</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 移动端菜单切换
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // 表单提交处理
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // 这里可以添加表单验证和提交逻辑
+            alert('感谢您的咨询，我们将尽快与您联系！');
+            this.reset();
+        });
+
+        // FAQ折叠功能
+        document.querySelectorAll('.faq-toggle').forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                const icon = this.querySelector('i');
+                
+                // 切换当前FAQ
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                    content.style.paddingTop = '0';
+                    content.style.paddingBottom = '0';
+                    icon.style.transform = 'rotate(0deg)';
+                } else {
+                    content.style.maxHeight = content.scrollHeight + 32 + 'px';
+                    content.style.paddingTop = '16px';
+                    content.style.paddingBottom = '16px';
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // 关闭移动端菜单
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+
+        // 图表初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 乡村旅游接待人次增长趋势图
+            const tourismCtx = document.getElementById('tourismChart').getContext('2d');
+            new Chart(tourismCtx, {
+                type: 'line',
+                data: {
+                    labels: ['2018', '2019', '2020', '2021', '2022', '2023'],
+                    datasets: [{
+                        label: '接待人次（亿）',
+                        data: [30, 35, 28, 42, 48, 55],
+                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                        borderColor: 'rgba(16, 185, 129, 1)',
+                        borderWidth: 2,
+                        tension: 0.3,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            // 乡村旅游收入分布图
+            const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+            new Chart(revenueCtx, {
+                type: 'pie',
+                data: {
+                    labels: ['民宿住宿', '餐饮服务', '旅游体验', '特色产品'],
+                    datasets: [{
+                        data: [38, 32, 20, 10],
+                        backgroundColor: [
+                            'rgba(16, 185, 129, 0.8)',
+                            'rgba(5, 150, 105, 0.8)',
+                            'rgba(20, 184, 166, 0.8)',
+                            'rgba(8, 145, 178, 0.8)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
